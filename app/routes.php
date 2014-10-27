@@ -13,11 +13,48 @@
 
 Route::get('/', function()
 {
-      return View::make('hello');
+      return View::make('index');
 });
 
-Route::get('login',array('as'=>'login','uses'=>'LoginController'));
+/*
+ * Login Users routes
+ */
+Route::get('login', array(
+    'uses' => 'SessionController@create',
+    'as' => 'session.create'
+));
 
+Route::post('login', array(
+    'uses' => 'SessionController@store',
+    'as' => 'session.store'
+));
+
+Route::get('logout', array(
+    'uses' => 'SessionController@destroy',
+    'as' => 'session.destroy'
+));
+
+//Reminder Controller
+Route::controller('password', 'RemindersController');
+
+/*
+ * ****************************
+ *      Registro de usuarios
+ * ****************************
+ */
+Route::get('registrar', array(
+    'uses' => 'RegisterController@index',
+    'as' => 'register.index'
+));
+
+Route::get('registrar/cliente', array(
+    'uses' => 'RegisterController@index',
+    'as' => 'register.client'
+));
+Route::post('registrar', array(
+    'uses' => 'RegisterController@store_client',
+    'as' => 'register.store_client'
+));
 
 Route::group(array('before' => 'auth'), function()
 {

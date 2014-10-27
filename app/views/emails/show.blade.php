@@ -1,0 +1,1 @@
+/var/www/primerserver/app/views/emails/show.blade.php

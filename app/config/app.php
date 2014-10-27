@@ -67,7 +67,7 @@ return array(
       | will not be safe. Please do this before deploying an application!
       |
      */
-    'key' => 't1U7JkHbJxVWtZPOADz8zefHeKXKiJaM',
+    'key' => 'AyeKnFgainzCakWQEmLeZrKfMvuWR6Re',
     'cipher' => MCRYPT_RIJNDAEL_128,
     /*
       |--------------------------------------------------------------------------

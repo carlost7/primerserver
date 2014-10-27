@@ -1,0 +1,1 @@
+/var/www/primerserver/app/views/databases/index.blade.php
