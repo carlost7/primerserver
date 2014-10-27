@@ -1,6 +1,6 @@
 <?php
 
-class Dominio extends \Eloquent {
+class Domains extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [

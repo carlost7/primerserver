@@ -9,7 +9,7 @@ class DatabasesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$databases = Databasis::all();
+		$databases = Database::all();
 
 		return View::make('databases.index', compact('databases'));
 	}
@@ -31,14 +31,14 @@ class DatabasesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Databasis::$rules);
+		$validator = Validator::make($data = Input::all(), Databases::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Databasis::create($data);
+		Database::create($data);
 
 		return Redirect::route('databases.index');
 	}
@@ -51,7 +51,7 @@ class DatabasesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$databasis = Databasis::findOrFail($id);
+		$databasis = Database::findOrFail($id);
 
 		return View::make('databases.show', compact('databasis'));
 	}
@@ -64,7 +64,7 @@ class DatabasesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$databasis = Databasis::find($id);
+		$databasis = Database::find($id);
 
 		return View::make('databases.edit', compact('databasis'));
 	}
@@ -77,9 +77,9 @@ class DatabasesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$databasis = Databasis::findOrFail($id);
+		$databasis = Database::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Databasis::$rules);
+		$validator = Validator::make($data = Input::all(), Database::$rules);
 
 		if ($validator->fails())
 		{
@@ -99,7 +99,7 @@ class DatabasesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Databasis::destroy($id);
+		Database::destroy($id);
 
 		return Redirect::route('databases.index');
 	}

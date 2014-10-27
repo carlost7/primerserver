@@ -1,6 +1,6 @@
 <?php
 
-class Databasis extends \Eloquent {
+class Database extends \Eloquent {
 
 	// Add your validation rules here
 	public static $rules = [
