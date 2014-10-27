@@ -31,7 +31,7 @@ class CreateServersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('table_servers');
+		Schema::drop('servers');
 	}
 
 }

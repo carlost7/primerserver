@@ -12,13 +12,13 @@ class CreateDatabasesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('databases', function(Blueprint $table)
+		Schema::create('dbases', function(Blueprint $table)
 		{
 			$table->increments('id');
                   $table->string('nombre');
                   $table->string('usuario');
                   $table->integer('domain_id')->unsigned();
-                  $table->foreign('domain_id')->references('id')->on('domain')->onDelete('cascade')->onUpdate('cascade');
+                  $table->foreign('domain_id')->references('id')->on('domains')->onDelete('cascade')->onUpdate('cascade');
 			$table->timestamps();
 		});
 	}
@@ -31,7 +31,7 @@ class CreateDatabasesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('databases');
+		Schema::drop('dbases');
 	}
 
 }
