@@ -17,8 +17,8 @@
                 <p>{{trans('frontend.edit.user.instructions')}}</p>
             </div>
 
-            {{ Form::model($user,array('route' => 'user.edit')) }}
-
+            {{ Form::model($user,  array('route' => array('user.update',$user->id), 'method' => 'PUT')) }}            
+            
             @include('layouts.show_form_errors')
 
             <div class="row">
@@ -48,7 +48,7 @@
                 {{ Form::password('password',array('placeholder' => trans('frontend.placeholder_password'), 'class'=>'form-control')) }}
             </div>
             <div class="form-group">
-                {{ Form::label('password_confirmation', trans('frontend.confirm_password')) }}
+                {{ Form::label('password_confirmation', trans('frontend.password_confirmation')) }}
                 {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder_confirm_password'), 'class'=>'form-control')) }}
             </div>
             <div class="form-group">

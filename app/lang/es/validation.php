@@ -101,6 +101,6 @@ return array(
         "telephone" => 'Telefono',
         "cellphone" => 'Celular',
         "password" => 'Contraseña',
-        "confirm_password" => 'Confirmar Contraseña',
+        "password_confirmation" => 'Confirmar Contraseña',
     ),
 );

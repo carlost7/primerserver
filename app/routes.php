@@ -72,11 +72,11 @@ Route::get('registrar', array(
 
 Route::get('registrar/cliente', array(
     'uses' => 'RegisterController@index',
-    'as' => 'register.client'
+    'as' => 'register.user'
 ));
 Route::post('registrar', array(
     'uses' => 'RegisterController@store_client',
-    'as' => 'register.store_client'
+    'as' => 'register.store_user'
 ));
 
 Route::group(array('before' => 'auth'), function()

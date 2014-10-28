@@ -16,12 +16,11 @@ class User extends Ardent implements UserInterface, RemindableInterface
           "first_name"        => 'required',
           "last_name"         => 'required',
           "email"             => 'required|email|unique:users,email',
-          'password'          => 'required|alpha_dash|min:8',
-          'password_confirmation'  => 'required|same:password',
+          'password'          => 'required|alpha_dash|min:8|confirmed',
+          'password_confirmation'  => 'required',
       );
-      
-      
-      public static $passwordAttributes  = array('password','confirm_password');
+            
+      public static $passwordAttributes  = array('password','password_confirmation');
       public $autoHashPasswordAttributes = true;
       public $autoHydrateEntityFromInput = true; 
       public $forceEntityHydrationFromInput = true;

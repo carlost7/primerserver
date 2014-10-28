@@ -11,6 +11,10 @@ class UserController extends \BaseController
        */
       public function show($id)
       {
+            if($id!=Auth::user()->id){
+                  Session::flash('error',trans('frontend.not_user_element'));
+                  return Redirect::route('user.show',Auth::user()->id);
+            }
             $user = User::findOrFail($id);
 
             return View::make('users.show', compact('user'));
@@ -43,20 +47,14 @@ class UserController extends \BaseController
       public function update($id)
       {
             $user = User::findOrFail($id);
-
-            $validator = Validator::make($data = Input::all(), User::$rules);
-
-            if ($validator->fails())
-            {
-                  return Redirect::back()->withErrors($validator)->withInput();
+            $user::$rules['password'] = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
+            $user::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
+            if($user->updateUniques()){
+                  Session::flash('message',trans('frontend.update_user_confirmation'));
+                  return Redirect::route('user.show',$user->id);
+            }else{
+                  return Redirect::back()->withInput()->withErrors($user->errors());
             }
-
-            
-            
-            $user->update($data);
-            
-            
-            return Redirect::route('users.show',$user->id);
       }
 
       /**

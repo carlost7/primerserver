@@ -38,7 +38,8 @@ return array(
     //Session messages
     "register.error_created_user" => 'Error al crear el usuario',
     "register.successful" => 'Usuario creado con exito',
-    "not_user_element" => "El objeto a editar no pertence al usuario de la cuenta",
+    "not_user_element" => 'El objeto a mostrar no pertence al usuario de la cuenta',
+    "update_user_confirmation" => 'Usuario actualizado con éxito',
     //Session responses
     "filter.is_user" => 'El tipo de usuario no es correcto o no esta activo',
     "filter.is_admin" => 'El tipo de usuario no corresponde a este registro',    

@@ -21,7 +21,7 @@ class RegisterController extends \BaseController
       /**
        * Store the client in the database
        */
-      public function store_client()
+      public function store_user()
       {
             $user = new User;
             $user->type = "User";

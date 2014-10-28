@@ -10,7 +10,7 @@
                       <p>{{trans('frontend.register.user.instructions')}}</p>
                   </div>
 
-                  {{ Form::open(array('route' => 'register.store_client')) }}
+                  {{ Form::open(array('route' => 'register.store_user')) }}
                   
                   @include('layouts.show_form_errors')
                   
