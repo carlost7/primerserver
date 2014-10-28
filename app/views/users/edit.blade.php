@@ -52,7 +52,7 @@
                 {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder_password_confirmation'), 'class'=>'form-control')) }}
             </div>
             <div class="form-group">
-                {{Form::submit(trans('frontend.register.submit'),array('class'=>"btn btn-primary"))}}                        
+                {{Form::submit(trans('frontend.update_user.submit'),array('class'=>"btn btn-primary"))}}                        
             </div>        
             {{ Form::close() }}
         </div>

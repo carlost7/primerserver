@@ -56,6 +56,7 @@ return array(
     "login.submit" => 'Entrar',
     "reminder.submit" => 'Enviar Correo',
     "reset_password.submit" => 'Cambiar Contraseña',
+    "update_user.submit" => 'Actualizar',
     
     //Session messages
     "not_user_element" => 'El objeto a mostrar no pertence al usuario de la cuenta',
