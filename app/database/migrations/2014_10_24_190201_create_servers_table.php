@@ -17,6 +17,7 @@ class CreateServersTable extends Migration {
 			$table->increments('id');
                   $table->string('domain');
                   $table->string('nameserver');
+                  $table->string('ip');
                   $table->integer('plan_id')->unsigned();
                   $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
 			$table->timestamps();

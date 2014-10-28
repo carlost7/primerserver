@@ -2,12 +2,9 @@
 
 use LaravelBook\Ardent\Ardent;
 
-class Database extends Ardent {
+class Server extends Ardent
+{
 
-	//Table
-      protected $table = 'dbases';
-      
-      //Fillable
       protected $fillable = ['domain', 'nameserver', 'ip'];
       
       //Rules of validations
@@ -19,14 +16,12 @@ class Database extends Ardent {
       
       //Relationships
       public static $relationsData = array(
-          'domain' => array(self::HAS_ONE, 'Domain'),          
+          'plan' => array(self::BELONGS_TO, 'Plan'),          
       );
       
-      
-      //Hydration
       public $autoHydrateEntityFromInput = true;
       public $forceEntityHydrationFromInput = true;
       
-      
+      protected $table = 'servers';
 
 }

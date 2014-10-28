@@ -15,8 +15,8 @@ class CreateDatabasesTable extends Migration {
 		Schema::create('dbases', function(Blueprint $table)
 		{
 			$table->increments('id');
-                  $table->string('nombre');
-                  $table->string('usuario');
+                  $table->string('name_db');
+                  $table->string('user');
                   $table->integer('domain_id')->unsigned();
                   $table->foreign('domain_id')->references('id')->on('domains')->onDelete('cascade')->onUpdate('cascade');
 			$table->timestamps();

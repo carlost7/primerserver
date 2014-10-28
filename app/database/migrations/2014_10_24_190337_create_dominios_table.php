@@ -22,7 +22,9 @@ class CreateDominiosTable extends Migration {
                   $table->integer('plan_id')->unsigned();
                   $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
                   $table->integer('user_id')->unsigned();
-                  $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');                  
+                  $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+                  $table->integer('server_id')->unsigned();
+                  $table->foreign('server_id')->references('id')->on('servers')->onDelete('cascade')->onUpdate('cascade');
                   $table->timestamps();
 		});
 	}
