@@ -10,11 +10,8 @@
   | and give it the Closure to execute when that URI is requested.
   |
  */
-
-Route::get('/', function()
-{
-      return View::make('index');
-});
+//Main redirection
+Route::get('/', array('uses'=>'SessionController@index','as'=>'index'));
 
 /*
  * Login Users routes
@@ -34,29 +31,6 @@ Route::get('logout', array(
     'as' => 'session.destroy'
 ));
 
-/*
- * *******************************
- *            Users Session
- * *******************************
- */
-Route::get('login', array(
-    'uses' => 'SessionController@create',
-    'as' => 'session.create'
-));
-Route::get('login/{provider}', array(
-    'uses' => 'SessionController@authorise',
-    'as' => 'session.authorise'
-));
-
-Route::post('login', array(
-    'uses' => 'SessionController@store',
-    'as' => 'session.store'
-));
-Route::get('logout', array(
-    'uses' => 'SessionController@destroy',
-    'as' => 'session.destroy'
-));
-
 //Reminder Controller
 Route::controller('password', 'RemindersController');
 
@@ -69,13 +43,12 @@ Route::get('registrar', array(
     'uses' => 'RegisterController@index',
     'as' => 'register.index'
 ));
-
 Route::get('registrar/cliente', array(
     'uses' => 'RegisterController@index',
     'as' => 'register.user'
 ));
-Route::post('registrar', array(
-    'uses' => 'RegisterController@store_client',
+Route::post('registrar/cliente', array(
+    'uses' => 'RegisterController@store_user',
     'as' => 'register.store_user'
 ));
 

@@ -4,10 +4,10 @@
 <div class="container">
       <div class="row">
             <div class="col-sm-6 col-sm-push-3">
-                  <h2>{{ trans('frontend.register.user.title') }}</h2>
+                  <h2>{{ trans('frontend.register.title') }}</h2>
 
                   <div class="instrucciones">
-                      <p>{{trans('frontend.register.user.instructions')}}</p>
+                      <p>{{trans('frontend.register.instructions')}}</p>
                   </div>
 
                   {{ Form::open(array('route' => 'register.store_user')) }}
@@ -42,7 +42,7 @@
                   </div>
                   <div class="form-group">
                         {{ Form::label('password_confirmation', trans('frontend.password_confirmation')) }}
-                        {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder_confirm_password'), 'class'=>'form-control')) }}
+                        {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder_password_confirmation'), 'class'=>'form-control')) }}
                   </div>
                   <div class="form-group">
                       {{Form::submit(trans('frontend.register.submit'),array('class'=>"btn btn-primary"))}}                        

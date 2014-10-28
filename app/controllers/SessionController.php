@@ -13,6 +13,14 @@ class SessionController extends \BaseController
             /*$this->user = $user;
             $this->manager = $manager;*/
       }
+      
+      public function index(){
+            if(Auth::check()){
+                  return Redirect::route('user.show',Auth::user()->id);
+            }else{
+                  return View::make('index');
+            }
+      }
 
       /**
        * Display a listing of the resource.
@@ -35,44 +43,21 @@ class SessionController extends \BaseController
       {
             if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')), Input::get('rememberme')))
             {
-                  switch (Auth::user()->userable_type)
-                  {
-                        case 'Cliente':
-                              return Redirect::intended(route('clientes.index'));
+                  switch(Auth::user()->type){
+                        case 'User':
+                              return Redirect::intended(route('user.show',Auth::user()->id));
                               break;
-                        case 'Marketing':
-                              return Redirect::intended(route('marketing.index'));
+                        case 'Admin':
+                              return Redirect::intended(route('user.show',Auth::user()->id));
                               break;
-                        case 'Administrador':
-                              return Redirect::intended(route('administradores.index'));
+                        default:
+                              return Redirect::to('/');
                               break;
-                        case 'Miembro':
-                              return Redirect::intended('/');
-                              break;
-                  }
+                  }                  
             }
-            return Redirect::route('session.create')
+            return Redirect::route('index')
                             ->withInput()
                             ->with('login_errors', true);
-      }
-
-      public function authorise($provider)
-      {
-            try
-            {
-                  $provider = $this->manager->get($provider);
-
-                  $credentials = $provider->getTemporaryCredentials();
-
-                  Session::put('credentials', $credentials);
-                  Session::save();
-
-                  return $provider->authorize($credentials);
-            }
-            catch (Exception $e)
-            {
-                  return App::abort(404);
-            }
       }
 
       /**
@@ -85,7 +70,7 @@ class SessionController extends \BaseController
       public function destroy()
       {
             Auth::logout();
-            Session::flash('message', 'Vuelve pronto');
+            Session::flash('message', trans('frontend.session_logout'));
             return Redirect::to('/');
       }
 

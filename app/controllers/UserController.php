@@ -50,7 +50,7 @@ class UserController extends \BaseController
             $user::$rules['password'] = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
             $user::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
             if($user->updateUniques()){
-                  Session::flash('message',trans('frontend.update_user_confirmation'));
+                  Session::flash('message',trans('frontend.update_user.successful'));
                   return Redirect::route('user.show',$user->id);
             }else{
                   return Redirect::back()->withInput()->withErrors($user->errors());

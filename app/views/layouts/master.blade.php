@@ -52,22 +52,22 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Cuenta</a></li>
                             <li><a href="#">Dominios</a></li>
-                            <li>{{HTML::LinkRoute('session.destroy',trans('frontend.system.logout'))}}</li>
+                            <li>{{HTML::LinkRoute('session.destroy',trans('frontend.link.logout'))}}</li>
                                                        
                         </ul>
                     </li>
                 </ul>
                 @else
                 <div class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form">
+                    {{ Form::open(array('route' => 'session.store','class'=>'navbar-form navbar-right','role'=>'form')) }}                    
                         <div class="form-group">
-                            <input type="text" placeholder="Email" class="form-control">
+                            <input type="text" name="email" placeholder="{{trans('frontend.placeholder_login_email')}}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" class="form-control">
+                            <input type="password" name="password" placeholder="{{trans('frontend.placeholder_login_password') }}" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
+                        {{ Form::submit(trans('frontend.login.submit'),array("class"=>"btn btn-success"))}}                        
+                    {{ Form::close()}}
                 </div><!--/.navbar-collapse -->
                 @endif
 
