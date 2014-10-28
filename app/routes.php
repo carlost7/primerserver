@@ -34,6 +34,29 @@ Route::get('logout', array(
     'as' => 'session.destroy'
 ));
 
+/*
+ * *******************************
+ *            Users Session
+ * *******************************
+ */
+Route::get('login', array(
+    'uses' => 'SessionController@create',
+    'as' => 'session.create'
+));
+Route::get('login/{provider}', array(
+    'uses' => 'SessionController@authorise',
+    'as' => 'session.authorise'
+));
+
+Route::post('login', array(
+    'uses' => 'SessionController@store',
+    'as' => 'session.store'
+));
+Route::get('logout', array(
+    'uses' => 'SessionController@destroy',
+    'as' => 'session.destroy'
+));
+
 //Reminder Controller
 Route::controller('password', 'RemindersController');
 
@@ -59,7 +82,9 @@ Route::post('registrar', array(
 Route::group(array('before' => 'auth'), function()
 {
       
-      Route::group(array('prefix'=>'cliente','before'=>'is_cliente'),function(){
+      Route::group(array('before'=>'is_user'),function(){
+            
+            Route::resource('user','UserController',array('except'=>array('index','create','store')));
             
       });
       

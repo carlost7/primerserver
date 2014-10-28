@@ -1,22 +1,21 @@
 <?php
 
 use Illuminate\Events\Dispatcher;
-//use Sph\Storage\User\UserRepository as User;
 
 class RegisterController extends \BaseController
 {
 
       protected $user;
-      
-      /*public function __construct(User $user)
-      {
-            parent::__construct();
-            $this->user = $user;            
-      }*/
+
+      /* public function __construct(User $user)
+        {
+        parent::__construct();
+        $this->user = $user;
+        } */
 
       public function index()
       {
-            return View::make('register.client');
+            return View::make('register.user');
       }
 
       /**
@@ -24,50 +23,18 @@ class RegisterController extends \BaseController
        */
       public function store_client()
       {
-            $validateUser = new Sph\Services\Validators\User(Input::all(), 'save');
-            $validateClient = new Sph\Services\Validators\Cliente(Input::all(), 'save');
-
-            //Validamos datos del usuario y datos del cliente
-            if ($validateUser->passes() & $validateClient->passes())
+            $user = new User;
+            $user->type = "User";
+            if ($user->save())
             {
-                  //Creamos un usario
-                  $user = $this->user->create(Input::all());
-                  if (isset($user))
-                  {
-                        //Creamos un codigo de activación
-                        $token = sha1(time());
-
-                        //Se crea el objeto de usuario con los datos de entrada y el usuario al que pertenece
-                        $cliente_model = Input::all();
-                        $cliente_model = array_add($cliente_model, 'is_activo', false);
-                        $cliente_model = array_add($cliente_model, 'token', $token);
-                        $cliente_model = array_add($cliente_model, 'user', $user);
-
-                        $cliente = $this->cliente->create($cliente_model);
-
-                        if (isset($cliente))
-                        {
-                              $data = array('nombre' => $cliente->nombre,
-                                    'token' => $cliente->token,
-                                    'id' => $cliente->id,
-                              );
-
-                              Mail::send('emails.auth.confirm_new_user', $data, function($message) use ($user, $cliente) {
-                                    $message->to($user->email, $cliente->nombre)->subject('Confirmación de Registro de Sphellar');
-                              });
-                              Session::flash('message', 'Usuario creado con éxito, revisa tu correo para activarlo');
-
-                              return Redirect::to('/');
-                        }
-                  }
+                  Session::flash('message', trans('frontend.register.successful'));
+                  Auth::login($user);
+                  return Redirect::route("user.show", $user->id);
             }
-
-            //Mensaje de error de validaciones
-            $user_messages = ($validateUser->getErrors() != null) ? $validateUser->getErrors()->all() : array();
-            $cliente_messages = ($validateClient->getErrors() != null) ? $validateClient->getErrors()->all() : array();
-            $validationMessages = array_merge_recursive($user_messages, $cliente_messages);
-
-            return Redirect::route('register.client')->withInput()->withErrors($validationMessages);
+            else
+            {
+                  return Redirect::back()->withErrors($user->errors())->withInput();
+            }
       }
 
       /*

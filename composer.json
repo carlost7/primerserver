@@ -8,7 +8,8 @@
                 "way/generators": "~2.0",
                 "mercadopago/sdk": "dev-master",
                 "fzaninotto/faker": "dev-master",
-                "doctrine/dbal":"dev-master"
+                "doctrine/dbal":"dev-master",
+                "laravelbook/ardent": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

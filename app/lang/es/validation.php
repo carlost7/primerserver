@@ -94,5 +94,13 @@ return array(
       | of "email". This simply helps us make messages a little cleaner.
       |
      */
-    'attributes' => array(),
+    'attributes' => array(
+        "first_name" => 'Nombre',
+        "last_name" => 'Apellido',
+        "email" => 'Correo Electrónico',
+        "telephone" => 'Telefono',
+        "cellphone" => 'Celular',
+        "password" => 'Contraseña',
+        "confirm_password" => 'Confirmar Contraseña',
+    ),
 );
