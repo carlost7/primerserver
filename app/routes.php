@@ -55,10 +55,17 @@ Route::post('registrar/cliente', array(
 Route::group(array('before' => 'auth'), function()
 {
       
-      Route::group(array('before'=>'is_user'),function(){
-            
+      Route::group(array('before'=>'is_user'),function(){            
             Route::resource('user','UserController',array('except'=>array('index','create','store')));
             
+            Route::group(array('before'=>'is_user_object'),function(){
+                  Route::resource('user/domains/{user_id}','DomainsController');
+                  
+            });
+            
+            Route::resource('user/ftps/{domain_id}','FtpsController');
+            Route::resource('user/databases/{domain_id}','DatabaseController');
+            Route::resource('user/emails/{domain_id}','EmailsController');            
       });
       
       Route::group(array('prefix'=>'administrador','before'=>'is_admin'),function(){

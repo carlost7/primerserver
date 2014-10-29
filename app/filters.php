@@ -107,6 +107,23 @@ Route::filter('is_user', function()
 });
 
 /*
+ *    Check if object belogns to user or is admin
+ * 
+ * 
+ */
+
+Route::filter('is_user_object', function($route, $request)
+{
+      if (Auth::user()->type == 'User' && $route->getParameter('user_id') != Auth::user()->id)
+      {
+            Session::flash('error', trans('frontend.not_user_element'));
+            return Redirect::back();
+      }
+});
+
+
+
+/*
  * 
  *    Check if user is admin
  * 

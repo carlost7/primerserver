@@ -16,7 +16,6 @@ class UserController extends \BaseController
                   return Redirect::route('user.show',Auth::user()->id);
             }
             $user = User::findOrFail($id);
-
             return View::make('users.show', compact('user'));
       }
 

@@ -2,7 +2,7 @@
 
 use LaravelBook\Ardent\Ardent;
 
-class Domains extends Ardent
+class Domain extends Ardent
 {
 
       // Add your validation rules here
@@ -15,9 +15,9 @@ class Domains extends Ardent
       
       public static $relationsData = array(
           //Pertenece a
-          'user' => array(self::BELOGNS_TO, 'User'),   
-          'plan' => array(self::BELOGNS_TO, 'Plan'),
-          'server' => array(self::BELOGNS_TO, 'Server'),
+          'user' => array(self::BELONGS_TO, 'User'),   
+          'plan' => array(self::BELONGS_TO, 'Plan'),
+          'server' => array(self::BELONGS_TO, 'Server'),
           
           //Tiene
           'mails' => array(self::HAS_MANY, 'Email'),

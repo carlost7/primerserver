@@ -19,7 +19,6 @@ return array(
     "reminder.title" => 'Recuperar contraseña',
     "reminder_mail.title" => 'Recuperación de contraseña',
     "reset_password.title" => 'Cambiar la contraseña',
-    
     //Instrucciones    
     "register.instructions" => "Instrucciones",
     "edit.user.instructions" => "Instrucciones",
@@ -28,8 +27,6 @@ return array(
     "reminder.instructions" => "Instrucciones",
     "reminder_mail.instructions" => 'Para modificar la contraseña de acceso a Sphellar rellena el formulario en la pagina siguiente: ',
     "reset_password.instructions" => 'Instrucciones',
-    
-    
     //Labels
     "label_first_name" => 'Nombre',
     "label_last_name" => 'Apellido',
@@ -39,7 +36,6 @@ return array(
     "label_password" => 'Contraseña',
     "label_password_confirmation" => 'Confirmar Contraseña',
     "label_keep_alive" => 'Seguir conectado',
-    
     //Placeholders
     "placeholder_login_email" => 'Correo',
     "placeholder_login_password" => 'Contraseña',
@@ -50,32 +46,40 @@ return array(
     "placeholder_cellphone" => '55 57 89 78 12',
     "placeholder_password" => '10 caracteres alfanumericos',
     "placeholder_password_confirmation" => 'Repetir Contraseña',
-    
     //Forms
     "register.submit" => 'Registrarse',
     "login.submit" => 'Entrar',
     "reminder.submit" => 'Enviar Correo',
     "reset_password.submit" => 'Cambiar Contraseña',
     "update_user.submit" => 'Actualizar',
-    
     //Session messages
     "not_user_element" => 'El objeto a mostrar no pertence al usuario de la cuenta',
     "register.error_created_user" => 'Error al crear el usuario',
-    "register.successful" => 'Usuario creado con exito',    
+    "register.successful" => 'Usuario creado con exito',
     "update_user.successful" => 'Usuario actualizado con éxito',
     "logout.message" => 'Vuelve pronto :)',
     "login.error" => 'Correo o contraseña incorrectos',
     "reset_password.successful" => 'Contraseña modificada con exito',
     "reset_password.error" => 'error al modificar la contraseña',
-    
     //filter
     "filter.is_user" => 'El tipo de usuario no es correcto o no esta activo',
-    "filter.is_admin" => 'El tipo de usuario no corresponde a este registro',    
-    
+    "filter.is_admin" => 'El tipo de usuario no corresponde a este registro',
     //Links
     "link.user_edit" => 'Editar Cuenta',
     "link.user_show" => 'Cuenta',
     "link.logout" => 'Salir',
     "link.reminder_password" => 'recuperar contraseña',
     "link.register" => 'Registrarse',
+    "link.domain_create" => 'Crear Nuevo Dominio',
+    //table_headers
+    "table_domains.domain" => 'Dominio',
+    "table_domains.active" => 'Esta Activo',
+    "table_domains.date_start" => 'Fecha de inicio',
+    "table_domains.date_end" => 'Fecha de termino',
+    "table_domains.plan" => 'Plan',
+    //meesages systems
+    "no_domains" => 'No existe ningun dominio por el momento',
+    "no_ftps" => 'No existe ningun correo para el dominio',
+    "no_databases" => 'No existe ninguna base de datos para el dominio',
+    "no_emails" => 'No existe ningun correo para el dominio',    
 );
