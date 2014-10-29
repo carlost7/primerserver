@@ -18,7 +18,7 @@ class Plan extends Ardent
       protected $table = 'plans';
       
       public static $relationsData = array(
-          'plan' => array(self::HAS_ONE, 'Plan'),          
+          'servers' => array(self::HAS_MANY, 'Server'),          
       );
       
       

@@ -19,6 +19,7 @@ return array(
     "reminder.title" => 'Recuperar contraseña',
     "reminder_mail.title" => 'Recuperación de contraseña',
     "reset_password.title" => 'Cambiar la contraseña',
+    "domains.create.title" => 'Agregar nuevo dominio',
     //Instrucciones    
     "register.instructions" => "Instrucciones",
     "edit.user.instructions" => "Instrucciones",
@@ -27,6 +28,7 @@ return array(
     "reminder.instructions" => "Instrucciones",
     "reminder_mail.instructions" => 'Para modificar la contraseña de acceso a Sphellar rellena el formulario en la pagina siguiente: ',
     "reset_password.instructions" => 'Instrucciones',
+    "domains.create.instructions" => 'Instrucciones',
     //Labels
     "label_first_name" => 'Nombre',
     "label_last_name" => 'Apellido',
@@ -36,6 +38,8 @@ return array(
     "label_password" => 'Contraseña',
     "label_password_confirmation" => 'Confirmar Contraseña',
     "label_keep_alive" => 'Seguir conectado',
+    "label_domain" => 'Dominio',
+    "label_plans" => 'Plan',
     //Placeholders
     "placeholder_login_email" => 'Correo',
     "placeholder_login_password" => 'Contraseña',
@@ -46,12 +50,14 @@ return array(
     "placeholder_cellphone" => '55 57 89 78 12',
     "placeholder_password" => '10 caracteres alfanumericos',
     "placeholder_password_confirmation" => 'Repetir Contraseña',
+    "placeholder_domain" => 'ejemplo.com',
     //Forms
     "register.submit" => 'Registrarse',
     "login.submit" => 'Entrar',
     "reminder.submit" => 'Enviar Correo',
     "reset_password.submit" => 'Cambiar Contraseña',
     "update_user.submit" => 'Actualizar',
+    "domains.create.submit" => 'Crear Dominio',
     //Session messages
     "not_user_element" => 'El objeto a mostrar no pertence al usuario de la cuenta',
     "register.error_created_user" => 'Error al crear el usuario',
@@ -61,6 +67,8 @@ return array(
     "login.error" => 'Correo o contraseña incorrectos',
     "reset_password.successful" => 'Contraseña modificada con exito',
     "reset_password.error" => 'error al modificar la contraseña',
+    "domain.create.successful" => 'dominio creado en la base de datos con exito',
+    "domain.create.error" => 'error al crear el dominio',
     //filter
     "filter.is_user" => 'El tipo de usuario no es correcto o no esta activo',
     "filter.is_admin" => 'El tipo de usuario no corresponde a este registro',

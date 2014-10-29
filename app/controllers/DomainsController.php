@@ -1,90 +1,110 @@
 <?php
 
-class DomainsController extends \BaseController {
+class DomainsController extends \BaseController
+{
 
       /**
-	 * Display a listing of the resource.
-	 * GET /domains
-	 *
-	 * @return Response
-	 */
-	public function index($user_id)
-	{
-		$domains = Auth::user()->domains;
+       * Display a listing of the resource.
+       * GET /domains
+       *
+       * @return Response
+       */
+      public function index($user_id)
+      {
+            $user = User::with('domains')->findOrFail($user_id);
+            $domains = $user->domains;
+            return View::make('domains.index',compact('domains'));
+      }
+
+      /**
+       * Show the form for creating a new resource.
+       * GET /domains/create
+       *
+       * @return Response
+       */
+      public function create($user_id)
+      {
+            $user = User::find($user_id);
+            $plans = Plan::lists('plan_name', 'id');
+            return View::make('domains.create', compact('plans', 'user'));
+      }
+
+      /**
+       * Store a newly created resource in storage.
+       * POST /domains
+       *
+       * @return Response
+       */
+      public function store($user_id)
+      {
+
+            //Obtenemos el plan deseado y los datos de los servidores
+            $plan = Plan::with('servers.domains')->find(Input::get('plan_id'));                        
+            $user = User::find($user_id);
+            //creamos el dominio en la base de datos
+            $domain = new Domain;
+            $domain->active = false;
+            $domain->plan()->associate($plan);
+            $domain->server()->associate(getLeastBussyServer($plan));
+            $domain->user()->associate($user);
             
-            return View::make('domains.index')->compact('domains');
-	}
+            if ($domain->save())
+            {
+                  Session::flash('message', trans('frontend.domain.create.successful'));
+                  return Redirect::route("user.domains.{user_id}.index", $user->id);
+            }
+            else
+            {
+                  return Redirect::back()->withErrors($domain->errors())->withInput();
+            }
+      }
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /domains/create
-	 *
-	 * @return Response
-	 */
-	public function create($user_id)
-	{
+      /**
+       * Display the specified resource.
+       * GET /domains/{id}
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function show($user_id, $id)
+      {
             
-            
-            return View::make('domains.create');            
-	}
+      }
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /domains
-	 *
-	 * @return Response
-	 */
-	public function store($user_id)
-	{
-		
-	}
+      /**
+       * Show the form for editing the specified resource.
+       * GET /domains/{id}/edit
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function edit($user_id, $id)
+      {
+            //
+      }
 
-	/**
-	 * Display the specified resource.
-	 * GET /domains/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($user_id,$id)
-	{
-		
-	}
+      /**
+       * Update the specified resource in storage.
+       * PUT /domains/{id}
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function update($user_id, $id)
+      {
+            //
+      }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /domains/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($user_id,$id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /domains/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($user_id,$id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /domains/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($user_id,$id)
-	{
-		//
-	}
+      /**
+       * Remove the specified resource from storage.
+       * DELETE /domains/{id}
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function destroy($user_id, $id)
+      {
+            //
+      }
 
 }

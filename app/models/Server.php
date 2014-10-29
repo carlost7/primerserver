@@ -17,6 +17,7 @@ class Server extends Ardent
       //Relationships
       public static $relationsData = array(
           'plan' => array(self::BELONGS_TO, 'Plan'),          
+          'domains' => array(self::HAS_MANY, 'Domain'),          
       );
       
       public $autoHydrateEntityFromInput = true;
