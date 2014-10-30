@@ -11,7 +11,7 @@
   |
  */
 //Main redirection
-Route::get('/', array('uses'=>'SessionController@index','as'=>'index'));
+Route::get('/', array('uses' => 'SessionController@index', 'as' => 'index'));
 
 /*
  * Login Users routes
@@ -54,24 +54,56 @@ Route::post('registrar/cliente', array(
 
 Route::group(array('before' => 'auth'), function()
 {
-      
-      Route::group(array('before'=>'is_user'),function(){            
-            Route::resource('user','UserController',array('except'=>array('index','create','store')));
-            
-            Route::group(array('before'=>'is_user_object'),function(){
-                  Route::resource('user/domains/{user_id}','DomainsController');
+
+      Route::group(array('before' => 'is_user'), function()
+      {
+            Route::resource('user', 'UserController', array('except' => array('index', 'create', 'store')));
+
+            Route::group(array('before' => 'is_user_object'), function()
+            {
+                  //Domains
+                  Route::get('user/domains/{user_id}', array('as' => 'user.domains.index',
+                      'uses' => 'DomainsController@index'));
+                  Route::get('user/domains/{user_id}/create', array('as' => 'user.domains.create',
+                      'uses' => 'DomainsController@create'));
+                  Route::post('user/domains/{user_id}', array('as' => 'user.domains.store',
+                      'uses' => 'DomainsController@store'));                  
+                  Route::get('user/domains/{user_id}/{id}', array('as' => 'user.domains.show',
+                      'uses' => 'DomainsController@show'));                  
+                  Route::get('user/domains/{user_id}/{id}/edit', array('as' => 'user.domains.edit',
+                      'uses' => 'DomainsController@edit'));
+                  Route::put('user/domains/{user_id}/{id}', array('as' => 'user.domains.update',
+                      'uses' => 'DomainsController@update'));
+                  Route::delete('user/domains/{user_id}/{id}', array('as' => 'user.domains.destroy',
+                      'uses' => 'DomainsController@destroy'));
+                  
+                  //Emails
+                  Route::get('user/emails/{user_id}/{domain_id}', array('as' => 'user.emails.index',
+                      'uses' => 'EmailsController@index'));
+                  Route::get('user/emails/{user_id}/{domain_id}/create', array('as' => 'user.emails.create',
+                      'uses' => 'EmailsController@create'));
+                  Route::post('user/emails/{user_id}/{domain_id}', array('as' => 'user.emails.store',
+                      'uses' => 'EmailsController@store'));                  
+                  Route::get('user/emails/{user_id}/{domain_id}/{id}', array('as' => 'user.emails.show',
+                      'uses' => 'EmailsController@show'));                  
+                  Route::get('user/emails/{user_id}/{domain_id}/{id}/edit', array('as' => 'user.emails.edit',
+                      'uses' => 'EmailsController@edit'));
+                  Route::put('user/emails/{user_id}/{domain_id}/{id}', array('as' => 'user.emails.update',
+                      'uses' => 'EmailsController@update'));
+                  Route::delete('user/emails/{user_id}/{domain_id}/{id}', array('as' => 'user.emails.destroy',
+                      'uses' => 'EmailsController@destroy'));
+                  
+                  
                   
             });
-            
-            Route::resource('user/ftps/{domain_id}','FtpsController');
-            Route::resource('user/databases/{domain_id}','DatabaseController');
-            Route::resource('user/emails/{domain_id}','EmailsController');            
+
+            Route::resource('user/ftps/{domain_id}', 'FtpsController');
+            Route::resource('user/databases/{domain_id}', 'DatabaseController');
+            Route::resource('user/emails', 'EmailsController');
       });
-      
-      Route::group(array('prefix'=>'administrador','before'=>'is_admin'),function(){
+
+      Route::group(array('prefix' => 'administrador', 'before' => 'is_admin'), function()
+      {
             
       });
-      
-      
-      
 });

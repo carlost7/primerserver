@@ -102,5 +102,6 @@ return array(
         "cellphone" => 'Celular',
         "password" => 'Contraseña',
         "password_confirmation" => 'Confirmar Contraseña',
+        "domain" => 'Dominio',
     ),
 );

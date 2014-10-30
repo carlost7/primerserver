@@ -11,9 +11,9 @@ class DomainsController extends \BaseController
        */
       public function index($user_id)
       {
-            $user = User::with('domains')->findOrFail($user_id);
-            $domains = $user->domains;
-            return View::make('domains.index',compact('domains'));
+            $user = User::findOrFail($user_id);
+            $domains = $user->domains()->paginate(10);
+            return View::make('domains.index', compact('domains', 'user'));
       }
 
       /**
@@ -39,7 +39,7 @@ class DomainsController extends \BaseController
       {
 
             //Obtenemos el plan deseado y los datos de los servidores
-            $plan = Plan::with('servers.domains')->find(Input::get('plan_id'));                        
+            $plan = Plan::with('servers.domains')->find(Input::get('plan_id'));
             $user = User::find($user_id);
             //creamos el dominio en la base de datos
             $domain = new Domain;
@@ -47,11 +47,11 @@ class DomainsController extends \BaseController
             $domain->plan()->associate($plan);
             $domain->server()->associate(getLeastBussyServer($plan));
             $domain->user()->associate($user);
-            
+
             if ($domain->save())
             {
                   Session::flash('message', trans('frontend.domain.create.successful'));
-                  return Redirect::route("user.domains.{user_id}.index", $user->id);
+                  return Redirect::route("user.domains.index", $user->id);
             }
             else
             {
@@ -68,7 +68,14 @@ class DomainsController extends \BaseController
        */
       public function show($user_id, $id)
       {
-            
+            $user = User::findOrFail($user_id);
+            $domain = Domain::find($id);
+            if ($domain->user->id != $user->id)
+            {
+                  Session::flash('error', trans('frontend.not_user_element'));
+                  return Redirect::back();
+            }
+            return View::make('domains.show', compact('user','domain'));
       }
 
       /**

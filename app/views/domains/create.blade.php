@@ -3,6 +3,11 @@
 @section('contenido')
 <div class="container">
       <div class="row">
+            <ul class="nav nav-tabs" role="tablist">
+                  <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain_index'),$user->id)}}</li>                  
+            </ul>
+      </div>
+      <div class="row">
             <div class="col-sm-6 col-sm-push-3">
                   <h2>{{ trans('frontend.domains.create.title') }}</h2>
 
@@ -10,7 +15,7 @@
                         <p>{{trans('frontend.domains.create.instructions')}}</p>
                   </div>
 
-                  {{ Form::open(array('route' => array('user.domains.{user_id}.store',$user->id))) }}
+                  {{ Form::open(array('route' => array('user.domains.store',$user->id))) }}
 
                   @include('layouts.show_form_errors')
 

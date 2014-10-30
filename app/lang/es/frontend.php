@@ -79,6 +79,8 @@ return array(
     "link.reminder_password" => 'recuperar contraseña',
     "link.register" => 'Registrarse',
     "link.domain_create" => 'Crear Nuevo Dominio',
+    "link.domain_index" => 'Dominios',
+    
     //table_headers
     "table_domains.domain" => 'Dominio',
     "table_domains.active" => 'Esta Activo',

@@ -5,14 +5,14 @@
       <div class="row">
             <ul class="nav nav-tabs" role="tablist">
                   <li>{{HTML::LinkRoute('user.edit',trans('frontend.link.user_edit'),array(Auth::user()->id))}}</li>
-                  <li>{{HTML::LinkRoute('user.domains.{user_id}.create',trans('frontend.link.domain_create'),$user->id)}}
+                  <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain_create'),$user->id)}}
                   <li><a href="#">Pagos</a></li>
                   <li><a href="#">Mensajes</a></li>
             </ul>
       </div>
       <div class="row">
             <div class="col-xs-12">
-                  @if(count($user->domains))
+                  @if(count($domains))
                   <div class="table-responsive">
                         <table class="table">
                               <tr>
@@ -22,19 +22,18 @@
                                     <th>{{trans('frontend.table_domains.date_end')}}</th>
                                     <th>{{trans('frontend.table_domains.plan')}}</th>                        
                               </tr>
-                              @foreach($user->domains as $domain)
+                              @foreach($domains as $domain)
                               <tr>                              
-                                    <td>{{ $domain->domain }}</td>
-                                    <td>{{ $domain->active}}</td>
-                                    <td>{{ $domain->date_start}}</td> 
+                                    <td>{{ HTML::linkRoute('user.domains.show',$domain->domain,array($user->id,$domain->id)) }}</td>
+                                    <td>{{ $domain->active}}</td>                                    
+                                    <td>{{ $domain->date_start}}</td>
                                     <td>{{ $domain->date_end}}</td>
-                                    <td>{{ $domain->plan->plan_name}}</td>                        
+                                    <td>{{ $domain->plan->plan_name}}</td>
                               </tr>                    
                               @endforeach
                         </table>
 
-                        {{ ""//$user->domains->links(); }}                
-
+                        {{ $domains->links(); }}
 
                   </div>
                   @else
