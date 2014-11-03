@@ -11,10 +11,10 @@
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-push-3">
-            <h2>{{ trans('frontend.edit.user.title') }}</h2>
+            <h2>{{ trans('frontend.title.user.edit') }}</h2>
 
             <div class="instrucciones">
-                <p>{{trans('frontend.edit.user.instructions')}}</p>
+                <p>{{trans('frontend.instruction.user.edit')}}</p>
             </div>
 
             {{ Form::model($user,  array('route' => array('user.update',$user->id), 'method' => 'PUT')) }}            
@@ -52,7 +52,7 @@
                 {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder.password_confirmation'), 'class'=>'form-control')) }}
             </div>
             <div class="form-group">
-                {{Form::submit(trans('frontend.update_user.submit'),array('class'=>"btn btn-primary"))}}                        
+                {{Form::submit(trans('frontend.button.user.update.submit'),array('class'=>"btn btn-primary"))}}                        
             </div>        
             {{ Form::close() }}
         </div>

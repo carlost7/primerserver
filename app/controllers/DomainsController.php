@@ -49,7 +49,7 @@ class DomainsController extends \BaseController {
 
         if ($domain->save())
         {
-            Session::flash('message', trans('frontend.domain.create.successful'));
+            Session::flash('message', trans('frontend.messages.domain.create.successful'));
             return Redirect::route("user.domains.index", $user->id);
         }
         else

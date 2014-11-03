@@ -11,14 +11,14 @@ return array(
       |
      */
 
-    "title"        => array(
+    "title"       => array(
         "register"       => "Crear nuevo usuario",
         "index1"         => "Entrar",
         "index2"         => "Registrarse",
         "reminder"       => "Recuperar contraseña",
         "reminder_mail"  => "Recuperación de contraseña",
         "reset_password" => "Cambiar la contraseña",
-        "modal_passwrd" => "Nuevo password",
+        "modal_password"  => "Nuevo password",
         "user"           => array(
             "create" => "Agregar nuevo usuario",
             "edit"   => "Editar cuenta de usuario",
@@ -50,7 +50,7 @@ return array(
             "show"   => "Mostrar base de datos",
         ),
     ),
-    "instruction"  => array(
+    "instruction" => array(
         "register"       => "Instrucciones",
         "index1"         => "Instrucciones",
         "index2"         => "Instrucciones",
@@ -89,7 +89,7 @@ return array(
             "show"   => "Instrucciones",
         ),
     ),
-    "label"        => array(
+    "label"       => array(
         "first_name"            => "Nombre",
         "last_name"             => "Apellido",
         "email"                 => "Correo Electrónico",
@@ -102,8 +102,8 @@ return array(
         "plans"                 => "Plan",
     ),
     "placeholder" => array(
-        "logemail"           => "Correo",
-        "logpassword"        => "Contraseña",
+        "logemail"              => "Correo",
+        "logpassword"           => "Contraseña",
         "first_name"            => "Juan Jose",
         "last_name"             => "Perez Lopez",
         "email"                 => "usuario@ejemplo.com",
@@ -112,12 +112,13 @@ return array(
         "password"              => "10 caracteres",
         "password_confirmation" => "Repetir Contraseña",
         "domain"                => "ejemplo.com",
+        "forward"               => "ejemplo1@correo.com, ejemplo2@correo.com",
     ),
-    "button"       => array(
+    "button"      => array(
         "login"          => array(
             "submit" => "Entrar",
         ),
-        "reminder" => array(
+        "reminder"       => array(
             "submit" => "enviar correo",
         ),
         "register"       => array(
@@ -181,16 +182,12 @@ return array(
         "reset_password" => array(
             "submit" => "Actualizar Password",
         ),
-        "password" => array(
-            "generate" => "Generar password",
-        ),
         "modal_password" => array(
-            "generate_another" >= "Generar nuevo password",
+            "generate_new" => "Generar nuevo password",
             "accept_pasword" => "Seleccionar Password",
-            
         )
     ),
-    "messages"     => array(
+    "messages"    => array(
         "no_domains"     => "No existe ningun dominio por el momento",
         "no_ftps"        => "No existe ningun correo para el dominio",
         "no_databases"   => "No existe ninguna base de datos para el dominio",
@@ -279,14 +276,14 @@ return array(
             "error"      => "error al modificar la contraseña",
         ),
     ),
-    "filter"       => array(
+    "filter"      => array(
         "is_user"          => "El tipo de usuario no es correcto o no esta activo",
         "is_admin"         => "El tipo de usuario no corresponde a este registro",
         "not_same_user"    => "El usuario al que intenta acceder no pertenece a la cuenta",
         "not_user_domain"  => "El dominio no pertenece al usuario",
         "not_user_element" => "El objeto que quiere ver no pertence al dominio",
     ),
-    "link"         => array(
+    "link"        => array(
         "user_edit"         => "Editar Cuenta",
         "user_show"         => "Cuenta",
         "logout"            => "Salir",
@@ -326,7 +323,7 @@ return array(
             "show"   => "Mostrar Base de datos",
         ),
     ),
-    "table_head"   => array(
+    "table_head"  => array(
         "domain" => array(
             "domain"     => "Dominio",
             "active"     => "Esta Activo",

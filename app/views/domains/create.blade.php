@@ -12,7 +12,7 @@
             <h2>{{ trans('frontend.title.domain.create') }}</h2>
 
             <div class="instrucciones">
-                <p>{{trans('frontend.instructions.domain.create')}}</p>
+                <p>{{trans('frontend.instruction.domain.create')}}</p>
             </div>
 
             {{ Form::open(array('route' => array('user.domains.store',$user->id))) }}
@@ -28,7 +28,7 @@
                 {{ Form::select('plan_id',$plans,Input::old('plans'))}}
             </div>
             <div class="form-group">
-                {{Form::submit(trans('frontend.button.domain.store'),array('class'=>"btn btn-primary"))}}                        
+                {{Form::submit(trans('frontend.button.domain.store.submit'),array('class'=>"btn btn-primary"))}}                        
             </div>        
             {{ Form::close() }}
         </div>

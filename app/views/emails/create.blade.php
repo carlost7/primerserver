@@ -31,7 +31,7 @@
                 <div class="input-group">
                     {{ Form::password('password',array('placeholder' => trans('frontend.placeholder.password'), 'class'=>'form-control', 'id'=>'password')) }}
                     <span class="input-group-btn">
-                        {{ Form::button(trans('frontend.button.password.generate'),array('class'=>"btn btn-primary",'data-target'=>"#ModalPassword",'on_click'=>'get_password()','data-toggle'=>"modal")) }}                        
+                        {{ Form::button(trans('frontend.button.modal_password.generate_new'),array('class'=>"btn btn-primary",'data-target'=>"#ModalPassword",'on_click'=>'get_password()','data-toggle'=>"modal")) }}                        
                     </span>                  
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 {{ Form::text('forward',Input::old('forward'),array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control'))}}
             </div>
             <div class="form-group">
-                {{Form::submit(trans('frontend.button.emails.create'),array('class'=>"btn btn-primary"))}}                        
+                {{Form::submit(trans('frontend.button.email.store.submit'),array('class'=>"btn btn-primary"))}}                        
             </div>
             {{ Form::close() }}
         </div>
