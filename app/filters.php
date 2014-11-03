@@ -11,15 +11,13 @@
   |
  */
 
-App::before(function($request)
-{
-      //
+App::before(function($request) {
+    //
 });
 
 
-App::after(function($request, $response)
-{
-      //
+App::after(function($request, $response) {
+    //
 });
 
 /*
@@ -33,25 +31,23 @@ App::after(function($request, $response)
   |
  */
 
-Route::filter('auth', function()
-{
-      if (Auth::guest())
-      {
-            if (Request::ajax())
-            {
-                  return Response::make('Unauthorized', 401);
-            }
-            else
-            {
-                  return Redirect::guest('login');
-            }
-      }
+Route::filter('auth', function() {
+    if (Auth::guest())
+    {
+        if (Request::ajax())
+        {
+            return Response::make('Unauthorized', 401);
+        }
+        else
+        {
+            return Redirect::guest('login');
+        }
+    }
 });
 
 
-Route::filter('auth.basic', function()
-{
-      return Auth::basic();
+Route::filter('auth.basic', function() {
+    return Auth::basic();
 });
 
 /*
@@ -65,10 +61,9 @@ Route::filter('auth.basic', function()
   |
  */
 
-Route::filter('guest', function()
-{
-      if (Auth::check())
-            return Redirect::to('/');
+Route::filter('guest', function() {
+    if (Auth::check())
+        return Redirect::to('/');
 });
 
 /*
@@ -82,45 +77,68 @@ Route::filter('guest', function()
   |
  */
 
-Route::filter('csrf', function()
-{
-      if (Session::token() != Input::get('_token'))
-      {
-            throw new Illuminate\Session\TokenMismatchException;
-      }
+Route::filter('csrf', function() {
+    if (Session::token() != Input::get('_token'))
+    {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });
 
-
 /*
- *    Check if user is client 
+ *    Check if user is the same as auth
  * 
  * 
  */
 
-Route::filter('is_user', function()
-{
-      if (Auth::user()->type != 'User')
-      {
-            Session::flash('error', trans("filter.is_user"));
-            return Redirect::route('login');
-      }
-});
-
-/*
- *    Check if object belogns to user or is admin
- * 
- * 
- */
-
-Route::filter('is_user_object', function($route, $request)
-{
-      if (Auth::user()->type == 'User' && $route->getParameter('user_id') != Auth::user()->id)
-      {
+Route::filter('is_same_user', function($route, $request) {
+    if ($route->getParameter('user_id') != '')
+    {
+        if ($route->getParameter('user_id') != Auth::user()->id && Auth::user()->type == 'User')
+        {
             Session::flash('error', trans('frontend.not_user_element'));
             return Redirect::back();
-      }
+        }
+    }
 });
 
+/*
+ *    Check if domain belongs to user
+ * 
+ * 
+ */
+
+Route::filter('domain_belongs_to_user', function($route, $request) {
+    //dd($route->getParameter('user_id'));    
+    if ($route->getParameter('domain_id') != '')
+    {
+        $domain = Domain::find($route->getParameter('domain_id'));
+        if ($domain->user->id != $route->getParameter('user_id'))
+        {
+            Session::flash('error', trans('frontend.not_user_domain'));
+            return Redirect::back();
+        }
+    }
+});
+
+/*
+ *    Check if object belongs to domain
+ * 
+ * 
+ */
+
+Route::filter('object_belongs_to_domain', function($route, $request) {
+
+    //dd($route->getParameter('user_id'));
+    if ($route->getParameter('object_id') != '')
+    {
+        $user = User::with('domains')->find($route->getParameter('user_id'));
+        if (!in_array($value, $user->domains->lists('id')))
+        {
+            Session::flash('error', trans('frontend.not_user_element'));
+            return Redirect::back();
+        }
+    }
+});
 
 
 /*
@@ -130,13 +148,12 @@ Route::filter('is_user_object', function($route, $request)
  * 
  */
 
-Route::filter('is_admin', function()
-{
-      if (Auth::user()->type != 'Admin')
-      {
-            Session::flash('error', trans("filter.is_admin"));
-            return Redirect::route('login');
-      }
+Route::filter('is_admin', function() {
+    if (Auth::user()->type != 'Admin')
+    {
+        Session::flash('error', trans("filter.is_admin"));
+        return Redirect::route('login');
+    }
 });
 
 

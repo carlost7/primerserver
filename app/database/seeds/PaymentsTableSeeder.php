@@ -5,16 +5,14 @@ use Faker\Factory as Faker;
 
 class PaymentsTableSeeder extends Seeder {
 
-	public function run()
-	{
-		$faker = Faker::create();
+    public function run()
+    {
+        $faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			Payment::create([
-
-			]);
-		}
-	}
+        foreach (range(1, 10) as $index) {
+            Payment::create([
+            ]);
+        }
+    }
 
 }

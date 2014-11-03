@@ -18,7 +18,7 @@
             </div>
 
             {{ Form::model($user,  array('route' => array('user.update',$user->id), 'method' => 'PUT')) }}            
-            
+
             @include('layouts.show_form_errors')
 
             <div class="row">

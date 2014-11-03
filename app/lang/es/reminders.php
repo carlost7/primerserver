@@ -13,7 +13,7 @@ return array(
      */
 
     "password" => "La contraseña tiene que tener mínimo 6 caracteres y debe coincidir con la confirmación.",
-    "user" => "No se puede encontrar al usuario con esa cuenta de correo.",
-    "token" => "El token para resetear el password es invalido.",
-    "sent" => "Se envio un mensaje a su correo",
+    "user"     => "No se puede encontrar al usuario con esa cuenta de correo.",
+    "token"    => "El token para resetear el password es invalido.",
+    "sent"     => "Se envio un mensaje a su correo",
 );

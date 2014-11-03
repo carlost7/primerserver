@@ -22,7 +22,9 @@
         </style>
         {{HTML::style("css/bootstrap-theme.min.css")}}
         {{HTML::style("css/main.css")}}
-
+        <script>
+            var base_url = '{{ URL::to("/") }}';
+        </script>
         {{HTML::script("js/vendor/modernizr-2.6.2-respond-1.1.0.min.js")}}
     </head>
     <body>
@@ -53,20 +55,20 @@
                             <li><a href="#">Cuenta</a></li>
                             <li><a href="#">Dominios</a></li>
                             <li>{{HTML::LinkRoute('session.destroy',trans('frontend.link.logout'))}}</li>
-                                                       
+
                         </ul>
                     </li>
                 </ul>
                 @else
                 <div class="navbar-collapse collapse">
                     {{ Form::open(array('route' => 'session.store','class'=>'navbar-form navbar-right','role'=>'form')) }}                    
-                        <div class="form-group">
-                            <input type="text" name="email" placeholder="{{trans('frontend.placeholder_login_email')}}" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" placeholder="{{trans('frontend.placeholder_login_password') }}" class="form-control">
-                        </div>
-                        {{ Form::submit(trans('frontend.login.submit'),array("class"=>"btn btn-success"))}}                        
+                    <div class="form-group">
+                        <input type="text" name="email" placeholder="{{trans('frontend.placeholder_login_email')}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="{{trans('frontend.placeholder_login_password') }}" class="form-control">
+                    </div>
+                    {{ Form::submit(trans('frontend.login.submit'),array("class"=>"btn btn-success"))}}                        
                     {{ Form::close()}}
                 </div><!--/.navbar-collapse -->
                 @endif
@@ -95,27 +97,27 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.js"><\/script>')</script>
 
         {{HTML::script("js/vendor/bootstrap.min.js")}}
-
+        {{HTML::script('js/vendor/bootbox.min.js')}}
         {{HTML::script("js/main.js")}}
 
         @section('scripts')@show
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-                      (function (b, o, i, l, e, r) {
-                          b.GoogleAnalyticsObject = l;
-                          b[l] || (b[l] =
-                                  function () {
-                                      (b[l].q = b[l].q || []).push(arguments)
-                                  });
-                          b[l].l = +new Date;
-                          e = o.createElement(i);
-                          r = o.getElementsByTagName(i)[0];
-                          e.src = '//www.google-analytics.com/analytics.js';
-                          r.parentNode.insertBefore(e, r)
-                      }(window, document, 'script', 'ga'));
-              ga('create', 'UA-XXXXX-X');
-              ga('send', 'pageview');
+                    (function (b, o, i, l, e, r) {
+                        b.GoogleAnalyticsObject = l;
+                        b[l] || (b[l] =
+                                function () {
+                                    (b[l].q = b[l].q || []).push(arguments)
+                                });
+                        b[l].l = +new Date;
+                        e = o.createElement(i);
+                        r = o.getElementsByTagName(i)[0];
+                        e.src = '//www.google-analytics.com/analytics.js';
+                        r.parentNode.insertBefore(e, r)
+                    }(window, document, 'script', 'ga'));
+            ga('create', 'UA-XXXXX-X');
+            ga('send', 'pageview');
         </script>
     </body>
 </html>

@@ -3,18 +3,17 @@
 // Composer: "fzaninotto/faker": "v1.3.0"
 use Faker\Factory as Faker;
 
-class ServersTableSeeder extends Seeder
-{
+class ServersTableSeeder extends Seeder {
 
-      public function run()
-      {
+    public function run()
+    {
 
-            Server::create([
-            "domain" => "psbasic.com",
-            "nameserver" => "psbasic", 
-            "ip" => "rs3.websithostserver.net",
-            "plan_id" => "1",
-            ]);
-      }
+        Server::create([
+            "domain"     => "psbasic.com",
+            "nameserver" => "psbasic",
+            "ip"         => "rs3.websithostserver.net",
+            "plan_id"    => "1",
+        ]);
+    }
 
 }
