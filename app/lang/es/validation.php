@@ -103,5 +103,6 @@ return array(
         "password"              => 'Contraseña',
         "password_confirmation" => 'Confirmar Contraseña',
         "domain"                => 'Dominio',
+        "user_email"                => 'Nombre',
     ),
 );

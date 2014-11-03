@@ -4,37 +4,35 @@
 <div class="container">
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
-            <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain_create'),$user->id)}}</li>
+            <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),array($user->id))}}</li>
+            <li>{{HTML::LinkRoute('user.domains.show',$domain->domain,array($user->id,$domain->id))}}</li>
+            <li>{{HTML::LinkRoute('user.emails.create',trans('frontend.link.email.create'),array($user->id,$domain->id))}}</li>
         </ul>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            @if(count($domains))
+            @if(count($emails))
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>{{trans('frontend.table_domains.domain')}}</th>
-                        <th>{{trans('frontend.table_domains.active')}}</th>                    
-                        <th>{{trans('frontend.table_domains.date_start')}}</th>
-                        <th>{{trans('frontend.table_domains.date_end')}}</th>
-                        <th>{{trans('frontend.table_domains.plan')}}</th>                        
+                        <th>{{trans('frontend.table_head.email.email')}}</th>                    
+                        <th>{{trans('frontend.table_head.email.user_email')}}</th>
+                        <th>{{trans('frontend.table_head.email.forward')}}</th>                        
                     </tr>
-                    @foreach($domains as $domain)
+                    @foreach($emails as $email)
                     <tr>                              
-                        <td>{{ HTML::linkRoute('user.domains.show',$domain->domain,array($user->id,$domain->id)) }}</td>
-                        <td>{{ $domain->active}}</td>
-                        <td>{{ $domain->date_start}}</td> 
-                        <td>{{ $domain->date_end}}</td>
-                        <td>{{ $domain->plan->plan_name}}</td>                        
+                        <td>{{ HTML::linkRoute('user.emails.show',$email->email,array($user->id,$domain->id)) }}</td>
+                        <td>{{ $email->user_email}}</td>
+                        <td>{{ $email->forward}}</td>                         
                     </tr>                    
                     @endforeach
                 </table>
 
-                {{ $domains->links(); }}
+                {{ $emails->links(); }}
 
             </div>
             @else
-            <h1>{{trans('frontend.no_domains')}}</h1>
+            <h1>{{trans('frontend.messages.no_emails')}}</h1>
             @endif
         </div>
     </div>

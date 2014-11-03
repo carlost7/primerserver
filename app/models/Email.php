@@ -7,12 +7,14 @@ class Email extends Ardent {
     //Table
     protected $table                      = 'emails';
     //Fillable
-    protected $fillable                   = ['user_email', 'email', 'forward'];
+    protected $fillable                   = ['user_email', 'email', 'forward','password','password_confirmation'];
     //Rules of validations
     public static $rules                  = array(
-        'user_email' => 'required',
-        'email'      => 'required',
-        'forward'    => 'required',
+        'user_email'            => 'required',
+        'email'                 => 'required',
+        'forward'               => '',
+        'password'              => 'required|alpha_dash|min:8|confirmed',
+        'password_confirmation' => 'required',
     );
     //Relationships
     public static $relationsData          = array(
@@ -21,5 +23,10 @@ class Email extends Ardent {
     //Hydrate
     public $autoHydrateEntityFromInput    = true;
     public $forceEntityHydrationFromInput = true;
+    public $autoPurgeRedundantAttributes  = true;
+    public function beforeSave(){
+        $this->email = $this->email."@".$this->domain->domain;
+        unset($this->password);        
+    }
 
 }

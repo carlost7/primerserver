@@ -27,6 +27,7 @@ class Domain extends Ardent {
     protected $table                      = 'domains';
     public $autoHydrateEntityFromInput    = true;
     public $forceEntityHydrationFromInput = true;
+    
     // Don't forget to fill this array
     protected $fillable                   = ["domain", "active", "date_start", "date_end"];
 

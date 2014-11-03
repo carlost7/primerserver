@@ -1,4 +1,4 @@
-
+//Functions to get new password
 function get_password() {
     var pass = $.post(
             base_url + '/obtener_password',
@@ -9,6 +9,7 @@ function get_password() {
     });
 }
 
+//Functions to copy password in textboxes
 function usar_password() {
     var pass = $('#Usarpass').text();
     $("#Password").val(pass);

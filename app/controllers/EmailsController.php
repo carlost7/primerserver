@@ -9,9 +9,11 @@ class EmailsController extends \BaseController {
      */
     public function index($user_id, $domain_id)
     {
-        $emails = Email::all();
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $emails = Email::where('domain_id', $domain_id)->paginate(10);
 
-        return View::make('emails.index', compact('emails'));
+        return View::make('emails.index', compact('emails', 'user', 'domain'));
     }
 
     /**
@@ -21,9 +23,9 @@ class EmailsController extends \BaseController {
      */
     public function create($user_id, $domain_id)
     {
-        $user = User::findOrFail($user_id);
-        $domain = Domain::findOrFail($domain_id);        
-        return View::make('emails.create',compact('user','domain'));
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        return View::make('emails.create', compact('user', 'domain'));
     }
 
     /**
@@ -33,10 +35,22 @@ class EmailsController extends \BaseController {
      */
     public function store($user_id, $domain_id)
     {
-        $user = User::findOrFail($user_id);
+        $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
 
-        return Redirect::route('emails.index',$user->id,$domain->id);
+        $email = new Email;
+        $email->domain()->associate($domain);
+
+        if ($email->save())
+        {
+            Session::flash('message', trans('frontend.messages.email.store.successful'));
+            Auth::login($user);
+            return Redirect::route('user.emails.index', array($user->id, $domain->id));
+        }
+        else
+        {
+            return Redirect::back()->withErrors($email->errors())->withInput();
+        }
     }
 
     /**
@@ -47,10 +61,10 @@ class EmailsController extends \BaseController {
      */
     public function show($user_id, $domain_id, $id)
     {
-        $user = User::findOrFail($user_id);
+        $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
-        $email = Email::find('id');        
-        return View::make('emails.show', compact('user','domain','email'));
+        $email  = Email::find('id');
+        return View::make('emails.show', compact('user', 'domain', 'email'));
     }
 
     /**
@@ -61,9 +75,9 @@ class EmailsController extends \BaseController {
      */
     public function edit($user_id, $domain_id, $id)
     {
-        $user = User::findOrFail($user_id);
+        $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
-        $email = Email::find($id);
+        $email  = Email::find($id);
 
         return View::make('emails.edit', compact('email'));
     }
@@ -76,12 +90,12 @@ class EmailsController extends \BaseController {
      */
     public function update($user_id, $domain_id, $id)
     {
-        $email = Email::findOrFail($id);
-        $user = User::findOrFail($user_id);
+        $email  = Email::findOrFail($id);
+        $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
         $email->update($data);
 
-        return Redirect::route('emails.index',compact('user','domain'));
+        return Redirect::route('emails.index', compact('user', 'domain'));
     }
 
     /**
@@ -92,11 +106,11 @@ class EmailsController extends \BaseController {
      */
     public function destroy($user_id, $domain_id, $id)
     {
-        $user = User::findOrFail($user_id);
+        $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
         Email::destroy($id);
 
-        return Redirect::route('emails.index',compact('user','domain'));
+        return Redirect::route('emails.index', compact('user', 'domain'));
     }
 
 }

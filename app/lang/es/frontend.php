@@ -18,7 +18,7 @@ return array(
         "reminder"       => "Recuperar contraseña",
         "reminder_mail"  => "Recuperación de contraseña",
         "reset_password" => "Cambiar la contraseña",
-        "modal_password"  => "Nuevo password",
+        "modal_password" => "Nuevo password",
         "user"           => array(
             "create" => "Agregar nuevo usuario",
             "edit"   => "Editar cuenta de usuario",
@@ -100,6 +100,8 @@ return array(
         "keep_alive"            => "Seguir conectado",
         "domain"                => "Dominio",
         "plans"                 => "Plan",
+        "forward"               => "Redirección",
+        "user_email"            => "Nombre"
     ),
     "placeholder" => array(
         "logemail"              => "Correo",
@@ -113,6 +115,7 @@ return array(
         "password_confirmation" => "Repetir Contraseña",
         "domain"                => "ejemplo.com",
         "forward"               => "ejemplo1@correo.com, ejemplo2@correo.com",
+        "user_email"            => "Juan Pérez"
     ),
     "button"      => array(
         "login"          => array(
@@ -183,7 +186,7 @@ return array(
             "submit" => "Actualizar Password",
         ),
         "modal_password" => array(
-            "generate_new" => "Generar nuevo password",
+            "generate_new"   => "Generar nuevo password",
             "accept_pasword" => "Seleccionar Password",
         )
     ),
@@ -331,5 +334,10 @@ return array(
             "date_end"   => "Fecha de termino",
             "plan"       => "Plan",
         ),
+        "email" => array(
+            "user_email" => "Nombre",
+            "email" => "Correo Electronico",
+            "forward" => "Redireccion"
+        )
     ),
 );
