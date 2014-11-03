@@ -3,10 +3,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="ModalPasswordTitle">{{trans('frontend.modal_password.title')}}</h3>
+                <h3 class="modal-title" id="ModalPasswordTitle">{{trans('frontend.title.modal_password')}}</h3>
             </div>
             <div class="modal-body">
-                <p>{{trans('frontend.modal_password.instrucciones')}}</p>
+                <p>{{trans('frontend.instructions.modal_password')}}</p>
                 <h3 id='Usarpass'></h3>            
             </div>
             <div class="modal-footer">

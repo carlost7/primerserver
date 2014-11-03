@@ -14,11 +14,11 @@
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>{{trans('frontend.table_domains.domain')}}</th>
-                        <th>{{trans('frontend.table_domains.active')}}</th>                    
-                        <th>{{trans('frontend.table_domains.date_start')}}</th>
-                        <th>{{trans('frontend.table_domains.date_end')}}</th>
-                        <th>{{trans('frontend.table_domains.plan')}}</th>                        
+                        <th>{{trans('frontend.table_head.domain.domain')}}</th>
+                        <th>{{trans('frontend.table_head.domain.active')}}</th>                    
+                        <th>{{trans('frontend.table_head.domain.date_start')}}</th>
+                        <th>{{trans('frontend.table_head.domain.date_end')}}</th>
+                        <th>{{trans('frontend.table_head.domain.plan')}}</th>                        
                     </tr>
                     @foreach($domains as $domain)
                     <tr>                              

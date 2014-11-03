@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
-            <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain_index'),$user->id)}}</li>
+            <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>
         </ul>
     </div>
     <div class="row">
@@ -14,17 +14,17 @@
     </div>
     <div class="row">            
         <div class="col-sm-4">
-            <h2>{{ HTML::linkRoute('user.emails.index',trans('frontend.links.mails.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2>
-            <h2>{{ HTML::linkRoute('user.emails.create',trans('frontend.links.mails.create'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2>
+            <h2>{{ HTML::linkRoute('user.emails.index',trans('frontend.link.email.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2>
+            <h2>{{ HTML::linkRoute('user.emails.create',trans('frontend.link.email.create'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2>
 
         </div>
         <div class="col-sm-4">
-            <h2>{{ trans('frontend.links.databases.index') }}</h2>             
-            <h2>{{ trans('frontend.links.databases.create') }}</h2>                  
+            <h2>{{ trans('frontend.link.database.index') }}</h2>             
+            <h2>{{ trans('frontend.link.database.create') }}</h2>                  
         </div>
         <div class="col-sm-4">
-            <h2>{{ trans('frontend.links.ftps.index') }}</h2>                  
-            <h2>{{ trans('frontend.links.ftps.create') }}</h2>                  
+            <h2>{{ trans('frontend.link.ftp.index') }}</h2>                  
+            <h2>{{ trans('frontend.link.ftp.create') }}</h2>                  
         </div>
     </div>
 </div>

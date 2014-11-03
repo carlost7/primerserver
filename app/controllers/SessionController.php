@@ -73,7 +73,7 @@ class SessionController extends \BaseController {
     public function destroy()
     {
         Auth::logout();
-        Session::flash('message', trans('frontend.session_logout'));
+        Session::flash('message', trans('frontend.messages.logout'));
         return Redirect::to('/');
     }
 

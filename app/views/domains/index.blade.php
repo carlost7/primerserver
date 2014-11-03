@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
-            <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain_create'),$user->id)}}</li>
+            <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain.create'),$user->id)}}</li>
         </ul>
     </div>
     <div class="row">
@@ -13,11 +13,11 @@
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>{{trans('frontend.table_domains.domain')}}</th>
-                        <th>{{trans('frontend.table_domains.active')}}</th>                    
-                        <th>{{trans('frontend.table_domains.date_start')}}</th>
-                        <th>{{trans('frontend.table_domains.date_end')}}</th>
-                        <th>{{trans('frontend.table_domains.plan')}}</th>                        
+                        <th>{{trans('frontend.table_head.domain.domain')}}</th>
+                        <th>{{trans('frontend.table_head.domain.active')}}</th>                    
+                        <th>{{trans('frontend.table_head.domain.date_start')}}</th>
+                        <th>{{trans('frontend.table_head.domain.date_end')}}</th>
+                        <th>{{trans('frontend.table_head.domain.plan')}}</th>                        
                     </tr>
                     @foreach($domains as $domain)
                     <tr>                              
@@ -34,7 +34,7 @@
 
             </div>
             @else
-            <h1>{{trans('frontend.no_domains')}}</h1>
+            <h1>{{trans('frontend.messages.no_domains')}}</h1>
             @endif
         </div>
     </div>

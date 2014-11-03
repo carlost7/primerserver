@@ -63,12 +63,12 @@
                 <div class="navbar-collapse collapse">
                     {{ Form::open(array('route' => 'session.store','class'=>'navbar-form navbar-right','role'=>'form')) }}                    
                     <div class="form-group">
-                        <input type="text" name="email" placeholder="{{trans('frontend.placeholder_login_email')}}" class="form-control">
+                        <input type="text" name="email" placeholder="{{trans('frontend.placeholder.logemail')}}" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" placeholder="{{trans('frontend.placeholder_login_password') }}" class="form-control">
+                        <input type="password" name="password" placeholder="{{trans('frontend.placeholder.logpassword') }}" class="form-control">
                     </div>
-                    {{ Form::submit(trans('frontend.login.submit'),array("class"=>"btn btn-success"))}}                        
+                    {{ Form::submit(trans('frontend.button.login.submit'),array("class"=>"btn btn-success"))}}                        
                     {{ Form::close()}}
                 </div><!--/.navbar-collapse -->
                 @endif

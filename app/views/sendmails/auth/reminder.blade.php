@@ -4,10 +4,10 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h2>{{trans('frontend.reminder_mail.title')}}</h2>
+        <h2>{{trans('frontend.title.reminder_mail')}}</h2>
 
         <div>
-            {{trans('frontend.reminder_mail.instructions')}}
+            {{trans('frontend.instructions.reminder_mail')}}
             {{ HTML::linkAction('RemindersController@getReset','Cambiar Password',array($token))}}                
         </div>
     </body>

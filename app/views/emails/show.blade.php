@@ -20,11 +20,11 @@
             @include('layouts.show_form_errors')
 
             <div class="form-group">                        
-                {{ Form::label('domain', trans('frontend.label_domain')) }}
-                {{ Form::text('domain', Input::old('domain'), array('placeholder' => trans('frontend.placeholder_domain'), 'class'=>'form-control')) }}                                          
+                {{ Form::label('domain', trans('frontend.label.domain')) }}
+                {{ Form::text('domain', Input::old('domain'), array('placeholder' => trans('frontend.placeholder.domain'), 'class'=>'form-control')) }}                                          
             </div>
             <div class="form-group">
-                {{ Form::label('plan_id', trans('frontend.label_plans')) }}
+                {{ Form::label('plan_id', trans('frontend.label.plans')) }}
                 {{ Form::select('plan_id',$plans,Input::old('plans'))}}
             </div>
             <div class="form-group">

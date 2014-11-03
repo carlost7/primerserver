@@ -18,6 +18,7 @@ return array(
         "reminder"       => "Recuperar contraseña",
         "reminder_mail"  => "Recuperación de contraseña",
         "reset_password" => "Cambiar la contraseña",
+        "modal_passwrd" => "Nuevo password",
         "user"           => array(
             "create" => "Agregar nuevo usuario",
             "edit"   => "Editar cuenta de usuario",
@@ -56,6 +57,7 @@ return array(
         "reminder"       => "Instrucciones",
         "reminder_mail"  => "Para modificar la contraseña de acceso a Sphellar rellena el formulario en la pagina siguiente: ",
         "reset_password" => "Instrucciones",
+        "modal_password" => "Instrucciones",
         "user"           => array(
             "create" => "Instrucciones",
             "edit"   => "Instrucciones",
@@ -99,9 +101,9 @@ return array(
         "domain"                => "Dominio",
         "plans"                 => "Plan",
     ),
-    "planceholder" => array(
-        "login_email"           => "Correo",
-        "login_password"        => "Contraseña",
+    "placeholder" => array(
+        "logemail"           => "Correo",
+        "logpassword"        => "Contraseña",
         "first_name"            => "Juan Jose",
         "last_name"             => "Perez Lopez",
         "email"                 => "usuario@ejemplo.com",
@@ -112,12 +114,81 @@ return array(
         "domain"                => "ejemplo.com",
     ),
     "button"       => array(
-        "register"       => "Registrarse",
-        "login"          => "Entrar",
-        "reminder"       => "Enviar Correo",
-        "reset_password" => "Cambiar Contraseña",
-        "update_user"    => "Actualizar",
-        "domains.create" => "Crear Dominio",
+        "login"          => array(
+            "submit" => "Entrar",
+        ),
+        "reminder" => array(
+            "submit" => "enviar correo",
+        ),
+        "register"       => array(
+            "submit" => "Registrarse",
+        ),
+        "user"           => array(
+            "store"   => array(
+                "submit" => "Agregar",
+            ),
+            "update"  => array(
+                "submit" => "Actualizar",
+            ),
+            "destroy" => array(
+                "submit" => "Eliminar",
+            ),
+        ),
+        "domain"         => array(
+            "store"   => array(
+                "submit" => "Agregar",
+            ),
+            "update"  => array(
+                "submit" => "Actualizar",
+            ),
+            "destroy" => array(
+                "submit" => "Eliminar",
+            ),
+        ),
+        "email"          => array(
+            "store"   => array(
+                "submit" => "Agregar",
+            ),
+            "update"  => array(
+                "submit" => "Actualizar",
+            ),
+            "destroy" => array(
+                "submit" => "Eliminar",
+            ),
+        ),
+        "ftp"            => array(
+            "store"   => array(
+                "submit" => "Agregar",
+            ),
+            "update"  => array(
+                "submit" => "Actualizar",
+            ),
+            "destroy" => array(
+                "submit" => "Eliminar",
+            ),
+        ),
+        "database"       => array(
+            "store"   => array(
+                "submit" => "Agregar",
+            ),
+            "update"  => array(
+                "submit" => "Actualizar",
+            ),
+            "destroy" => array(
+                "submit" => "Eliminar",
+            ),
+        ),
+        "reset_password" => array(
+            "submit" => "Actualizar Password",
+        ),
+        "password" => array(
+            "generate" => "Generar password",
+        ),
+        "modal_password" => array(
+            "generate_another" >= "Generar nuevo password",
+            "accept_pasword" => "Seleccionar Password",
+            
+        )
     ),
     "messages"     => array(
         "no_domains"     => "No existe ningun dominio por el momento",
@@ -215,7 +286,7 @@ return array(
         "not_user_domain"  => "El dominio no pertenece al usuario",
         "not_user_element" => "El objeto que quiere ver no pertence al dominio",
     ),
-    "links"        => array(
+    "link"         => array(
         "user_edit"         => "Editar Cuenta",
         "user_show"         => "Cuenta",
         "logout"            => "Salir",

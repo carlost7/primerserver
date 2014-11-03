@@ -20,7 +20,7 @@ class RemindersController extends Controller {
     public function postRemind()
     {
         switch ($response = Password::remind(Input::only('email'), function($message) {
-            $message->subject(trans('frontend.reminder_mail.title'));
+            $message->subject(trans('frontend.title.remainder_mail'));
         }
         )) {
             case Password::INVALID_USER:
@@ -75,7 +75,7 @@ class RemindersController extends Controller {
                 return Redirect::back()->with('error', Lang::get($response));
 
             case Password::PASSWORD_RESET:
-                Session::flash('message', trans('frontend.reset_password.successful'));
+                Session::flash('message', trans('frontend.messages.reset_password.successful'));
                 return Redirect::to('/');
         }
     }
