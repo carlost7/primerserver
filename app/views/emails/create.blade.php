@@ -20,13 +20,12 @@
             @include('layouts.show_form_errors')
 
             <div class="form-group">                        
-                {{ Form::label('email', trans('frontend.label_domain')) }}
-                {{ Form::text('email', Input::old('email'), array('placeholder' => trans('frontend.placeholder_email'), 'class'=>'form-control')) }}
+                {{ Form::label('email', trans('frontend.label_correo')) }}
+                <div class="input-group">
+                    {{ Form::text('email', Input::old('email'), array('placeholder' => trans('frontend.placeholder_email'), 'class'=>'form-control')) }}
+                    <span class="input-group-addon">{{ '@'.$domain->domain }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                {{ Form::label('forward', trans('frontend.label_forward')) }}
-                {{ Form::text('forward',Input::old('forward'),array('placeholder' => trans('frontend.placeholder_forward'), 'class'=>'form-control'))}}
-            </div>            
             <div class="form-group">
                 {{ Form::label('password', trans('frontend.label_password')) }}
                 <div class="input-group">
@@ -39,6 +38,10 @@
             <div class="form-group">
                 {{ Form::label('password_confirmation', trans('frontend.label_password_confirmation')) }}
                 {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder_password_confirmation'), 'class'=>'form-control', 'id' => 'confirm_password')) }}
+            </div>            
+            <div class="form-group">
+                {{ Form::label('forward', trans('frontend.label_forward')) }}
+                {{ Form::text('forward',Input::old('forward'),array('placeholder' => trans('frontend.placeholder_forward'), 'class'=>'form-control'))}}
             </div>
             <div class="form-group">
                 {{Form::submit(trans('frontend.emails.create.submit'),array('class'=>"btn btn-primary"))}}                        

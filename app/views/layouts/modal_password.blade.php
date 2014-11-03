@@ -10,8 +10,8 @@
                 <h3 id='Usarpass'></h3>            
             </div>
             <div class="modal-footer">
-                {{ Form::button(trans('frontend.modal_password.generate_another'),'on_click'=>'get_password()','class'=>'btn btn-primary')}}
-                {{ Form::button(trans('frontend.modal_password.accept_password'),'data_dismiss'=>'modal',"id"=>'SelectedPassword','class'=>'btn btn-primary')}}
+                {{ Form::button(trans('frontend.modal_password.generate_another'),array('on_click'=>'get_password()','class'=>'btn btn-primary'))}}
+                {{ Form::button(trans('frontend.modal_password.accept_password'),array('data_dismiss'=>'modal',"id"=>'SelectedPassword','class'=>'btn btn-primary'))}}
             </div>
         </div>
     </div>

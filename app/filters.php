@@ -95,7 +95,7 @@ Route::filter('is_same_user', function($route, $request) {
     {
         if ($route->getParameter('user_id') != Auth::user()->id && Auth::user()->type == 'User')
         {
-            Session::flash('error', trans('frontend.not_user_element'));
+            Session::flash('error', trans('frontend.filter.not_same_user'));
             return Redirect::back();
         }
     }
@@ -114,7 +114,7 @@ Route::filter('domain_belongs_to_user', function($route, $request) {
         $domain = Domain::find($route->getParameter('domain_id'));
         if ($domain->user->id != $route->getParameter('user_id'))
         {
-            Session::flash('error', trans('frontend.not_user_domain'));
+            Session::flash('error', trans('frontend.filter.not_user_domain'));
             return Redirect::back();
         }
     }
@@ -134,7 +134,7 @@ Route::filter('object_belongs_to_domain', function($route, $request) {
         $user = User::with('domains')->find($route->getParameter('user_id'));
         if (!in_array($value, $user->domains->lists('id')))
         {
-            Session::flash('error', trans('frontend.not_user_element'));
+            Session::flash('error', trans('frontend.filter.not_user_element'));
             return Redirect::back();
         }
     }
