@@ -27,15 +27,15 @@ return array(
         ),
         "domain"         => array(
             "create" => "Agregar nuevo dominio",
-            "edit"   => "Editar correo :correo",
-            "index"  => "Lista de correos",
-            "show"   => "Mostrar correo :correo",
+            "edit"   => "Editar dominio :domain",
+            "index"  => "Lista de dominios",
+            "show"   => "Mostrar dominio :domain",
         ),
         "email"          => array(
             "create" => "Agregar nuevo correo",
-            "edit"   => "Editar correo :correo",
+            "edit"   => "Editar correo :email",
             "index"  => "Lista de correos",
-            "show"   => "Mostrar correo :correo",
+            "show"   => "Mostrar correo :email",
         ),
         "ftp"            => array(
             "create" => "Agregar nuevo FTP",
@@ -244,7 +244,7 @@ return array(
             "destroy" => array(
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
-            ),
+            ),            
         ),
         "ftp"            => array(
             "store"   => array(
@@ -337,7 +337,9 @@ return array(
         "email" => array(
             "user_email" => "Nombre",
             "email" => "Correo Electronico",
-            "forward" => "Redireccion"
+            "forward" => "Redireccion",
+            "edit" => "Editar Correo",
+            "delete" => "Eliminar Correo",
         )
     ),
 );

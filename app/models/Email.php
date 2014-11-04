@@ -25,7 +25,9 @@ class Email extends Ardent {
     public $forceEntityHydrationFromInput = true;
     public $autoPurgeRedundantAttributes  = true;
     public function beforeSave(){
-        $this->email = $this->email."@".$this->domain->domain;
+        if(!strpos($this->email,"@")){
+            $this->email = $this->email."@".$this->domain->domain;
+        }        
         unset($this->password);        
     }
 

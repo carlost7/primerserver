@@ -63,7 +63,7 @@ class EmailsController extends \BaseController {
     {
         $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
-        $email  = Email::find('id');
+        $email  = Email::find($id);
         return View::make('emails.show', compact('user', 'domain', 'email'));
     }
 
@@ -79,7 +79,7 @@ class EmailsController extends \BaseController {
         $domain = Domain::findOrFail($domain_id);
         $email  = Email::find($id);
 
-        return View::make('emails.edit', compact('email'));
+        return View::make('emails.edit', compact('email', "user", "domain"));
     }
 
     /**
@@ -93,9 +93,19 @@ class EmailsController extends \BaseController {
         $email  = Email::findOrFail($id);
         $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
-        $email->update($data);
 
-        return Redirect::route('emails.index', compact('user', 'domain'));
+        $email::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
+        $email::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
+
+        if ($email->update())
+        {
+            Session::flash('message', trans('frontend.messages.email.update.successful'));
+            return Redirect::route('user.emails.show', array($user->id, $domain->id, $email->id));
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($email->errors());
+        }
     }
 
     /**
@@ -108,9 +118,15 @@ class EmailsController extends \BaseController {
     {
         $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
-        Email::destroy($id);
-
-        return Redirect::route('emails.index', compact('user', 'domain'));
+        if (Email::destroy($id))
+        {
+            Session::flash('message', trans('frontend.messages.email.destroy.successful'));
+        }
+        else
+        {
+            Session::flash('error', trans('frontend.messages.email.destroy.error'));
+        }
+        return Redirect::route('user.emails.index', array($user->id, $domain->id));
     }
 
 }

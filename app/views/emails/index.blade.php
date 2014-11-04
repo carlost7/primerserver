@@ -18,12 +18,25 @@
                         <th>{{trans('frontend.table_head.email.email')}}</th>                    
                         <th>{{trans('frontend.table_head.email.user_email')}}</th>
                         <th>{{trans('frontend.table_head.email.forward')}}</th>                        
+                        <th>{{trans('frontend.table_head.email.edit')}}</th>                        
+                        <th>{{trans('frontend.table_head.email.delete')}}</th>                        
                     </tr>
                     @foreach($emails as $email)
                     <tr>                              
-                        <td>{{ HTML::linkRoute('user.emails.show',$email->email,array($user->id,$domain->id)) }}</td>
+                        <td>{{ HTML::linkRoute('user.emails.show',$email->email,array($user->id,$domain->id,$email->id)) }}</td>
                         <td>{{ $email->user_email}}</td>
-                        <td>{{ $email->forward}}</td>                         
+                        <td>
+                            <?php $forwards = explode(",",$email->forward) ?>
+                            @foreach($forwards as $forward)
+                            {{ $forward}}<br/>
+                            @endforeach                            
+                        </td>                         
+                        <td>{{ HTML::linkRoute('user.emails.edit',trans('frontend.link.email.edit'),array($user->id,$domain->id,$email->id),array('class'=>'btn btn-primary')) }}</td>
+                        <td>
+                            {{ Form::open(array('route' => array('user.emails.destroy',$user->id,$domain->id,$email->id),'method'=>'DELETE','id'=>$email->id,"class"=>'delete_email')) }}
+                            {{ Form::submit(trans('frontend.button.email.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$email->id,")")) }}
+                            {{ Form::close() }}
+                        </td>                         
                     </tr>                    
                     @endforeach
                 </table>

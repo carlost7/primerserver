@@ -53,7 +53,7 @@ class UserController extends \BaseController {
         $user::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
         if ($user->updateUniques())
         {
-            Session::flash('message', trans('frontend.update_user.successful'));
+            Session::flash('message', trans('frontend.messages.user.update.successful'));
             return Redirect::route('user.show', $user->id);
         }
         else
