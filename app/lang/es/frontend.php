@@ -101,7 +101,10 @@ return array(
         "domain"                => "Dominio",
         "plans"                 => "Plan",
         "forward"               => "Redirección",
-        "user_email"            => "Nombre"
+        "user_email"            => "Nombre",
+        "username"              => "Nombre de Usuario",
+        "hostname"              => "Nombre de Host",
+        "homedir"               => "Directorio Raiz",
     ),
     "placeholder" => array(
         "logemail"              => "Correo",
@@ -115,7 +118,10 @@ return array(
         "password_confirmation" => "Repetir Contraseña",
         "domain"                => "ejemplo.com",
         "forward"               => "ejemplo1@correo.com, ejemplo2@correo.com",
-        "user_email"            => "Juan Pérez"
+        "user_email"            => "Juan Pérez",
+        "username"              => "user@ps.com",
+        "hostname"              => "ps.com",
+        "homedir"               => "dominio.com",
     ),
     "button"      => array(
         "login"          => array(
@@ -192,7 +198,7 @@ return array(
     ),
     "messages"    => array(
         "no_domains"     => "No existe ningun dominio por el momento",
-        "no_ftps"        => "No existe ningun correo para el dominio",
+        "no_ftps"        => "No existe ningun FTP para el dominio",
         "no_databases"   => "No existe ninguna base de datos para el dominio",
         "no_emails"      => "No existe ningun correo para el dominio",
         "logout"         => "Vuelve pronto :)",
@@ -244,7 +250,7 @@ return array(
             "destroy" => array(
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
-            ),            
+            ),
         ),
         "ftp"            => array(
             "store"   => array(
@@ -334,12 +340,19 @@ return array(
             "date_end"   => "Fecha de termino",
             "plan"       => "Plan",
         ),
-        "email" => array(
+        "email"  => array(
             "user_email" => "Nombre",
-            "email" => "Correo Electronico",
-            "forward" => "Redireccion",
-            "edit" => "Editar Correo",
-            "delete" => "Eliminar Correo",
+            "email"      => "Correo Electronico",
+            "forward"    => "Redireccion",
+            "edit"       => "Editar Correo",
+            "delete"     => "Eliminar Correo",
+        ),
+        "ftp"    => array(
+            "username" => "Nombre de usuario",
+            "hostname" => "Nombre de Host",
+            "homedir"  => "Directorio Raiz",
+            "edit"       => "Editar FTP",
+            "delete"     => "Eliminar FTP",
         )
     ),
 );

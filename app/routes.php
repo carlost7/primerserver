@@ -103,6 +103,21 @@ Route::group(array('before' => 'auth'), function() {
                     'uses' => 'EmailsController@update'));
                 Route::delete('user/emails/{user_id}/{domain_id}/{id}', array('as'   => 'user.emails.destroy',
                     'uses' => 'EmailsController@destroy'));
+                //Ftps
+                Route::get('user/ftps/{user_id}/{domain_id}', array('as'   => 'user.ftps.index',
+                    'uses' => 'FtpsController@index'));
+                Route::get('user/ftps/{user_id}/{domain_id}/create', array('as'   => 'user.ftps.create',
+                    'uses' => 'FtpsController@create'));
+                Route::post('user/ftps/{user_id}/{domain_id}', array('as'   => 'user.ftps.store',
+                    'uses' => 'FtpsController@store'));
+                Route::get('user/ftps/{user_id}/{domain_id}/{id}', array('as'   => 'user.ftps.show',
+                    'uses' => 'FtpsController@show'));
+                Route::get('user/ftps/{user_id}/{domain_id}/{id}/edit', array('as'   => 'user.ftps.edit',
+                    'uses' => 'FtpsController@edit'));
+                Route::put('user/ftps/{user_id}/{domain_id}/{id}', array('as'   => 'user.ftps.update',
+                    'uses' => 'FtpsController@update'));
+                Route::delete('user/ftps/{user_id}/{domain_id}/{id}', array('as'   => 'user.ftps.destroy',
+                    'uses' => 'FtpsController@destroy'));
             });
         });
     });

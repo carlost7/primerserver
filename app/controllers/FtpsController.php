@@ -7,11 +7,13 @@ class FtpsController extends \BaseController {
      *
      * @return Response
      */
-    public function index()
+    public function index($user_id, $domain_id)
     {
-        $ftps = Ftp::all();
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $ftps   = Ftp::where('domain_id', $domain_id)->paginate(10);
 
-        return View::make('ftps.index', compact('ftps'));
+        return View::make('ftps.index', compact('ftps', 'user', 'domain'));
     }
 
     /**
@@ -19,9 +21,11 @@ class FtpsController extends \BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($user_id, $domain_id)
     {
-        return View::make('ftps.create');
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        return View::make('ftps.create', compact('user', 'domain'));
     }
 
     /**
@@ -29,18 +33,24 @@ class FtpsController extends \BaseController {
      *
      * @return Response
      */
-    public function store()
+    public function store($user_id, $domain_id)
     {
-        $validator = Validator::make($data      = Input::all(), Ftp::$rules);
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
 
-        if ($validator->fails())
+        $ftp = new Ftp;
+        $ftp->domain()->associate($domain);
+        
+        if ($ftp->save())
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            Session::flash('message', trans('frontend.messages.ftp.store.successful'));
+            Auth::login($user);
+            return Redirect::route('user.ftps.index', array($user->id, $domain->id));
         }
-
-        Ftp::create($data);
-
-        return Redirect::route('ftps.index');
+        else
+        {
+            return Redirect::back()->withErrors($ftp->errors())->withInput();
+        }
     }
 
     /**
@@ -49,11 +59,12 @@ class FtpsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($user_id, $domain_id, $id)
     {
-        $ftp = Ftp::findOrFail($id);
-
-        return View::make('ftps.show', compact('ftp'));
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $ftp    = Ftp::find($id);
+        return View::make('ftps.show', compact('user', 'domain', 'ftp'));
     }
 
     /**
@@ -62,11 +73,13 @@ class FtpsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($user_id, $domain_id, $id)
     {
-        $ftp = Ftp::find($id);
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $ftp    = Ftp::find($id);
 
-        return View::make('ftps.edit', compact('ftp'));
+        return View::make('ftps.edit', compact('ftp', "user", "domain"));
     }
 
     /**
@@ -75,20 +88,24 @@ class FtpsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($user_id, $domain_id, $id)
     {
-        $ftp = Ftp::findOrFail($id);
+        $ftp    = Ftp::findOrFail($id);
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
 
-        $validator = Validator::make($data      = Input::all(), Ftp::$rules);
+        $ftp::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
+        $ftp::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
 
-        if ($validator->fails())
+        if ($ftp->update())
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            Session::flash('message', trans('frontend.messages.ftp.update.successful'));
+            return Redirect::route('user.ftps.show', array($user->id, $domain->id, $ftp->id));
         }
-
-        $ftp->update($data);
-
-        return Redirect::route('ftps.index');
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($ftp->errors());
+        }
     }
 
     /**
@@ -97,11 +114,19 @@ class FtpsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $domain_id, $id)
     {
-        Ftp::destroy($id);
-
-        return Redirect::route('ftps.index');
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        if (Ftp::destroy($id))
+        {
+            Session::flash('message', trans('frontend.messages.ftp.destroy.successful'));
+        }
+        else
+        {
+            Session::flash('error', trans('frontend.messages.ftp.destroy.error'));
+        }
+        return Redirect::route('user.ftps.index', array($user->id, $domain->id));
     }
 
 }

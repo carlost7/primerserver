@@ -19,12 +19,12 @@
 
         </div>
         <div class="col-sm-4">
-            <h2>{{ trans('frontend.link.database.index') }}</h2>             
-            <h2>{{ trans('frontend.link.database.create') }}</h2>                  
-        </div>
-        <div class="col-sm-4">
             <h2>{{ trans('frontend.link.ftp.index') }}</h2>                  
             <h2>{{ trans('frontend.link.ftp.create') }}</h2>                  
+        </div>
+        <div class="col-sm-4">
+            <h2>{{ HTML::linkRoute('user.ftps.index',trans('frontend.link.ftp.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2>
+            <h2>{{ HTML::linkRoute('user.ftps.create',trans('frontend.link.ftp.create'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2>
         </div>
     </div>
 </div>

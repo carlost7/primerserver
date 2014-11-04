@@ -103,6 +103,9 @@ return array(
         "password"              => 'Contraseña',
         "password_confirmation" => 'Confirmar Contraseña',
         "domain"                => 'Dominio',
-        "user_email"                => 'Nombre',
+        "user_email"            => 'Nombre',
+        "username"              => "Nombre de Usuario",
+        "hostname"              => "Nombre de host",
+        "homedir"               => "Directorio Raiz",
     ),
 );
