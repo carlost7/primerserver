@@ -7,101 +7,126 @@ class DatabasesController extends \BaseController {
      *
      * @return Response
      */
-    public function index()
+    public function index($user_id, $domain_id)
     {
-        $databases = Database::all();
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $databases   = Database::where('domain_id', $domain_id)->paginate(10);
 
-        return View::make('databases.index', compact('databases'));
+        return View::make('databases.index', compact('databases', 'user', 'domain'));
     }
 
     /**
-     * Show the form for creating a new databasis
+     * Show the form for creating a new database
      *
      * @return Response
      */
-    public function create()
+    public function create($user_id, $domain_id)
     {
-        return View::make('databases.create');
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        return View::make('databases.create', compact('user', 'domain'));
     }
 
     /**
-     * Store a newly created databasis in storage.
+     * Store a newly created database in storage.
      *
      * @return Response
      */
-    public function store()
+    public function store($user_id, $domain_id)
     {
-        $validator = Validator::make($data      = Input::all(), Databases::$rules);
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
 
-        if ($validator->fails())
+        $database = new Database;
+        $database->domain()->associate($domain);
+        
+        if ($database->save())
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            Session::flash('message', trans('frontend.messages.database.store.successful'));
+            Auth::login($user);
+            return Redirect::route('user.databases.index', array($user->id, $domain->id));
         }
-
-        Database::create($data);
-
-        return Redirect::route('databases.index');
-    }
-
-    /**
-     * Display the specified databasis.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        $databasis = Database::findOrFail($id);
-
-        return View::make('databases.show', compact('databasis'));
-    }
-
-    /**
-     * Show the form for editing the specified databasis.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $databasis = Database::find($id);
-
-        return View::make('databases.edit', compact('databasis'));
-    }
-
-    /**
-     * Update the specified databasis in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        $databasis = Database::findOrFail($id);
-
-        $validator = Validator::make($data      = Input::all(), Database::$rules);
-
-        if ($validator->fails())
+        else
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Redirect::back()->withErrors($database->errors())->withInput();
         }
-
-        $databasis->update($data);
-
-        return Redirect::route('databases.index');
     }
 
     /**
-     * Remove the specified databasis from storage.
+     * Display the specified database.
      *
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function show($user_id, $domain_id, $id)
     {
-        Database::destroy($id);
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $database    = Database::find($id);
+        return View::make('databases.show', compact('user', 'domain', 'database'));
+    }
 
-        return Redirect::route('databases.index');
+    /**
+     * Show the form for editing the specified database.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($user_id, $domain_id, $id)
+    {
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        $database    = Database::find($id);
+
+        return View::make('databases.edit', compact('database', "user", "domain"));
+    }
+
+    /**
+     * Update the specified database in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($user_id, $domain_id, $id)
+    {
+        $database    = Database::findOrFail($id);
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+
+        $database::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
+        $database::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
+
+        if ($database->update())
+        {
+            Session::flash('message', trans('frontend.messages.database.update.successful'));
+            return Redirect::route('user.databases.show', array($user->id, $domain->id, $database->id));
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($database->errors());
+        }
+    }
+
+    /**
+     * Remove the specified database from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($user_id, $domain_id, $id)
+    {
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);
+        if (Database::destroy($id))
+        {
+            Session::flash('message', trans('frontend.messages.database.destroy.successful'));
+        }
+        else
+        {
+            Session::flash('error', trans('frontend.messages.database.destroy.error'));
+        }
+        return Redirect::route('user.databases.index', array($user->id, $domain->id));
     }
 
 }

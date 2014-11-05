@@ -118,6 +118,21 @@ Route::group(array('before' => 'auth'), function() {
                     'uses' => 'FtpsController@update'));
                 Route::delete('user/ftps/{user_id}/{domain_id}/{id}', array('as'   => 'user.ftps.destroy',
                     'uses' => 'FtpsController@destroy'));
+                //Databases
+                Route::get('user/databases/{user_id}/{domain_id}', array('as'   => 'user.databases.index',
+                    'uses' => 'DatabasesController@index'));
+                Route::get('user/databases/{user_id}/{domain_id}/create', array('as'   => 'user.databases.create',
+                    'uses' => 'DatabasesController@create'));
+                Route::post('user/databases/{user_id}/{domain_id}', array('as'   => 'user.databases.store',
+                    'uses' => 'DatabasesController@store'));
+                Route::get('user/databases/{user_id}/{domain_id}/{id}', array('as'   => 'user.databases.show',
+                    'uses' => 'DatabasesController@show'));
+                Route::get('user/databases/{user_id}/{domain_id}/{id}/edit', array('as'   => 'user.databases.edit',
+                    'uses' => 'DatabasesController@edit'));
+                Route::put('user/databases/{user_id}/{domain_id}/{id}', array('as'   => 'user.databases.update',
+                    'uses' => 'DatabasesController@update'));
+                Route::delete('user/databases/{user_id}/{domain_id}/{id}', array('as'   => 'user.databases.destroy',
+                    'uses' => 'DatabasesController@destroy'));
             });
         });
     });

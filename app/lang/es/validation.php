@@ -107,5 +107,7 @@ return array(
         "username"              => "Nombre de Usuario",
         "hostname"              => "Nombre de host",
         "homedir"               => "Directorio Raiz",
+        "name_db"               => 'Nombre de Base de datos',
+        "user"                  => 'Usuario',
     ),
 );

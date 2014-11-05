@@ -105,6 +105,8 @@ return array(
         "username"              => "Nombre de Usuario",
         "hostname"              => "Nombre de Host",
         "homedir"               => "Directorio Raiz",
+        "name_db"               => "Nombre de Base de Datos",
+        "user"                  => "Usuario de base de datos",
     ),
     "placeholder" => array(
         "logemail"              => "Correo",
@@ -122,6 +124,8 @@ return array(
         "username"              => "user@ps.com",
         "hostname"              => "ps.com",
         "homedir"               => "dominio.com",
+        "name_db"               => "Nombre de Base de Datos",
+        "user"                  => "Usuario de base de datos",
     ),
     "button"      => array(
         "login"          => array(
@@ -333,26 +337,32 @@ return array(
         ),
     ),
     "table_head"  => array(
-        "domain" => array(
+        "domain"   => array(
             "domain"     => "Dominio",
             "active"     => "Esta Activo",
             "date_start" => "Fecha de inicio",
             "date_end"   => "Fecha de termino",
             "plan"       => "Plan",
         ),
-        "email"  => array(
+        "email"    => array(
             "user_email" => "Nombre",
             "email"      => "Correo Electronico",
             "forward"    => "Redireccion",
             "edit"       => "Editar Correo",
             "delete"     => "Eliminar Correo",
         ),
-        "ftp"    => array(
+        "ftp"      => array(
             "username" => "Nombre de usuario",
             "hostname" => "Nombre de Host",
             "homedir"  => "Directorio Raiz",
-            "edit"       => "Editar FTP",
-            "delete"     => "Eliminar FTP",
+            "edit"     => "Editar FTP",
+            "delete"   => "Eliminar FTP",
+        ),
+        "database" => array(
+            "name_db" => "Nombre de Base de Datos",
+            "user"    => "Usuario",
+            "edit"    => "Editar Base de datos",
+            "delete"  => "Eliminar Base de datos",
         )
     ),
 );
