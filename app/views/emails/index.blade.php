@@ -34,7 +34,7 @@
                         <td>{{ HTML::linkRoute('user.emails.edit',trans('frontend.link.email.edit'),array($user->id,$domain->id,$email->id),array('class'=>'btn btn-primary')) }}</td>
                         <td>
                             {{ Form::open(array('route' => array('user.emails.destroy',$user->id,$domain->id,$email->id),'method'=>'DELETE','id'=>$email->id,"class"=>'delete_email')) }}
-                            {{ Form::submit(trans('frontend.button.email.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$email->id,")")) }}
+                            {{ Form::button(trans('frontend.button.email.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$email->id.")")) }}
                             {{ Form::close() }}
                         </td>                         
                     </tr>                    

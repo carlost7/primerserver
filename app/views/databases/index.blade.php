@@ -27,7 +27,7 @@
                         <td>{{ HTML::linkRoute('user.databases.edit',trans('frontend.link.database.edit'),array($user->id,$domain->id,$database->id),array('class'=>'btn btn-primary')) }}</td>
                         <td>
                             {{ Form::open(array('route' => array('user.databases.destroy',$user->id,$domain->id,$database->id),'method'=>'DELETE','id'=>$database->id,"class"=>'delete_database')) }}
-                            {{ Form::submit(trans('frontend.button.database.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$database->id,")")) }}
+                            {{ Form::button(trans('frontend.button.database.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$database->id.")")) }}
                             {{ Form::close() }}
                         </td>                         
                     </tr>                    

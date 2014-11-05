@@ -127,6 +127,7 @@ class EmailsController extends \BaseController {
             Session::flash('error', trans('frontend.messages.email.destroy.error'));
         }
         return Redirect::route('user.emails.index', array($user->id, $domain->id));
+        
     }
 
 }

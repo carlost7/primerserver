@@ -137,6 +137,8 @@ Route::group(array('before' => 'auth'), function() {
         });
     });
 
+    Route::any('get_password',array('as'=>'password.show','uses'=>'PasswordController@show'));
+    
 
     Route::group(array('prefix' => 'administrador', 'before' => 'is_admin'), function() {
         

@@ -29,7 +29,7 @@
                         <td>{{ HTML::linkRoute('user.ftps.edit',trans('frontend.link.ftp.edit'),array($user->id,$domain->id,$ftp->id),array('class'=>'btn btn-primary')) }}</td>
                         <td>
                             {{ Form::open(array('route' => array('user.ftps.destroy',$user->id,$domain->id,$ftp->id),'method'=>'DELETE','id'=>$ftp->id,"class"=>'delete_ftp')) }}
-                            {{ Form::submit(trans('frontend.button.ftp.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$ftp->id,")")) }}
+                            {{ Form::button(trans('frontend.button.ftp.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$ftp->id.")")) }}
                             {{ Form::close() }}
                         </td>                         
                     </tr>                    
