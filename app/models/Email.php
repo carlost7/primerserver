@@ -7,7 +7,7 @@ class Email extends Ardent {
     //Table
     protected $table                      = 'emails';
     //Fillable
-    protected $fillable                   = ['user_email', 'email', 'forward','password','password_confirmation'];
+    protected $fillable                   = ['user_email', 'email', 'forward', 'password', 'password_confirmation'];
     //Rules of validations
     public static $rules                  = array(
         'user_email'            => 'required',
@@ -24,11 +24,24 @@ class Email extends Ardent {
     public $autoHydrateEntityFromInput    = true;
     public $forceEntityHydrationFromInput = true;
     public $autoPurgeRedundantAttributes  = true;
-    public function beforeSave(){
-        if(!strpos($this->email,"@")){
-            $this->email = $this->email."@".$this->domain->domain;
-        }        
-        unset($this->password);        
+
+    public function beforeCreate()
+    {
+        $this->email = $this->email . "@" . $this->domain->domain;
+        Event::fire('email.creating', array($this));
+        unset($this->password);
+    }
+
+    public function beforeUpdate()
+    {
+        Event::fire('email.updating', array($this));
+        unset($this->password);
+    }
+
+    public function beforeDelete()
+    {
+        Event::fire('email.deleting', array($this));
+        unset($this->password);
     }
 
 }

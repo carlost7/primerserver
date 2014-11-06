@@ -7,21 +7,21 @@
  */
 
 //Event::listen('pago_aprobado', 'PagosListener@publicar_contenido');
-Event::listen('eloquent.creating: Domain', 'DomainListener@store');
-Event::listen('eloquent.creating: Domain', 'DomainListener@update');
-Event::listen('eloquent.creating: Domain', 'DomainListener@destroy');
+Event::listen('domain.creating', 'DomainListener@store');
+Event::listen('domain.updating', 'DomainListener@update');
+Event::listen('domain.deleting', 'DomainListener@destroy');
 
-Event::listen('eloquent.creating: Ftp', 'FtpListener@store');
-Event::listen('eloquent.creating: Ftp', 'FtpListener@update');
-Event::listen('eloquent.creating: Ftp', 'FtpListener@destroy');
+Event::listen('ftp.creating', 'FtpListener@store');
+Event::listen('ftp.updating', 'FtpListener@update');
+Event::listen('ftp.deleting', 'FtpListener@destroy');
 
-Event::listen('eloquent.creating: Email', 'EmailListener@store');
-Event::listen('eloquent.creating: Email', 'EmailListener@update');
-Event::listen('eloquent.creating: Email', 'EmailListener@destroy');
+Event::listen('email.creating', 'EmailListener@store');
+Event::listen('email.updating', 'EmailListener@update');
+Event::listen('email.deleting', 'EmailListener@destroy');
 
-Event::listen('eloquent.creating: Database', 'DatabaseListener@store');
-Event::listen('eloquent.creating: Database', 'DatabaseListener@update');
-Event::listen('eloquent.creating: Database', 'DatabaseListener@destroy');
+Event::listen('database.creating', 'DatabaseListener@store');
+Event::listen('database.updating', 'DatabaseListener@update');
+Event::listen('database.deleting', 'DatabaseListener@destroy');
 
 
 
