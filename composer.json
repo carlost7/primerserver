@@ -9,8 +9,7 @@
         "mercadopago/sdk": "dev-master",
         "fzaninotto/faker": "dev-master",
         "doctrine/dbal": "dev-master",
-        "laravelbook/ardent": "dev-master",
-        "gufy/cpanel-whm": "~1.0"
+        "laravelbook/ardent": "dev-master"
     },
     "autoload": {
         "classmap": [
@@ -20,7 +19,8 @@
             "app/database/migrations",
             "app/database/seeds",
             "app/tests/TestCase.php",
-            "app/listeners"                       
+            "app/listeners",            
+            "app/providers"
         ]
     },
     "scripts": {

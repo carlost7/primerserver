@@ -2,19 +2,45 @@
 
 class DomainListener {
 
+    public function __construct(\PrimerServer\Services\WHM\WHMFunctions $whmFunctions)
+    {
+        $this->whmfunctions = $whmFunctions;
+    }
+
     public function store($domain)
     {
-        dd($ftp);
+        if ($this->whmfunctions->addSubDomain($domain->server->nameserver, $domain->domain, explode(".",$domain->domain)[0], $domain->password))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function update($domain)
     {
-        dd($ftp);
+        if ($this->whmfunctions->addSubDomain($domain->server->nameserver, $domain->domain, explode(".",$domain->domain)[0], $domain->password))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function destroy($domain)
     {
-        dd($ftp);
+        if ($this->whmfunctions->delSubDomain($domain->server->nameserver, $domain->domain, explode(".",$domain->domain)[0], $domain->password))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

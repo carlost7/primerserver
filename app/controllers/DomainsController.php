@@ -43,13 +43,13 @@ class DomainsController extends \BaseController {
         //creamos el dominio en la base de datos
         $domain         = new Domain;
         $domain->active = false;
-        $domain->plan()->associate($plan);
+        $domain->plan()->associate($plan);        
         $domain->server()->associate(getLeastBussyServer($plan));
         $domain->user()->associate($user);
 
         if ($domain->save())
         {
-            Session::flash('message', trans('frontend.messages.domain.create.successful'));
+            Session::flash('message', trans('frontend.messages.domain.store.successful'));
             return Redirect::route("user.domains.index", $user->id);
         }
         else

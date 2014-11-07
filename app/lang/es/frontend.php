@@ -229,7 +229,9 @@ return array(
             ),
         ),
         "domain"         => array(
-            "store"   => array(
+            "store"   => array(                
+                "no_data" => "Faltan datos en el servidor",
+                "server_error" => "El servidor respondio: :error",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
             ),
