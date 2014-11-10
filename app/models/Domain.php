@@ -31,7 +31,7 @@ class Domain extends Ardent {
     public $forceEntityHydrationFromInput = true;
     public $autoPurgeRedundantAttributes  = true;
     // Don't forget to fill this array
-    protected $fillable                   = ["domain", "active", "date_start", "date_end",'password','password_confirmation'];
+    protected $fillable                   = ["domain", "active", "date_start", "date_end", 'password', 'password_confirmation'];
 
     public function beforeCreate()
     {
@@ -42,14 +42,13 @@ class Domain extends Ardent {
         unset($this->password);
     }
 
-    public function beforeUpdate()
-    {
-        Event::fire('domain.updating', array($this));
-    }
-
     public function beforeDelete()
     {
-        Event::fire('domain.deleting', array($this));
+        if (!count(Event::fire('domain.deleting', array($this))))
+        {
+            return false;
+        }
+        unset($this->password);
     }
 
 }

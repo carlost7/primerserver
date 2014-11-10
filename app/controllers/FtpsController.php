@@ -41,6 +41,8 @@ class FtpsController extends \BaseController {
         $ftp = new Ftp;
         $ftp->domain()->associate($domain);
         
+        
+        
         if ($ftp->save())
         {
             Session::flash('message', trans('frontend.messages.ftp.store.successful'));

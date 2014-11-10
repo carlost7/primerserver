@@ -232,16 +232,16 @@ return array(
             "store"   => array(                
                 "no_data" => "Faltan datos en el servidor",
                 "server_error" => "El servidor respondio: :error",
-                "successful" => "Usuario creado con éxito",
-                "error"      => "Error al crear el usuario",
+                "successful" => "Dominio creado con éxito",
+                "error"      => "Error al crear el dominio",
             ),
             "update"  => array(
-                "successful" => "Usuario actualizado con éxito",
-                "error"      => "Error al actualizar el usuario",
+                "successful" => "Dominio actualizado con éxito",
+                "error"      => "Error al actualizar el dominio",
             ),
             "destroy" => array(
-                "successful" => "Usuario actualizado con éxito",
-                "error"      => "Error al actualizar el usuario",
+                "successful" => "Dominio actualizado con éxito",
+                "error"      => "Error al actualizar el dominio",
             ),
         ),
         "email"          => array(
@@ -345,6 +345,7 @@ return array(
             "date_start" => "Fecha de inicio",
             "date_end"   => "Fecha de termino",
             "plan"       => "Plan",
+            "delete"       => "Eliminar",
         ),
         "email"    => array(
             "user_email" => "Nombre",

@@ -43,19 +43,26 @@ class DomainsController extends \BaseController {
         //creamos el dominio en la base de datos
         $domain         = new Domain;
         $domain->active = false;
-        $domain->plan()->associate($plan);        
+        $domain->plan()->associate($plan);
         $domain->server()->associate(getLeastBussyServer($plan));
         $domain->user()->associate($user);
 
         if ($domain->save())
         {
-            Session::flash('message', trans('frontend.messages.domain.store.successful'));
-            return Redirect::route("user.domains.index", $user->id);
+            //Agregamos un ftp al servidor
+            $ftp           = new Ftp;
+            $ftp->username = explode('.', $domain->domain)[0];
+            $ftp->hostname = 'primerserver.com';
+            $ftp->homedir  = 'public_html/' . $domain->domain;
+            $ftp->domain()->associate($domain);
+            if ($ftp->save())
+            {
+                Session::flash('message', trans('frontend.messages.domain.store.successful'));
+                return Redirect::route("user.domains.index", $user->id);
+            }
         }
-        else
-        {
-            return Redirect::back()->withErrors($domain->errors())->withInput();
-        }
+
+        return Redirect::back()->withErrors($domain->errors())->withInput();
     }
 
     /**
@@ -110,7 +117,18 @@ class DomainsController extends \BaseController {
      */
     public function destroy($user_id, $id)
     {
-        //
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::find($id);
+
+        if ($domain->delete())
+        {
+            Session::flash('message', trans('frontend.messages.domain.destroy.successful'));
+        }
+        else
+        {
+            Session::flash('message', trans('frontend.messages.domain.destroy.error'));
+        }
+        return Redirect::route("user.domains.index", $user->id);
     }
 
 }

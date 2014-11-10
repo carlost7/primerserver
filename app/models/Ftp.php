@@ -24,8 +24,28 @@ class Ftp extends Ardent {
     public $forceEntityHydrationFromInput = true;
     public $autoPurgeRedundantAttributes  = true;
 
-    public function beforeSave()
+    public function beforeCreate()
     {
+        if (!count(Event::fire('ftp.creating', array($this))))
+        {
+            return false;
+        }
+        unset($this->password);
+    }
+
+    public function beforeUpdate()
+    {
+        if (!count(Event::fire('ftp.updating', array($this)))){
+            return false;
+        }
+        unset($this->password);
+    }
+    
+    public function beforeDelete()
+    {
+        if (!count(Event::fire('ftp.deleting', array($this)))){
+            return false;
+        }
         unset($this->password);
     }
 

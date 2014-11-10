@@ -18,6 +18,7 @@
                         <th>{{trans('frontend.table_head.domain.date_start')}}</th>
                         <th>{{trans('frontend.table_head.domain.date_end')}}</th>
                         <th>{{trans('frontend.table_head.domain.plan')}}</th>                        
+                        <th>{{trans('frontend.table_head.domain.delete')}}</th>
                     </tr>
                     @foreach($domains as $domain)
                     <tr>                              
@@ -26,6 +27,11 @@
                         <td>{{ $domain->date_start}}</td> 
                         <td>{{ $domain->date_end}}</td>
                         <td>{{ $domain->plan->plan_name}}</td>                        
+                        <td>
+                            {{ Form::open(array('route' => array('user.domains.destroy',$user->id,$domain->id),'method'=>'DELETE','id'=>$domain->id,"class"=>'delete_domain')) }}
+                            {{ Form::button(trans('frontend.button.domain.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$domain->id.")")) }}
+                            {{ Form::close() }}
+                        </td>                        
                     </tr>                    
                     @endforeach
                 </table>

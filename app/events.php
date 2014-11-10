@@ -8,12 +8,11 @@
 
 //Event::listen('pago_aprobado', 'PagosListener@publicar_contenido');
 Event::listen('domain.creating', 'DomainListener@store');
-Event::listen('domain.updating', 'DomainListener@update');
 Event::listen('domain.deleting', 'DomainListener@destroy');
 
-Event::listen('ftp.creating', 'FtpListener@store');
-Event::listen('ftp.updating', 'FtpListener@update');
-Event::listen('ftp.deleting', 'FtpListener@destroy');
+Event::listen('ftp.creating', 'FTPListener@store');
+Event::listen('ftp.updating', 'FTPListener@update');
+Event::listen('ftp.deleting', 'FTPListener@destroy');
 
 Event::listen('email.creating', 'EmailListener@store');
 Event::listen('email.updating', 'EmailListener@update');

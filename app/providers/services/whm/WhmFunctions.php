@@ -26,7 +26,7 @@ class WHMFunctions {
      * Add subdomains to server
      * requires: 
      * $nameserver: realname of the hosted server account
-     * $domain: The domain name of the addon domain you wish to create. (For example, sub.example.com).
+     * $domain: The domain name of the addon domain you wish to create. (For example, domain.sub.example.com).
      * $subdomain: The domain name of the addon domain you wish to create. (For example, sub.example.com).
      * $password: password used for the ftp
      * 
@@ -48,19 +48,20 @@ class WHMFunctions {
         }
         else
         {
-            \Log::error('WHMFunciones. AgregarDominioServidor ' . $resultado['cpanelresult']['data'][0]['reason']);
+            \Log::error('WHMFunciones. addSubDomain ' . $resultado['cpanelresult']['data'][0]['reason']);
             \Session::flash("error", trans('frontend.messages.domain.store.server_error', array('error' => $resultado['cpanelresult']['data'][0]['reason'])));
             return false;
         }
     }
-    
+
     /*
      * Add subdomains to server
      * requires: 
-     * $nameserver: realname of the hosted server account
+     * $nameserver: real name of the hosted server account
      * $domain: The addon domain you wish to delete.
      * $subdomain: This value should contain the addon domain's username followed by an underscore (_), then the addon domain's main domain 
-     */    
+     */
+
     public function delSubDomain($nameserver, $domain, $subdomain)
     {
 
@@ -70,7 +71,7 @@ class WHMFunctions {
             return false;
         }
 
-        $response = $this->xmlapi->api2_query($nameserver, 'AddonDomain', 'deladdondomain', array('domain' => $domain, 'subdomain' => $subdomain));        
+        $response  = $this->xmlapi->api2_query($nameserver, 'AddonDomain', 'deladdondomain', array('domain' => $domain, 'subdomain' => $subdomain));
         $resultado = json_decode($response, true);
         if ($resultado['cpanelresult']['data'][0]['result'] == 1)
         {
@@ -78,13 +79,46 @@ class WHMFunctions {
         }
         else
         {
-            \Log::error('WHMFunciones. AgregarDominioServidor ' . $resultado['cpanelresult']['data'][0]['reason']);
+            \Log::error('WHMFunciones. delSubDomain ' . $resultado['cpanelresult']['data'][0]['reason']);
+            \Session::flash("error", trans('frontend.messages.domain.store.server_error', array('error' => $resultado['cpanelresult']['data'][0]['reason'])));
+            return false;
+        }
+    }
+
+    /*
+     * FTP
+     */
+
+    /*
+     * Add an FTP Account to the server
+     * user (string)	The username portion of the new FTP account, without the domain.When you log in with this name, remember to append the main domain to the end (for example, user@example.com).
+     * pass (string)	The password for the new FTP account.
+     * quota (integer)	The new FTP account's quota. 0 indicates that the account will not use a quota. This parameter defaults to 0.
+     * homedir (string)	The path to the FTP account's root directory. This value should be relative to the account's home directory. */
+
+    public function addFTP($nameserver, $user, $pass, $quota, $homedir)
+    {
+
+        if (!isset($nameserver) || !isset($user) || !isset($pass) || !isset($quota) || !isset($homedir))
+        {
+            \Session::flash('error', trans('frontend.ftp.store.no_data'));
+            return false;
+        }
+
+        $response = $this->xmlapi->api2_query($nameserver, "Ftp", "addftp", array('pass' => $pass, 'user' => $user, 'quota' => $quota, 'homedir' => $homedir));
+        $resultado = json_decode($response, true);
+        if ($resultado['cpanelresult']['data'][0]['result'] == 1)
+        {
+            return true;
+        }
+        else
+        {
+            \Log::error('WHMFunciones. addFTP ' . $resultado['cpanelresult']['data'][0]['reason']);
             \Session::flash("error", trans('frontend.messages.domain.store.server_error', array('error' => $resultado['cpanelresult']['data'][0]['reason'])));
             return false;
         }
 
     }
-    
 
     /*
      * Agregar Correos al servidor
@@ -295,7 +329,7 @@ class WHMFunctions {
       |---------------------------------------------------
      */
 
-    
+
 
     /*
      * Funcion para eliminar un correo del servidor
