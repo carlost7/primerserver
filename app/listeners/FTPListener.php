@@ -24,7 +24,7 @@ class FTPListener {
     //Calls updateFTP and changes password from ftp
     public function update($ftp)
     {
-        if ($this->whmfunctions->addSubDomain($ftp->server->nameserver, $ftp->domain, explode(".",$ftp->domain)[0], $ftp->password))
+        if ($this->whmfunctions->updateFTP($ftp->domain->server->nameserver, $ftp->username, $ftp->password))
         {
             return true;
         }
@@ -37,7 +37,7 @@ class FTPListener {
     //Calls delFTP and deletes the contents on the ftp directory
     public function destroy($ftp)
     {
-        if ($this->whmfunctions->delSubDomain($ftp->server->nameserver, $ftp->domain, explode(".",$ftp->domain)[0]."_".$ftp->server->domain))
+        if ($this->whmfunctions->delFTP($ftp->domain->server->nameserver, $ftp->username."@".$ftp->hostname,true))
         {
             return true;
         }

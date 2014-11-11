@@ -118,6 +118,8 @@ Route::group(array('before' => 'auth'), function() {
                     'uses' => 'FtpsController@update'));
                 Route::delete('user/ftps/{user_id}/{domain_id}/{id}', array('as'   => 'user.ftps.destroy',
                     'uses' => 'FtpsController@destroy'));
+                Route::get('user/ftps/config/{user_id}/{domain_id}/{id}/{app}', array('as'   => 'user.ftps.config.show',
+                    'uses' => 'FtpsConfigController@show'));
                 //Databases
                 Route::get('user/databases/{user_id}/{domain_id}', array('as'   => 'user.databases.index',
                     'uses' => 'DatabasesController@index'));

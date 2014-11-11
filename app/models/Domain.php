@@ -22,8 +22,8 @@ class Domain extends Ardent {
         'plan'      => array(self::BELONGS_TO, 'Plan'),
         'server'    => array(self::BELONGS_TO, 'Server'),
         //Tiene
-        'mails'     => array(self::HAS_MANY, 'Email'),
-        'ftps'      => array(self::HAS_MANY, 'Ftpr'),
+        'emails'     => array(self::HAS_MANY, 'Email'),
+        'ftps'      => array(self::HAS_MANY, 'Ftp'),
         'databases' => array(self::HAS_MANY, 'Database'),
     );
     protected $table                      = 'domains';

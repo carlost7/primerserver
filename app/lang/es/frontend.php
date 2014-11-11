@@ -123,7 +123,7 @@ return array(
         "user_email"            => "Juan Pérez",
         "username"              => "user@ps.com",
         "hostname"              => "ps.com",
-        "homedir"               => "dominio.com",
+        "homedir"               => "directorio",
         "name_db"               => "Nombre de Base de Datos",
         "user"                  => "Usuario de base de datos",
     ),
@@ -179,6 +179,11 @@ return array(
             ),
             "destroy" => array(
                 "submit" => "Eliminar",
+            ),
+            "show" => array(
+                "filezilla" => "Filezilla",
+                "coreftp" => "Core FTP",
+                "cyberduck" => "Cyberduck",
             ),
         ),
         "database"       => array(
@@ -236,52 +241,66 @@ return array(
                 "error"      => "Error al crear el dominio",
             ),
             "update"  => array(
+                "no_data" => "Faltan datos en el servidor",
                 "successful" => "Dominio actualizado con éxito",
                 "error"      => "Error al actualizar el dominio",
             ),
             "destroy" => array(
+                "no_data" => "Faltan datos en el servidor",
                 "successful" => "Dominio actualizado con éxito",
                 "error"      => "Error al actualizar el dominio",
             ),
         ),
         "email"          => array(
             "store"   => array(
+                "no_data" => "Faltan datos para el correo",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
+                "no_data" => "Faltan datos para el correo",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
+                "no_data" => "Faltan datos para el correo",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
         ),
         "ftp"            => array(
             "store"   => array(
+                "no_data" => "Faltan datos para el ftp",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
+                "no_data" => "Faltan datos para el ftp",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
+                "no_data" => "Faltan datos para el ftp",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
+            ),
+            "empty" => array(                
+                "error"      => "Unicamente existe 1 FTP no se puede eliminar",
             ),
         ),
         "database"       => array(
             "store"   => array(
+                "no_data" => "Faltan datos para la base de datos",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
+                "no_data" => "Faltan datos para la base de datos",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
+                "no_data" => "Faltan datos para la base de datos",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),

@@ -12,6 +12,7 @@ class DomainsController extends \BaseController {
     {
         $user    = User::findOrFail($user_id);
         $domains = $user->domains()->paginate(10);
+        
         return View::make('domains.index', compact('domains', 'user'));
     }
 
@@ -52,8 +53,7 @@ class DomainsController extends \BaseController {
             //Agregamos un ftp al servidor
             $ftp           = new Ftp;
             $ftp->username = explode('.', $domain->domain)[0];
-            $ftp->hostname = 'primerserver.com';
-            $ftp->homedir  = 'public_html/' . $domain->domain;
+            $ftp->hostname = $domain->server->domain;
             $ftp->domain()->associate($domain);
             if ($ftp->save())
             {
@@ -120,6 +120,22 @@ class DomainsController extends \BaseController {
         $user   = User::findOrFail($user_id);
         $domain = Domain::find($id);
 
+        //Eliminamos Los datos del FTP
+        foreach($domain->ftps as $ftp){
+            $ftp->delete();                
+        }
+        
+        //Eliminamos las bases de datos
+        foreach($domain->databases as $database){
+            $database->delete();            
+        }
+        
+        //Eliminamos los correos electronicos de la base de datos
+        foreach($domain->emails as $email){
+            $email->delete();            
+        }
+        
+                
         if ($domain->delete())
         {
             Session::flash('message', trans('frontend.messages.domain.destroy.successful'));
@@ -128,7 +144,9 @@ class DomainsController extends \BaseController {
         {
             Session::flash('message', trans('frontend.messages.domain.destroy.error'));
         }
+        
         return Redirect::route("user.domains.index", $user->id);
+        
     }
 
 }

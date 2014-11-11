@@ -21,15 +21,18 @@
 
             <div class="form-group">
                 {{ Form::label('username', trans('frontend.label.username')) }}
-                {{ Form::text('username',Input::old('username'),array('placeholder' => trans('frontend.placeholder.username'), 'class'=>'form-control'))}}
-            </div>
-            <div class="form-group">                        
-                {{ Form::label('hostname', trans('frontend.label.hostname')) }}
-                {{ Form::text('hostname', Input::old('hostname'), array('placeholder' => trans('frontend.placeholder.hostname'), 'class'=>'form-control')) }}
+                <div class="input-group">
+                    {{ Form::text('username',Input::old('username'),array('placeholder' => trans('frontend.placeholder.username'), 'class'=>'form-control'))}}    
+                    <span class="input-group-addon">{{ '@'.$domain->server->domain }}</span>
+                </div>
             </div>
             <div class="form-group">                        
                 {{ Form::label('homedir', trans('frontend.label.homedir')) }}
-                {{ Form::text('homedir', Input::old('homedir'), array('placeholder' => trans('frontend.placeholder.homedir'), 'class'=>'form-control')) }}
+                <div class="input-group">
+                    <span class="input-group-addon">{{ "public_html/".$domain->domain."/" }}</span>
+                    {{ Form::text('homedir', Input::old('homedir'), array('placeholder' => trans('frontend.placeholder.homedir'), 'class'=>'form-control')) }}
+                </div>
+                
             </div>
             <div class="form-group">
                 {{ Form::label('password', trans('frontend.label.password')) }}

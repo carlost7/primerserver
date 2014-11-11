@@ -20,15 +20,11 @@
             @include('layouts.show_form_errors')
             <div class="form-group">
                 {{ Form::label('username', trans('frontend.label.username')) }}
-                {{ Form::text('username',Input::old('username'),array('placeholder' => trans('frontend.placeholder.username'), 'class'=>'form-control'))}}
-            </div>
-            <div class="form-group">                        
-                {{ Form::label('hostname', trans('frontend.label.hostname')) }}
-                {{ Form::text('hostname', Input::old('hostname'), array('placeholder' => trans('frontend.placeholder.hostname'), 'class'=>'form-control')) }}
+                {{ Form::text('username',$ftp->username."@".$ftp->hostname,array('placeholder' => trans('frontend.placeholder.username'), 'class'=>'form-control',"disabled"=>'disabled'))}}
             </div>
             <div class="form-group">                        
                 {{ Form::label('homedir', trans('frontend.label.homedir')) }}
-                {{ Form::text('homedir', Input::old('homedir'), array('placeholder' => trans('frontend.placeholder.homedir'), 'class'=>'form-control')) }}
+                {{ Form::text('homedir', Input::old('homedir'), array('placeholder' => trans('frontend.placeholder.homedir'), 'class'=>'form-control',"disabled"=>'disabled')) }}
             </div>
             <div class="form-group">
                 {{ Form::label('password', trans('frontend.label.password')) }}

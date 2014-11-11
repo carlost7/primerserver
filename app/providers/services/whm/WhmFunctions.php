@@ -36,7 +36,7 @@ class WHMFunctions {
     {
         if (!isset($nameserver) || !isset($domain) || !isset($subdomain) || !isset($password))
         {
-            \Session::flash('error', trans('frontend.domain.store.no_data'));
+            \Session::flash('error', trans('frontend.messages.domain.store.no_data'));
             return false;
         }
         $response = $this->xmlapi->api2_query($nameserver, "AddonDomain", "addaddondomain", array('newdomain' => $domain, 'dir' => "public_html/" . $domain, 'subdomain' => $subdomain, 'pass' => $password));
@@ -67,7 +67,7 @@ class WHMFunctions {
 
         if (!isset($nameserver) || !isset($domain) || !isset($subdomain))
         {
-            \Session::flash('error', trans('frontend.domain.store.no_data'));
+            \Session::flash('error', trans('frontend.messages.domain.store.no_data'));
             return false;
         }
 
@@ -101,11 +101,11 @@ class WHMFunctions {
 
         if (!isset($nameserver) || !isset($user) || !isset($pass) || !isset($quota) || !isset($homedir))
         {
-            \Session::flash('error', trans('frontend.ftp.store.no_data'));
+            \Session::flash('error', trans('frontend.messages.ftp.store.no_data'));
             return false;
         }
 
-        $response = $this->xmlapi->api2_query($nameserver, "Ftp", "addftp", array('pass' => $pass, 'user' => $user, 'quota' => $quota, 'homedir' => $homedir));
+        $response  = $this->xmlapi->api2_query($nameserver, "Ftp", "addftp", array('pass' => $pass, 'user' => $user, 'quota' => $quota, 'homedir' => $homedir));
         $resultado = json_decode($response, true);
         if ($resultado['cpanelresult']['data'][0]['result'] == 1)
         {
@@ -117,7 +117,64 @@ class WHMFunctions {
             \Session::flash("error", trans('frontend.messages.domain.store.server_error', array('error' => $resultado['cpanelresult']['data'][0]['reason'])));
             return false;
         }
+    }
 
+    /*
+     * Change an FTP account's password. This function is only available in cPanel 11.27.x and later.
+     * user (string)	The name of the FTP account whose password should be changed.
+     * pass (string)	The new password for the FTP account.
+     */
+
+    public function updateFTP($nameserver, $user, $pass)
+    {
+        if (!isset($nameserver) || !isset($user) || !isset($pass))
+        {
+            \Session::flash('error', trans('frontend.messages.ftp.update.no_data'));
+            return false;
+        }
+
+        $response = $this->xmlapi->api2_query($nameserver, 'Ftp', 'passwd', array('user' => $user, 'pass' => $pass));
+
+        $resultado = json_decode($response, true);
+        if ($resultado['cpanelresult']['data'][0]['result'] == 1)
+        {
+            return true;
+        }
+        else
+        {
+            \Log::error('WHMFunciones. updateFTP ' . $resultado['cpanelresult']['data'][0]['reason']);
+            \Session::flash("error", trans('frontend.messages.domain.store.server_error', array('error' => $resultado['cpanelresult']['data'][0]['reason'])));
+            return false;
+        }
+    }
+
+    /*
+     * Delete an FTP account. This function is only available in cPanel 11.27.x and later.
+     * user (string)	The name of the FTP account to be removed.
+     * destroy (boolean)    A boolean value that indicates whether or not the FTP account's home directory should also be deleted. A value of 1 indicates that the directory should be removed. This value defaults to 0.      Returns:
+     */
+
+    public function delFTP($nameserver, $user, $destroy)
+    {
+        if (!isset($nameserver) || !isset($user) || !isset($destroy))
+        {        
+            \Session::flash('error', trans('frontend.messages.ftp.destroy.no_data'));
+            return false;
+        }
+        
+        $response = $this->xmlapi->api2_query($nameserver, 'Ftp', 'delftp', array('user' => $user, 'destroy' => $destroy));
+
+        $resultado = json_decode($response, true);
+        if ($resultado['cpanelresult']['data'][0]['result'] == 1)
+        {
+            return true;
+        }
+        else
+        {
+            \Log::error('WHMFunciones. delFTP ' . $resultado['cpanelresult']['data'][0]['reason']);
+            \Session::flash("error", trans('frontend.messages.domain.store.server_error', array('error' => $resultado['cpanelresult']['data'][0]['reason'])));
+            return false;
+        }
     }
 
     /*
@@ -174,41 +231,6 @@ class WHMFunctions {
             else
             {
                 Log::error('WHMFunciones. AgregarForwarderServidor ' . $resultado['cpanelresult']);
-                return false;
-            }
-        }
-    }
-
-    /*
-     * Funcion para agregar un dominio/addon al servidor 
-     */
-
-    public function agregarFtpServidor($user_name, $home_dir, $pass)
-    {
-        if (!isset($user_name) || !isset($pass) || !isset($home_dir))
-        {
-            Log::error('WHMFunciones. AgregarFTPServidor, Faltan datos en la funcion ' . $user_name . ' ' . $home_dir . ' ' . $pass);
-            return false;
-        }
-        else
-        {
-
-            $response = $this->xmlapi->api2_query($this->plan->name_server, "Ftp", "addftp", array('pass' => $pass, 'user' => $user_name, 'quota' => $this->plan->quota_ftps, 'homedir' => $home_dir));
-
-            $resultado = json_decode($response, true);
-
-
-            if ($resultado['cpanelresult']['data'][0]['result'] == 1)
-            {
-                return true;
-            }
-            else
-            {
-                $data = array('respuesta' => $resultado['cpanelresult']['data'][0]['reason']);
-                Mail::queue('email.error_agregar_dominio', $data, function($message) {
-                    $message->to('carlos.juarez@t7marketing.com', "Administrador")->subject('Error al agregar el dominio');
-                });
-                Log::error('WHMFunciones. AgregarFtpServidor ' . $resultado['cpanelresult']['data'][0]['reason']);
                 return false;
             }
         }

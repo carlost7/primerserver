@@ -38,11 +38,18 @@ class FtpsController extends \BaseController {
         $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
 
-        $ftp = new Ftp;
+        $ftp           = new Ftp;
+        $ftp->hostname = $domain->server->domain;
+        if (Input::get('homedir'))
+        {
+            $ftp->homedir  = 'public_html/' . $domain->domain."/".Input::get('homedir');
+        }
+        else
+        {
+            $ftp->homedir  = 'public_html/' . $domain->domain;
+        }        
         $ftp->domain()->associate($domain);
-        
-        
-        
+
         if ($ftp->save())
         {
             Session::flash('message', trans('frontend.messages.ftp.store.successful'));
@@ -120,14 +127,24 @@ class FtpsController extends \BaseController {
     {
         $user   = User::findOrFail($user_id);
         $domain = Domain::findOrFail($domain_id);
-        if (Ftp::destroy($id))
+        $ftp    = Ftp::findOrFail($id);
+        //No se puede quedar el dominio sin ftps
+        if (count($domain->ftps) > 1)
         {
-            Session::flash('message', trans('frontend.messages.ftp.destroy.successful'));
+            if ($ftp->delete())
+            {
+                Session::flash('message', trans('frontend.messages.ftp.destroy.successful'));
+            }
+            else
+            {
+                Session::flash('error', trans('frontend.messages.ftp.destroy.error'));
+            }
         }
         else
         {
-            Session::flash('error', trans('frontend.messages.ftp.destroy.error'));
+            Session::flash('error', trans('frontend.messages.ftp.empty.error'));
         }
+
         return Redirect::route('user.ftps.index', array($user->id, $domain->id));
     }
 
