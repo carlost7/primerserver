@@ -1,13 +1,13 @@
 <?php
 
-class FTPListener {
+class FTPListener{
 
-    //Class constructor, injects automatically the whmfunctions provider
+    
     public function __construct(\PrimerServer\Services\WHM\WHMFunctions $whmFunctions)
     {
         $this->whmfunctions = $whmFunctions;
     }
-
+    
     //Calls createFTP and creates a new ftp 
     public function store($ftp)
     {

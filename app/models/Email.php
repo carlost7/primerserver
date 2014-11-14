@@ -12,7 +12,6 @@ class Email extends Ardent {
     public static $rules                  = array(
         'user_email'            => 'required',
         'email'                 => 'required',
-        'forward'               => '',
         'password'              => 'required|alpha_dash|min:8|confirmed',
         'password_confirmation' => 'required',
     );
@@ -25,23 +24,35 @@ class Email extends Ardent {
     public $forceEntityHydrationFromInput = true;
     public $autoPurgeRedundantAttributes  = true;
 
+    
     public function beforeCreate()
     {
+        /*if (!count(Event::fire('email.creating', array($this))))
+        {
+            return false;
+        }
         $this->email = $this->email . "@" . $this->domain->domain;
-        Event::fire('email.creating', array($this));
-        unset($this->password);
+        array_forget($this, 'password');*/
+        
+        $this->forward = implode(",", $this->forward);
     }
 
     public function beforeUpdate()
     {
-        Event::fire('email.updating', array($this));
-        unset($this->password);
+        if (!count(Event::fire('email.updating', array($this))))
+        {
+            return false;
+        }
+        array_forget($this, 'password');
     }
 
     public function beforeDelete()
     {
-        Event::fire('email.deleting', array($this));
-        unset($this->password);
+        if (!count(Event::fire('email.deleting', array($this))))
+        {
+            return false;
+        }
+        array_forget($this, 'password');
     }
 
 }

@@ -119,7 +119,7 @@ return array(
         "password"              => "10 caracteres",
         "password_confirmation" => "Repetir Contraseña",
         "domain"                => "ejemplo.com",
-        "forward"               => "ejemplo1@correo.com, ejemplo2@correo.com",
+        "forward"               => "ejemplo1@correo.com",
         "user_email"            => "Juan Pérez",
         "username"              => "user@ps.com",
         "hostname"              => "ps.com",
@@ -180,9 +180,9 @@ return array(
             "destroy" => array(
                 "submit" => "Eliminar",
             ),
-            "show" => array(
+            "show"    => array(
                 "filezilla" => "Filezilla",
-                "coreftp" => "Core FTP",
+                "coreftp"   => "Core FTP",
                 "cyberduck" => "Cyberduck",
             ),
         ),
@@ -234,73 +234,74 @@ return array(
             ),
         ),
         "domain"         => array(
-            "store"   => array(                
-                "no_data" => "Faltan datos en el servidor",
+            "store"   => array(
+                "no_data"      => "Faltan datos en el servidor",
                 "server_error" => "El servidor respondio: :error",
-                "successful" => "Dominio creado con éxito",
-                "error"      => "Error al crear el dominio",
+                "successful"   => "Dominio creado con éxito",
+                "error"        => "Error al crear el dominio",
             ),
             "update"  => array(
-                "no_data" => "Faltan datos en el servidor",
+                "no_data"    => "Faltan datos en el servidor",
                 "successful" => "Dominio actualizado con éxito",
                 "error"      => "Error al actualizar el dominio",
             ),
             "destroy" => array(
-                "no_data" => "Faltan datos en el servidor",
-                "successful" => "Dominio actualizado con éxito",
-                "error"      => "Error al actualizar el dominio",
+                "no_data"    => "Faltan datos en el servidor",
+                "successful" => "Dominio eliminado con éxito",
+                "error"      => "Error al eliminar el dominio",
             ),
         ),
         "email"          => array(
             "store"   => array(
-                "no_data" => "Faltan datos para el correo",
+                "no_data"    => "Faltan datos para el correo",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
+                "bad_email"  => "El campo redirección requiere un correo"
             ),
             "update"  => array(
-                "no_data" => "Faltan datos para el correo",
+                "no_data"    => "Faltan datos para el correo",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
-                "no_data" => "Faltan datos para el correo",
+                "no_data"    => "Faltan datos para el correo",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
         ),
         "ftp"            => array(
             "store"   => array(
-                "no_data" => "Faltan datos para el ftp",
+                "no_data"    => "Faltan datos para el ftp",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
-                "no_data" => "Faltan datos para el ftp",
+                "no_data"    => "Faltan datos para el ftp",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
-                "no_data" => "Faltan datos para el ftp",
+                "no_data"    => "Faltan datos para el ftp",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
-            "empty" => array(                
-                "error"      => "Unicamente existe 1 FTP no se puede eliminar",
+            "empty"   => array(
+                "error" => "Unicamente existe 1 FTP no se puede eliminar",
             ),
         ),
         "database"       => array(
             "store"   => array(
-                "no_data" => "Faltan datos para la base de datos",
+                "no_data"    => "Faltan datos para la base de datos",
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
-                "no_data" => "Faltan datos para la base de datos",
+                "no_data"    => "Faltan datos para la base de datos",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
-                "no_data" => "Faltan datos para la base de datos",
+                "no_data"    => "Faltan datos para la base de datos",
                 "successful" => "Usuario actualizado con éxito",
                 "error"      => "Error al actualizar el usuario",
             ),
@@ -314,6 +315,7 @@ return array(
         "is_user"          => "El tipo de usuario no es correcto o no esta activo",
         "is_admin"         => "El tipo de usuario no corresponde a este registro",
         "not_same_user"    => "El usuario al que intenta acceder no pertenece a la cuenta",
+        "not_active"       => "El dominio no esta activo",
         "not_user_domain"  => "El dominio no pertenece al usuario",
         "not_user_element" => "El objeto que quiere ver no pertence al dominio",
     ),
@@ -364,7 +366,7 @@ return array(
             "date_start" => "Fecha de inicio",
             "date_end"   => "Fecha de termino",
             "plan"       => "Plan",
-            "delete"       => "Eliminar",
+            "delete"     => "Eliminar",
         ),
         "email"    => array(
             "user_email" => "Nombre",

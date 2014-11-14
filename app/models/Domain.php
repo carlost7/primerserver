@@ -22,7 +22,7 @@ class Domain extends Ardent {
         'plan'      => array(self::BELONGS_TO, 'Plan'),
         'server'    => array(self::BELONGS_TO, 'Server'),
         //Tiene
-        'emails'     => array(self::HAS_MANY, 'Email'),
+        'emails'    => array(self::HAS_MANY, 'Email'),
         'ftps'      => array(self::HAS_MANY, 'Ftp'),
         'databases' => array(self::HAS_MANY, 'Database'),
     );
@@ -35,11 +35,16 @@ class Domain extends Ardent {
 
     public function beforeCreate()
     {
+        unset($this->password);
+    }
+
+    public function beforeUpdate()
+    {
         if (!count(Event::fire('domain.creating', array($this))))
         {
             return false;
         }
-        unset($this->password);
+        array_forget($this, 'password');
     }
 
     public function beforeDelete()
@@ -48,7 +53,7 @@ class Domain extends Ardent {
         {
             return false;
         }
-        unset($this->password);
+        array_forget($this, 'password');
     }
 
 }

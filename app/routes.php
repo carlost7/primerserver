@@ -78,8 +78,9 @@ Route::group(array('before' => 'auth'), function() {
                 'uses' => 'DomainsController@create'));
             Route::post('user/domains/{user_id}', array('as'   => 'user.domains.store',
                 'uses' => 'DomainsController@store'));
-            Route::get('user/domains/{user_id}/{id}', array('as'   => 'user.domains.show',
-                'uses' => 'DomainsController@show'));
+            Route::get('user/domains/{user_id}/{id}', array('before' => 'object_belongs_to_domain',
+                'as'     => 'user.domains.show',
+                'uses'   => 'DomainsController@show'));
             Route::get('user/domains/{user_id}/{id}/edit', array('as'   => 'user.domains.edit',
                 'uses' => 'DomainsController@edit'));
             Route::put('user/domains/{user_id}/{id}', array('as'   => 'user.domains.update',
@@ -139,8 +140,8 @@ Route::group(array('before' => 'auth'), function() {
         });
     });
 
-    Route::any('get_password',array('as'=>'password.show','uses'=>'PasswordController@show'));
-    
+    Route::any('get_password', array('as' => 'password.show', 'uses' => 'PasswordController@show'));
+
 
     Route::group(array('prefix' => 'administrador', 'before' => 'is_admin'), function() {
         

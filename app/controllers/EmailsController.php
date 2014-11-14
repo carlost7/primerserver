@@ -40,7 +40,13 @@ class EmailsController extends \BaseController {
 
         $email = new Email;
         $email->domain()->associate($domain);
-
+        foreach (Input::get('forward') as $i => $forward) {
+            if ($forward['email'])
+            {
+                $email::$rules["forward.$i.email"] = "email";
+                $email::$customMessages["email"]   = trans("frontend.messages.email.store.bad_email");
+            }
+        }
         if ($email->save())
         {
             Session::flash('message', trans('frontend.messages.email.store.successful'));
@@ -127,7 +133,6 @@ class EmailsController extends \BaseController {
             Session::flash('error', trans('frontend.messages.email.destroy.error'));
         }
         return Redirect::route('user.emails.index', array($user->id, $domain->id));
-        
     }
 
 }

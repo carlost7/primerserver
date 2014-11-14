@@ -109,5 +109,6 @@ return array(
         "homedir"               => "Directorio Raiz",
         "name_db"               => 'Nombre de Base de datos',
         "user"                  => 'Usuario',
+        "forward..email"        => 'Redireccion :'
     ),
 );

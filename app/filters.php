@@ -116,6 +116,11 @@ Route::filter('domain_belongs_to_user', function($route, $request) {
         {
             Session::flash('error', trans('frontend.filter.not_user_domain'));
             return Redirect::back();
+        }        
+        if ($domain->active)
+        {
+            Session::flash('error', trans('frontend.filter.not_user_domain'));
+            return Redirect::back();
         }
     }
 });

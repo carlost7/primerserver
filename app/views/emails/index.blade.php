@@ -15,16 +15,16 @@
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>{{trans('frontend.table_head.email.email')}}</th>                    
                         <th>{{trans('frontend.table_head.email.user_email')}}</th>
+                        <th>{{trans('frontend.table_head.email.email')}}</th>                    
                         <th>{{trans('frontend.table_head.email.forward')}}</th>                        
                         <th>{{trans('frontend.table_head.email.edit')}}</th>                        
                         <th>{{trans('frontend.table_head.email.delete')}}</th>                        
                     </tr>
                     @foreach($emails as $email)
                     <tr>                              
-                        <td>{{ HTML::linkRoute('user.emails.show',$email->email,array($user->id,$domain->id,$email->id)) }}</td>
                         <td>{{ $email->user_email}}</td>
+                        <td>{{ HTML::linkRoute('user.emails.show',$email->email,array($user->id,$domain->id,$email->id)) }}</td>
                         <td>
                             <?php $forwards = explode(",",$email->forward) ?>
                             @foreach($forwards as $forward)

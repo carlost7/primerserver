@@ -35,7 +35,7 @@ class Ftp extends Ardent {
         {
             return false;
         }
-        unset($this->password);
+        array_forget($this, 'password');
     }
 
     public function beforeUpdate()
@@ -47,7 +47,7 @@ class Ftp extends Ardent {
                 return false;
             }
         }
-        unset($this->password);
+        array_forget($this, 'password');
     }
 
     public function beforeDelete()
@@ -56,7 +56,7 @@ class Ftp extends Ardent {
         {
             return false;
         }
-        unset($this->password);
+        array_forget($this, 'password');
     }
 
 }

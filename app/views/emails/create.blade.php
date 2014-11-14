@@ -43,10 +43,20 @@
                 {{ Form::label('password_confirmation', trans('frontend.label.password_confirmation')) }}
                 {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder.password_confirmation'), 'class'=>'form-control', 'id' => 'password_confirmation')) }}
             </div>            
-            <div class="form-group">
+
+            <div class="form-group forwarders">
                 {{ Form::label('forward', trans('frontend.label.forward')) }}
-                {{ Form::text('forward',Input::old('forward'),array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control'))}}
+
+                <div class="input-group">
+                    {{ Form::text('forward[1][email]',Input::old('forward.1'),array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control forwarder'))}}
+                    <span class="input-group-btn">
+                        {{ Form::button("+",array('class'=>"btn btn-primary addforwarder","onclick"=>"addforwarder()")) }}
+                        {{ Form::button("-",array('class'=>"btn btn-primary delforwarder","onclick"=>"delforwarder()")) }}
+                    </span>                  
+                </div>
+
             </div>
+
             <div class="form-group">
                 {{Form::submit(trans('frontend.button.email.store.submit'),array('class'=>"btn btn-primary"))}}                        
             </div>
@@ -55,4 +65,23 @@
     </div>
 </div>
 @include('layouts.modal_password')
+@stop
+
+@section('scripts')
+<script>
+    function addforwarder(e) {
+        id = $(".forwarder").length+1;
+        if (id <= 5) {
+            texto = '<input type="text" class="form-control forwarder" placeholder="ejemplo1@correo.com" name="forward[' + id + '][email]" id="'+id+'">';
+            $(".forwarders").append(texto);
+        } else {
+            alert("solo se pueden agregar 5 redirecciones");
+        }
+    }
+
+    function delforwarder(e) {
+        id = $(".forwarder").length;
+        $("#"+id).remove();
+    }
+</script>
 @stop

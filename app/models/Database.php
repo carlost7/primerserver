@@ -26,7 +26,7 @@ class Database extends Ardent {
 
     public function beforeSave()
     {
-        unset($this->password);
+        array_forget($this, 'password');
     }
 
 }
