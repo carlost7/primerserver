@@ -7,7 +7,7 @@
         <h2>{{trans('frontend.title.reminder_mail')}}</h2>
 
         <div>
-            {{trans('frontend.instructions.reminder_mail')}}
+            {{trans('frontend.instruction.reminder_mail')}}
             {{ HTML::linkAction('RemindersController@getReset','Cambiar Password',array($token))}}                
         </div>
     </body>

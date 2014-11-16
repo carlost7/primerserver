@@ -20,7 +20,7 @@ class RemindersController extends Controller {
     public function postRemind()
     {
         switch ($response = Password::remind(Input::only('email'), function($message) {
-            $message->subject(trans('frontend.title.remainder_mail'));
+            $message->subject(trans('frontend.title.reminder_mail'));
         }
         )) {
             case Password::INVALID_USER:

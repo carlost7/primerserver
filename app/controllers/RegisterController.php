@@ -26,7 +26,7 @@ class RegisterController extends \BaseController {
         $user->type = "User";
         if ($user->save())
         {
-            Session::flash('message', trans('frontend.register.successful'));
+            Session::flash('message', trans('frontend.messages.register.successful'));
             Auth::login($user);
             return Redirect::route("user.show", $user->id);
         }

@@ -47,9 +47,10 @@ class DomainsController extends \BaseController {
         $domain->plan()->associate($plan);
         $domain->server()->associate(getLeastBussyServer($plan));
         $domain->user()->associate($user);
-
+        
         if ($domain->save())
         {
+            $domain->domainPass()->save(new DomainPassword);
             Session::flash('message', trans('frontend.messages.domain.store.successful'));
             return Redirect::route("user.domains.index", $user->id);
         }
@@ -97,10 +98,9 @@ class DomainsController extends \BaseController {
      */
     public function update($user_id, $id)
     {
-
         $domain         = Domain::find($id);
         $domain->active = true;
-
+        $domain::$rules = array();
         if ($domain->save())
         {
             //Agregamos un ftp al servidor
@@ -110,6 +110,7 @@ class DomainsController extends \BaseController {
             $ftp->domain()->associate($domain);
             if ($ftp->save())
             {
+                $domain->domainPass->delete();
                 Session::flash('message', trans('frontend.messages.domain.store.successful'));
                 return Redirect::route("user.domains.index", $user->id);
             }
