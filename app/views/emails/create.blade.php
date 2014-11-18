@@ -47,13 +47,29 @@
             <div class="form-group forwarders">
                 {{ Form::label('forward', trans('frontend.label.forward')) }}
 
+                @if(count(Input::old()))
+                @foreach(Input::old('forward') as $id => $forward)
+                    @if($id < 2)
                 <div class="input-group">
-                    {{ Form::text('forward[1][email]',Input::old('forward.1'),array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control forwarder'))}}
+                    {{ Form::text('forward['.$id.'][email]',$forward['email'],array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control forwarder'))}}
                     <span class="input-group-btn">
                         {{ Form::button("+",array('class'=>"btn btn-primary addforwarder","onclick"=>"addforwarder()")) }}
                         {{ Form::button("-",array('class'=>"btn btn-primary delforwarder","onclick"=>"delforwarder()")) }}
+                    </span>     
+                </div>                
+                    @else
+                    {{ Form::text('forward['.$id.'][email]',$forward['email'],array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control forwarder', 'id'=>$id))}}
+                    @endif
+                @endforeach
+                @else
+                <div class="input-group">
+                    {{ Form::text('forward[1][email]',"",array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control forwarder'))}}
+                    <span class="input-group-btn">
+                        {{ Form::button("+",array('class'=>"btn btn-primary addforwarder","onclick"=>"addforwarder()")) }}
+                        {{ Form::button("-",array('class'=>"btn btn-primary delforwarder","onclick"=>"delforwarder(1)")) }}
                     </span>                  
-                </div>
+                </div>                
+                @endif
 
             </div>
 
@@ -70,9 +86,9 @@
 @section('scripts')
 <script>
     function addforwarder(e) {
-        id = $(".forwarder").length+1;
+        id = $(".forwarder").length + 1;
         if (id <= 5) {
-            texto = '<input type="text" class="form-control forwarder" placeholder="ejemplo1@correo.com" name="forward[' + id + '][email]" id="'+id+'">';
+            texto = '<input type="text" class="form-control forwarder" placeholder="ejemplo1@correo.com" name="forward[' + id + '][email]" id="' + id + '">';
             $(".forwarders").append(texto);
         } else {
             alert("solo se pueden agregar 5 redirecciones");
@@ -81,7 +97,7 @@
 
     function delforwarder(e) {
         id = $(".forwarder").length;
-        $("#"+id).remove();
+        $("#" + id).remove();
     }
 </script>
 @stop

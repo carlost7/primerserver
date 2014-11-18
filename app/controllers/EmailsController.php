@@ -104,7 +104,7 @@ class EmailsController extends \BaseController {
         $email::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
         $email::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
 
-        if ($email->update())
+        if ($email->save())
         {
             Session::flash('message', trans('frontend.messages.email.update.successful'));
             return Redirect::route('user.emails.show', array($user->id, $domain->id, $email->id));

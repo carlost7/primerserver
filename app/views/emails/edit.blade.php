@@ -39,9 +39,27 @@
                 {{ Form::label('password_confirmation', trans('frontend.label.password_confirmation')) }}
                 {{ Form::password('password_confirmation',array('placeholder' => trans('frontend.placeholder.password_confirmation'), 'class'=>'form-control', 'id' => 'password_confirmation')) }}
             </div>            
-            <div class="form-group">
-                {{ Form::label('forward', trans('frontend.label.forward')) }}
-                {{ Form::text('forward',Input::old('forward'),array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control'))}}
+            <div class="form-group forwarders">
+                <!-- label -->
+                <div class="input-group">
+                    {{ Form::label('forward', trans('frontend.label.forward')) }}
+                    <span class="input-group-btn">                        
+                        {{ Form::button("+",array('class'=>"btn btn-primary addforwarder","onclick"=>"addforwarder()")) }}
+                    </span>
+                </div>
+
+                <!-- Input -->                
+                <?php $forwards = explode(",", $email->forward) ?>
+                @foreach($forwards as $id => $forward)
+                @if($forward != "")
+                <div class="input-group" id="forwarder-{{$id}}">
+                    {{ Form::text('forward['.$id.'][email]',$forward,array('placeholder' => trans('frontend.placeholder.forward'), 'class'=>'form-control forwarder'))}}
+                    <span class="input-group-btn">                        
+                        {{ Form::button("-",array('class'=>"btn btn-primary delforwarder","onclick"=>"delforwarder(".$id.")")) }}
+                    </span>
+                </div>
+                @endif
+                @endforeach              
             </div>
             <div class="form-group">
                 {{Form::submit(trans('frontend.button.email.update.submit'),array('class'=>"btn btn-primary"))}}                        
@@ -51,4 +69,23 @@
     </div>
 </div>
 @include('layouts.modal_password')
+@stop
+
+@section('scripts')
+<script>
+    function addforwarder(e) {
+        id = $(".forwarder").length;
+        if (id <= 4) {
+            texto = '<div class="input-group" id="forwarder-'+id+'"><input type = "text" value = "" name = "forward[' + id + '][email]" class = "form-control forwarder" placeholder = "ejemplo1@correo.com" ><span class = "input-group-btn"> <button type="button" onclick="delforwarder(' + id + ')" class = "btn btn-primary delforwarder">-</button></span></div>';
+            $(".forwarders").append(texto);
+        } else {
+            alert("solo se pueden agregar 5 redirecciones");
+        }
+    }
+
+    function delforwarder(id) {
+        
+        $("#forwarder-" + id).remove();
+    }
+</script>
 @stop
