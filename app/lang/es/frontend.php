@@ -255,19 +255,19 @@ return array(
             "email" => array(
                   "store" => array(
                         "no_data" => "Faltan datos para el correo",
-                        "successful" => "Usuario creado con éxito",
-                        "error" => "Error al crear el usuario",
+                        "successful" => "Correo creado con éxito",
+                        "error" => "Error al crear el correo",
                         "bad_email" => "El campo redirección requiere un correo"
                   ),
                   "update" => array(
                         "no_data" => "Faltan datos para el correo",
-                        "successful" => "Usuario actualizado con éxito",
-                        "error" => "Error al actualizar el usuario",
+                        "successful" => "Correo actualizado con éxito",
+                        "error" => "Error al actualizar el correo",
                   ),
                   "destroy" => array(
                         "no_data" => "Faltan datos para el correo",
                         "successful" => "Usuario actualizado con éxito",
-                        "error" => "Error al actualizar el usuario",
+                        "error" => "Error al actualizar el correo",
                   ),
             ),
             "ftp" => array(
@@ -369,6 +369,7 @@ return array(
                   "date_end" => "Fecha de termino",
                   "plan" => "Plan",
                   "delete" => "Eliminar",
+                  "activate" => 'activar',
             ),
             "email" => array(
                   "user_email" => "Nombre",

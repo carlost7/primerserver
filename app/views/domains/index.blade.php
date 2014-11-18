@@ -19,7 +19,6 @@
                         <th>{{trans('frontend.table_head.domain.date_end')}}</th>
                         <th>{{trans('frontend.table_head.domain.plan')}}</th>                        
                         <th>{{trans('frontend.table_head.domain.delete')}}</th>
-                        <th>{{"activar"}}</th>
                     </tr>
                     @foreach($domains as $domain)
                     <tr>                              
@@ -33,15 +32,6 @@
                             {{ Form::button(trans('frontend.button.domain.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$domain->id.")")) }}
                             {{ Form::close() }}
                         </td>
-                        @if(!$domain->active)
-                        <td>
-                            {{ Form::open(array("route" => array('user.domains.update',$user->id,$domain->id),"method"=>'PUT')) }}
-                            {{ Form::submit(trans('Activar'),array("class"=>'btn btn-success')) }}
-                            {{Form::close()}}
-                        </td>
-                        @else
-                        <td></td>
-                        @endif
                     </tr>                    
                     @endforeach
                 </table>

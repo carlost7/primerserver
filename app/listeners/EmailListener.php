@@ -9,14 +9,14 @@ class EmailListener {
 
     public function destroy($email)
     {
-        if ($this->whmfunctions->delMail($email->domain->server->nameserver, $$email->domain->domain, explode("@", $email->email)[0]))
+        if ($this->whmfunctions->delMail($email->domain->server->nameserver, $email->domain->domain, explode("@", $email->email)[0]))
         {
             if ($email->forward)
             {
 
                 $forwards = explode(",", $email->forward);
                 foreach ($forwards as $forward) {
-                    if (!$this->whmFunctions->delForward($email->domain->server->nameserver, $email->email, $forward))
+                    if (!$this->whmfunctions->delForward($email->domain->server->nameserver, $email->email, $forward))
                     {
                         return false;
                     }
@@ -54,9 +54,9 @@ class EmailListener {
 
     public function update($email)
     {
-        if ($email->password)
+        if (isset($email->password))
         {
-            if (!$this->whmFunctions->changePassword($email->domain->server->nameserver, $domain->domain, explode("@", $email->email)[0], $email->password))
+            if (!$this->whmfunctions->changePassword($email->domain->server->nameserver, $domain->domain, explode("@", $email->email)[0], $email->password))
             {
                 return false;
             }
@@ -75,18 +75,21 @@ class EmailListener {
         {
             $new_forwards = explode(",", $email->forward);
         }
-        $added_forwards   = array_diff($new_forwards, $current_forwards);
-        ;
+        $added_forwards   = array_diff($new_forwards, $current_forwards);        
         $deleted_forwards = array_diff($current_forwards, $new_forwards);
+        $total_forwards = array_merge(array_intersect($current_forwards, $added_forwards), $added_forwards);
+        $email->forward = $total_forwards;
+        dd($added_forwards);
+        dd($deleted_forwards);
 
         foreach ($added_forwards as $forward) {
-            if (!$this->whmFunctions->addForward($email->domain->server->nameserver, $domain->domain, explode("@", $email->email)[0], $forward))
+            if (!$this->whmfunctions->addForward($email->domain->server->nameserver, $domain->domain, explode("@", $email->email)[0], $forward))
             {
                 return false;
             }
         }
         foreach ($deleted_forwards as $forward) {
-            if (!$this->whmFunctions->delForward($email->domain->server->nameserver, $email->email, $forward))
+            if (!$this->whmfunctions->delForward($email->domain->server->nameserver, $email->email, $forward))
             {
                 return false;
             }

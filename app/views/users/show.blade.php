@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('contenido')
+@include('layouts.show_form_errors')
 <div class="container">
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
@@ -20,6 +21,8 @@
                         <th>{{trans('frontend.table_head.domain.date_end')}}</th>
                         <th>{{trans('frontend.table_head.domain.plan')}}</th>                        
                         <th>{{trans('frontend.table_head.domain.delete')}}</th> 
+                        <th>{{trans('frontend.table_head.domain.activate')}}</th>
+                        
                     </tr>
                     @foreach($domains as $domain)
                     <tr>                              
@@ -32,7 +35,16 @@
                             {{ Form::open(array('route' => array('user.domains.destroy',$user->id,$domain->id),'method'=>'DELETE','id'=>$domain->id,"class"=>'delete_domain')) }}
                             {{ Form::button(trans('frontend.button.domain.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$domain->id.")")) }}
                             {{ Form::close() }}
-                        </td>                        
+                        </td> 
+                        @if(!$domain->active)
+                        <td>
+                            {{ Form::open(array("route" => array('user.domains.update',$user->id,$domain->id),"method"=>'PUT')) }}
+                            {{ Form::submit(trans('Activar'),array("class"=>'btn btn-success')) }}
+                            {{Form::close()}}
+                        </td>
+                        @else
+                        <td></td>
+                        @endif
 
                     </tr>                    
                     @endforeach

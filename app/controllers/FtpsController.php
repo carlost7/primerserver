@@ -106,7 +106,7 @@ class FtpsController extends \BaseController {
         $ftp::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
         $ftp::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
 
-        if ($ftp->update())
+        if ($ftp->updateUniques())
         {
             Session::flash('message', trans('frontend.messages.ftp.update.successful'));
             return Redirect::route('user.ftps.show', array($user->id, $domain->id, $ftp->id));

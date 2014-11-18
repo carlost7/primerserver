@@ -52,7 +52,7 @@ class DomainsController extends \BaseController {
         {
             $domain->domainPass()->save(new DomainPassword);
             Session::flash('message', trans('frontend.messages.domain.store.successful'));
-            return Redirect::route("user.domains.index", $user->id);
+            return Redirect::route("user.show", $user->id);
         }
 
         return Redirect::back()->withErrors($domain->errors())->withInput();
@@ -107,16 +107,21 @@ class DomainsController extends \BaseController {
             $ftp           = new Ftp;
             $ftp->username = explode('.', $domain->domain)[0];
             $ftp->hostname = $domain->server->domain;
+            $ftp->password = Crypt::decrypt($domain->domainPass->password);
+            $ftp->password_confirmation = Crypt::decrypt($domain->domainPass->password);
             $ftp->domain()->associate($domain);
             if ($ftp->save())
             {
                 $domain->domainPass->delete();
                 Session::flash('message', trans('frontend.messages.domain.store.successful'));
-                return Redirect::route("user.domains.index", $user->id);
+                return Redirect::route("user.domains.index", $user_id);
+            }else{
+                Session::flash('error', trans('frontend.messages.domain.store.error'));
+                return Redirect::back()->withErrors($ftp->errors());
             }
         }
-
-        return Redirect::back()->withErrors($domain->errors())->withInput();
+        return Redirect::back()->withErrors($domain->errors());
+        
     }
 
     /**

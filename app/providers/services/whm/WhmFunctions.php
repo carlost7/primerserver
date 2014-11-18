@@ -252,7 +252,7 @@ class WHMFunctions {
             return false;
         }
 
-        $response = $this->xmlapi->api2_query($nameserver, 'Email', 'delpop', array('domain' => $domain, 'email' => $username,));
+        $response = $this->xmlapi->api2_query($nameserver, 'Email', 'delpop', array('domain' => $domain, 'email' => $email,));
 
         $resultado = json_decode($response, true);
         if ($resultado['cpanelresult']['data'][0]['result'] == 1)

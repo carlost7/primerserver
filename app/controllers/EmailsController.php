@@ -47,6 +47,7 @@ class EmailsController extends \BaseController {
                 $email::$customMessages["email"]   = trans("frontend.messages.email.store.bad_email");
             }
         }
+        
         if ($email->save())
         {
             Session::flash('message', trans('frontend.messages.email.store.successful'));
