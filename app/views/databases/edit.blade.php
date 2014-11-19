@@ -20,11 +20,11 @@
             @include('layouts.show_form_errors')
             <div class="form-group">
                 {{ Form::label('name_db', trans('frontend.label.name_db')) }}
-                {{ Form::text('name_db',Input::old('name_db'),array('placeholder' => trans('frontend.placeholder.name_db'), 'class'=>'form-control'))}}
+                {{ Form::text('name_db',Input::old('name_db'),array('placeholder' => trans('frontend.placeholder.name_db'), 'class'=>'form-control', "disabled"))}}
             </div>
             <div class="form-group">
                 {{ Form::label('user', trans('frontend.label.user')) }}
-                {{ Form::text('user',Input::old('user'),array('placeholder' => trans('frontend.placeholder.user'), 'class'=>'form-control'))}}
+                {{ Form::text('user',Input::old('user'),array('placeholder' => trans('frontend.placeholder.user'), 'class'=>'form-control','disabled'))}}
             </div>
             <div class="form-group">
                 {{ Form::label('password', trans('frontend.label.password')) }}

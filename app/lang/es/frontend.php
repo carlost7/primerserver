@@ -125,8 +125,8 @@ return array(
             "username" => "user@ps.com",
             "hostname" => "ps.com",
             "homedir" => "directorio",
-            "name_db" => "Nombre de Base de Datos",
-            "user" => "Usuario de base de datos",
+            "name_db" => "Nombre de Base de Datos < 63 caracteres",
+            "user" => "Usuario de base de datos < 16 caracteres",
       ),
       "button" => array(
             "login" => array(

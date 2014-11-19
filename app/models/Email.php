@@ -12,7 +12,8 @@ class Email extends Ardent {
       public static $rules                  = array(
           'user_email'            => 'required',
           'email'                 => 'required',
-          'password'              => 'required|alpha_dash|min:8|confirmed',
+          'password'              => 'required|min:8|confirmed',
+          'password'              => array('regex:/^.*(?=.{8,15})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).*$/'),
           'password_confirmation' => 'required',
       );
       //Relationships
@@ -26,10 +27,6 @@ class Email extends Ardent {
 
       public function beforeCreate()
       {
-            if (!count(Event::fire('email.creating', array($this))))
-            {
-                  return false;
-            }
             $forwards = "";
             foreach ($this->forward as $forward) {
                   if ($forward['email'] != "")
@@ -37,6 +34,17 @@ class Email extends Ardent {
                         $forwards = $forwards . $forward['email'] . ",";
                   }
             }
+
+            if ($forwards == "")
+            {
+                  array_forget($this, 'forward');
+            }
+
+            if (!count(Event::fire('email.creating', array($this))))
+            {
+                  return false;
+            }
+
             $this->forward = $forwards;
             $this->email   = $this->email . "@" . $this->domain->domain;
             array_forget($this, 'password');
