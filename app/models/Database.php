@@ -34,6 +34,18 @@ class Database extends Ardent {
             array_forget($this, 'password');
       }
 
+      public function beforeUpdate()
+      {
+            if ($this->password != "")
+            {
+                  if (!count(Event::fire('database.updating', array($this))))
+                  {
+                        return false;
+                  }
+            }
+            array_forget($this, 'password');
+      }
+
       public function beforeDelete()
       {
             if (!count(Event::fire('database.deleting', array($this))))

@@ -112,10 +112,10 @@ class DatabasesController extends \BaseController {
             $user     = User::findOrFail($user_id);
             $domain   = Domain::findOrFail($domain_id);
 
-            $database::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
+            $database::$rules['password']              = (Input::get('password')) ? 'required|min:8|confirmed' : '';
             $database::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
 
-            if ($database->update())
+            if ($database->updateUniques())
             {
                   Session::flash('message', trans('frontend.messages.database.update.successful'));
                   return Redirect::route('user.databases.show', array($user->id, $domain->id, $database->id));

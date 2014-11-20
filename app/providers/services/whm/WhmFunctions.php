@@ -450,6 +450,28 @@ class WHMFunctions {
             }
       }
 
+      public function updateDb($nameserver,$dbuser,$password)
+      {
+            if (!isset($nameserver) || !isset($dbuser) || !isset($password))
+            {
+                  \Session::flash('error', trans('frontend.messages.dbase.store.no_data'));
+                  return false;
+            }
+
+            $response  = $this->xmlapi->api2_query($nameserver, "MysqlFE", "changedbuserpassword", array("dbuser" => $dbuser,'password'=>$password));
+            $resultado = json_decode($response, true);
+            if (!isset($resultado['cpanelresult']['error']))
+            {
+                  return true;
+            }
+            else
+            {
+                  \Log::error('WHMFunciones. addDb ' . $resultado['cpanelresult']['error']);
+                  \Session::flash("error", trans('frontend.messages.domain.store.server_error', array("error" => $resultado['cpanelresult']['error'])));
+                  return false;
+            }
+      }
+
       /*
        * Funcion para eliminar un correo del servidor
        */

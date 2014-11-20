@@ -21,19 +21,8 @@ class DatabaseListener {
 
       public function update($database)
       {
-            if ($this->whmfunctions->delMail($database->domain->server->nameserver, $database->domain->domain, explode("@", $database->database)[0]))
+            if ($this->whmfunctions->updateDb($database->domain->server->nameserver, $database->user, $database->password))
             {
-                  if ($database->forward)
-                  {
-
-                        $forwards = explode(",", $database->forward);
-                        foreach ($forwards as $forward) {
-                              if (!$this->whmfunctions->delForward($database->domain->server->nameserver, $database->database, $forward))
-                              {
-                                    return false;
-                              }
-                        }
-                  }
                   return true;
             }
             else
