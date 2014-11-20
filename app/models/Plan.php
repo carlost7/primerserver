@@ -16,6 +16,7 @@ class Plan extends Ardent {
     protected $table                      = 'plans';
     public static $relationsData          = array(
         'servers' => array(self::HAS_MANY, 'Server'),
+        'hostingCost' => array(self::HAS_ONE, 'HostingCost'),
     );
     public $autoHydrateEntityFromInput    = true;
     public $forceEntityHydrationFromInput = true;

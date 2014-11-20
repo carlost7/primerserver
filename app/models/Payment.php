@@ -21,8 +21,8 @@ class Payment extends Ardent {
     public static $relationsData          = array(
         'user' => array(self::BELONGS_TO, 'User'),
     );
-    public $autoHydrateEntityFromInput    = true;
-    public $forceEntityHydrationFromInput = true;
     protected $table                      = 'payments';
+    
+    
 
 }
