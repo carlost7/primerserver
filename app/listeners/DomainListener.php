@@ -45,11 +45,6 @@ class DomainListener {
             {
                   return true;
             }
-      }
-
-      public function update($domain)
-      {
-            
-      }
+      }      
 
 }

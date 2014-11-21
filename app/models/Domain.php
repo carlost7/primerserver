@@ -37,12 +37,23 @@ class Domain extends Ardent {
 
       public function beforeCreate()
       {
-            unset($this->password);
+            if (!count(Event::fire('domain.creating', array($this))))
+            {
+                  return false;
+            }
+            array_forget($this, 'password');            
+      }
+      
+      public function afterCreate(){
+            if (!count(Event::fire('domain.created', array($this))))
+            {
+                  return false;
+            }
       }
 
       public function beforeUpdate()
       {
-            if (!count(Event::fire('domain.creating', array($this))))
+            if (!count(Event::fire('domain.updating', array($this))))
             {
                   return false;
             }
@@ -54,8 +65,7 @@ class Domain extends Ardent {
             if (!count(Event::fire('domain.deleting', array($this))))
             {
                   return false;
-            }
-            array_forget($this, 'password');
+            }            
       }
 
 }

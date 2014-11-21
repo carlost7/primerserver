@@ -1,0 +1,1 @@
+/var/www/html/primerserver/app/views/freedomains/index.blade.php

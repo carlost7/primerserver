@@ -25,10 +25,13 @@ class PaymentListener {
                   $payment->concept     = $domain->plan->hostingCost->concept;
                   $payment->ammount     = $domain->plan->hostingCost->cost;
                   $payment->currency    = $domain->plan->hostingCost->currency;
-                  $payment->description = "";
+                  $payment->description = "descripcion";
                   $payment->active      = true;
                   $payment->no_order    = $no_order;
                   $payment->status      = "started";
+                  $payment->date_start  = \Carbon\Carbon::now();
+                  $payment->date_end    = \Carbon\Carbon::now();
+                  $payment->user()->associate($domain->user);
 
                   if ($payment->save())
                   {
@@ -37,17 +40,26 @@ class PaymentListener {
                         $payment->concept     = $costDomain->concept;
                         $payment->ammount     = $costDomain->cost;
                         $payment->currency    = $costDomain->currency;
-                        $payment->description = "";
+                        $payment->description = "descripcion";
                         $payment->active      = true;
                         $payment->no_order    = $no_order;
                         $payment->status      = "started";
+                        $payment->date_start  = \Carbon\Carbon::now();
+                        $payment->date_end    = \Carbon\Carbon::now();
+                        $payment->user()->associate($domain->user);
                         if ($payment->save())
                         {
                               return true;
                         }
+                        else
+                        {
+                              Session::flash("error", trans("frontend.messages.payments.store.error"));
+                              return false;
+                        }
                   }
                   else
                   {
+                        Session::flash("error", trans("frontend.messages.payments.store.error"));
                         return false;
                   }
             }

@@ -8,7 +8,8 @@
 
 //Event::listen('pago_aprobado', 'PagosListener@publicar_contenido');
 Event::listen('domain.creating', 'PaymentListener@store');
-Event::listen('domain.update', 'DomainListener@store');
+Event::listen('domain.created', 'FreeDomainListener@store');
+Event::listen('domain.updating', 'DomainListener@update');
 Event::listen('domain.deleting', 'DomainListener@destroy');
 
 Event::listen('ftp.creating', 'FTPListener@store');

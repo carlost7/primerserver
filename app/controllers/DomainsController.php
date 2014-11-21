@@ -25,7 +25,7 @@ class DomainsController extends \BaseController {
     public function create($user_id)
     {
         $user  = User::find($user_id);
-        $plans = Plan::lists('plan_name', 'id');
+        $plans = Plan::lists('plan_name', 'id');        
         return View::make('domains.create', compact('plans', 'user'));
     }
 

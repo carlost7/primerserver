@@ -1,6 +1,8 @@
 <?php
 
-class DomainCost extends \Eloquent {
+use LaravelBook\Ardent\Ardent;
+
+class DomainCost extends Ardent {
 
       // Add your validation rules here
       public static $rules = [

@@ -1,6 +1,8 @@
 <?php
 
-class HostingCost extends \Eloquent {
+use LaravelBook\Ardent\Ardent;
+
+class HostingCost extends Ardent {
 
       // Add your validation rules here
       public static $rules         = [
