@@ -25,7 +25,7 @@ class PaymentListener {
                   $payment->concept     = $domain->plan->hostingCost->concept;
                   $payment->ammount     = $domain->plan->hostingCost->cost;
                   $payment->currency    = $domain->plan->hostingCost->currency;
-                  $payment->description = "descripcion";
+                  $payment->description = $domain->plan->plan_name;
                   $payment->active      = true;
                   $payment->no_order    = $no_order;
                   $payment->status      = "started";
@@ -40,7 +40,7 @@ class PaymentListener {
                         $payment->concept     = $costDomain->concept;
                         $payment->ammount     = $costDomain->cost;
                         $payment->currency    = $costDomain->currency;
-                        $payment->description = "descripcion";
+                        $payment->description = $domain->domain;
                         $payment->active      = true;
                         $payment->no_order    = $no_order;
                         $payment->status      = "started";

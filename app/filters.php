@@ -123,6 +123,15 @@ Route::filter('domain_belongs_to_user', function($route, $request) {
             return Redirect::back();
         }
     }
+    if ($route->getParameter('no_order') != '')
+    {
+        $payment = Payment::where('no_order',$route->getParameter('no_order'))->first();
+        if ($payment->user->id != $route->getParameter('user_id'))
+        {
+            Session::flash('error', trans('frontend.filter.not_user_payment'));
+            return Redirect::back();
+        }                
+    }
 });
 
 /*

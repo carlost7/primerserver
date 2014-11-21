@@ -7,40 +7,14 @@ class PaymentsController extends \BaseController {
      *
      * @return Response
      */
-    public function index()
+    public function index($user_id)
     {
-        $payments = Payment::all();
-
-        return View::make('payments.index', compact('payments'));
-    }
-
-    /**
-     * Show the form for creating a new payment
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('payments.create');
-    }
-
-    /**
-     * Store a newly created payment in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        $validator = Validator::make($data      = Input::all(), Payment::$rules);
-
-        if ($validator->fails())
-        {
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-
-        Payment::create($data);
-
-        return Redirect::route('payments.index');
+        $user   = User::findOrFail($user_id);
+        $payments = Payment::where('user_id',$user_id)->groupBy('no_order')->paginate(10);        
+        
+        dd($payments);        
+        
+        return View::make('payments.index', compact('payments', 'user'));
     }
 
     /**
@@ -49,46 +23,24 @@ class PaymentsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($user_id, $no_order)
     {
-        $payment = Payment::findOrFail($id);
-
-        return View::make('payments.show', compact('payment'));
+        $user   = User::findOrFail($user_id);
+        $payments = Payment::where('no_order',$no_order)->get();        
+        
+        return View::make('payments.show', compact('user', 'payments'));
     }
 
+    
     /**
-     * Show the form for editing the specified payment.
+     * We send the user to the payment page;
      *
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function update($user_id, $no_order)
     {
-        $payment = Payment::find($id);
-
-        return View::make('payments.edit', compact('payment'));
-    }
-
-    /**
-     * Update the specified payment in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        $payment = Payment::findOrFail($id);
-
-        $validator = Validator::make($data      = Input::all(), Payment::$rules);
-
-        if ($validator->fails())
-        {
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-
-        $payment->update($data);
-
-        return Redirect::route('payments.index');
+        //Generamos link de pago y lo enviamos hacia alla
     }
 
     /**
@@ -97,11 +49,20 @@ class PaymentsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($user_id, $no_order)
     {
-        Payment::destroy($id);
-
-        return Redirect::route('payments.index');
+        $user   = User::findOrFail($user_id);
+        $domain = Domain::findOrFail($domain_id);        
+        
+        if (Email::destroy($id))
+        {
+            Session::flash('message', trans('frontend.messages.payment.destroy.successful'));
+        }
+        else
+        {
+            Session::flash('error', trans('frontend.messages.payment.destroy.error'));
+        }
+        return Redirect::route('user.payments.index', array($user->id, $domain->id));
     }
 
 }

@@ -344,21 +344,29 @@ return array(
         "not_user_domain"   => "El dominio no pertenece al usuario",
         "not_user_element"  => "El objeto que quiere ver no pertence al dominio",
         "not_active_domain" => "El dominio no esta activo",
+        "not_user_payment"  => "el pago no pertenece al usuario",
     ),
     "link"        => array(
-        "user_edit"         => "Editar Cuenta",
-        "user_show"         => "Cuenta",
         "logout"            => "Salir",
         "reminder_password" => "recuperar contraseña",
-        "register"          => "Registrarse",
-        "domain_create"     => "Crear Nuevo Dominio",
-        "domain_index"      => "Dominios",
-        "emails_index"      => "Correos",
+        "register"          => "Registrarse",        
+        "domain" => array(
+            "create" => "Crear Nuevo Dominio",
+            "edit" => "Editar Dominio",
+            "show" => "Mostrar Dominio",
+            "index" => "Dominios"
+        ),        
+        "payment" => array(
+            "create" => "Crear pago",
+            "edit" => "Editar pagos",
+            "index" => "Pagos",
+            "show" => "Mostrar Pago",
+        ),
         "user"              => array(
             "create" => "Crear usuario",
-            "edit"   => "Editar usuario",
+            "edit"   => "Editar Cuenta",
             "index"  => "Usuarios",
-            "show"   => "Mostra usuario",
+            "show"   => "Cuenta",
         ),
         "domain"            => array(
             "create" => "Crear dominio",
@@ -414,11 +422,20 @@ return array(
             "user"    => "Usuario",
             "edit"    => "Editar Base de datos",
             "delete"  => "Eliminar Base de datos",
+        ),
+        "payment"  => array(
+            "ammount"     => "Cantidad",
+            "currency"    => "Moneda",
+            "description" => "Descripcion",
+            "date_start"  => "Fecha Inicio",
+            "date_end"    => "Fecha Fin",
+            "no_order"    => "Numero de Orden",
+            "pay"         => "Pagar"
         )
     ),
-    "plan" => array(
-        "free" => "Gratuito",
-        "basic" => "Basico",
+    "plan"        => array(
+        "free"    => "Gratuito",
+        "basic"   => "Basico",
         "startup" => "Startup",
     )
 );
