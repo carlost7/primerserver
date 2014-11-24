@@ -10,9 +10,7 @@ class PaymentsController extends \BaseController {
     public function index($user_id)
     {
         $user   = User::findOrFail($user_id);
-        $payments = Payment::where('user_id',$user_id)->groupBy('no_order')->paginate(10);        
-        
-        dd($payments);        
+        $payments = Payment::select(DB::raw('sum(ammount) ammount, currency , no_order, status'))->groupBy('no_order')->paginate(10);
         
         return View::make('payments.index', compact('payments', 'user'));
     }
@@ -26,8 +24,8 @@ class PaymentsController extends \BaseController {
     public function show($user_id, $no_order)
     {
         $user   = User::findOrFail($user_id);
-        $payments = Payment::where('no_order',$no_order)->get();        
-        
+        $payments = Payment::where('no_order',$no_order)->get();
+
         return View::make('payments.show', compact('user', 'payments'));
     }
 

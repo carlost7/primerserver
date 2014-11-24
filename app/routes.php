@@ -89,7 +89,7 @@ Route::group(array('before' => 'auth'), function() {
                       'uses' => 'DomainsController@destroy'));
 
                   //Payments
-                  Route::get('user/payments/{user_id}}', array('as'   => 'user.payments.index',
+                  Route::get('user/payments/{user_id}', array('as'   => 'user.payments.index',
                       'uses' => 'PaymentsController@index'));
                   Route::get('user/payments/{user_id}/{no_order}', array('as'   => 'user.payments.show',
                       'uses' => 'PaymentsController@show'));

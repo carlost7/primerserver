@@ -4,9 +4,7 @@
 <div class="container">
     <div class="row">
         <ul class="nav nav-tabs" role="tablist">
-            <li>{{HTML::LinkRoute('user.show',trans('frontend.link.user.show'),array(Auth::user()->id))}}</li>
-            <li><a href="#">Pagos</a></li>
-            <li><a href="#">Mensajes</a></li>
+            <li>{{HTML::LinkRoute('user.show',trans('frontend.link.user.show'),array(Auth::user()->id))}}</li>            
         </ul>
     </div>
     <div class="row">

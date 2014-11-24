@@ -147,7 +147,7 @@ return array(
             ),
             "destroy" => array(
                 "submit" => "Eliminar",
-            ),
+            ),            
         ),
         "domain"         => array(
             "store"   => array(
@@ -159,6 +159,9 @@ return array(
             "destroy" => array(
                 "submit" => "Eliminar",
             ),
+            "activate" => array(
+                "submit" => "Activar"
+            )
         ),
         "email"          => array(
             "store"   => array(
@@ -198,13 +201,18 @@ return array(
                 "submit" => "Eliminar",
             ),
         ),
+        "payment"        => array(
+            "update" => array(
+                "submit" => "Pagar",
+            )
+        ),
         "reset_password" => array(
             "submit" => "Actualizar Password",
         ),
         "modal_password" => array(
             "generate_new"   => "Generar nuevo password",
             "accept_pasword" => "Seleccionar Password",
-        )
+        ),
     ),
     "messages"    => array(
         "no_domains"     => "No existe ningun dominio por el momento",
@@ -349,18 +357,18 @@ return array(
     "link"        => array(
         "logout"            => "Salir",
         "reminder_password" => "recuperar contraseña",
-        "register"          => "Registrarse",        
-        "domain" => array(
+        "register"          => "Registrarse",
+        "domain"            => array(
             "create" => "Crear Nuevo Dominio",
-            "edit" => "Editar Dominio",
-            "show" => "Mostrar Dominio",
-            "index" => "Dominios"
-        ),        
-        "payment" => array(
+            "edit"   => "Editar Dominio",
+            "show"   => "Mostrar Dominio",
+            "index"  => "Dominios"
+        ),
+        "payment"           => array(
             "create" => "Crear pago",
-            "edit" => "Editar pagos",
-            "index" => "Pagos",
-            "show" => "Mostrar Pago",
+            "edit"   => "Editar pagos",
+            "index"  => "Pagos",
+            "show"   => "Mostrar Pago",
         ),
         "user"              => array(
             "create" => "Crear usuario",
@@ -430,6 +438,8 @@ return array(
             "date_start"  => "Fecha Inicio",
             "date_end"    => "Fecha Fin",
             "no_order"    => "Numero de Orden",
+            "status"      => "Status",
+            "concept"     => "Concepto",
             "pay"         => "Pagar"
         )
     ),

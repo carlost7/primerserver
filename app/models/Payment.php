@@ -23,4 +23,10 @@ class Payment extends Ardent {
       );
       protected $table             = 'payments';
       
+      public function getAmmountAttribute($value){
+            return money_format('%i',$value);
+      }
+      
+      
+      
 }
