@@ -147,16 +147,16 @@ return array(
             ),
             "destroy" => array(
                 "submit" => "Eliminar",
-            ),            
+            ),
         ),
         "domain"         => array(
-            "store"   => array(
+            "store"    => array(
                 "submit" => "Agregar",
             ),
-            "update"  => array(
+            "update"   => array(
                 "submit" => "Actualizar",
             ),
-            "destroy" => array(
+            "destroy"  => array(
                 "submit" => "Eliminar",
             ),
             "activate" => array(
@@ -215,20 +215,20 @@ return array(
         ),
     ),
     "messages"    => array(
-        "no_domains"     => "No existe ningun dominio por el momento",
-        "no_ftps"        => "No existe ningun FTP para el dominio",
-        "no_databases"   => "No existe ninguna base de datos para el dominio",
-        "no_emails"      => "No existe ningun correo para el dominio",
-        "logout"         => "Vuelve pronto :)",
-        "register"       => array(
+        "no_domains"       => "No existe ningun dominio por el momento",
+        "no_ftps"          => "No existe ningun FTP para el dominio",
+        "no_databases"     => "No existe ninguna base de datos para el dominio",
+        "no_emails"        => "No existe ningun correo para el dominio",
+        "logout"           => "Vuelve pronto :)",
+        "register"         => array(
             "error"      => "Error al crear el usuario",
             "successful" => "Usuario creado con exito",
         ),
-        "login"          => array(
+        "login"            => array(
             "successful" => "Correo o contraseña incorrectos",
             "error"      => "Correo o contraseña incorrectos",
         ),
-        "user"           => array(
+        "user"             => array(
             "store"   => array(
                 "successful" => "Usuario creado con éxito",
                 "error"      => "Error al crear el usuario",
@@ -242,7 +242,7 @@ return array(
                 "error"      => "Error al actualizar el usuario",
             ),
         ),
-        "domain"         => array(
+        "domain"           => array(
             "store"   => array(
                 "no_data"      => "Faltan datos en el servidor",
                 "server_error" => "El servidor respondio: :error",
@@ -260,7 +260,7 @@ return array(
                 "error"      => "Error al eliminar el dominio",
             ),
         ),
-        "email"          => array(
+        "email"            => array(
             "store"   => array(
                 "no_data"    => "Faltan datos para el correo",
                 "successful" => "Correo creado con éxito",
@@ -278,7 +278,7 @@ return array(
                 "error"      => "Error al actualizar el correo",
             ),
         ),
-        "ftp"            => array(
+        "ftp"              => array(
             "store"   => array(
                 "no_data"    => "Faltan datos para el ftp",
                 "successful" => "Usuario creado con éxito",
@@ -298,7 +298,7 @@ return array(
                 "error" => "Unicamente existe 1 FTP no se puede eliminar",
             ),
         ),
-        "database"       => array(
+        "database"         => array(
             "store"   => array(
                 "no_data"    => "Faltan datos para la base de datos",
                 "successful" => "Usuario creado con éxito",
@@ -315,11 +315,11 @@ return array(
                 "error"      => "Error al actualizar el usuario",
             ),
         ),
-        "reset_password" => array(
+        "reset_password"   => array(
             "successful" => "Contraseña modificada con exito",
             "error"      => "error al modificar la contraseña",
         ),
-        'payments'       => array(
+        'payment'          => array(
             "store"  => array(
                 "successful" => "pago generado con exito",
                 "error"      => "Error al generar el pago"
@@ -331,9 +331,12 @@ return array(
             "delete" => array(
                 "successful" => "pago generado con exito",
                 "error"      => "Error al generar el pago"
-            )
+            ),
         ),
-        "freedomain"     => array(
+        "received_payment" => array(
+            "realized" => "Se esta revisando el status del pago, en cuanto este listo, te enviaremos un correo",
+        ),
+        "freedomain"       => array(
             "store"   => array(
                 "successful" => "dominio gratis creado con exito",
                 "error"      => "error al crear el dominio gratuito"

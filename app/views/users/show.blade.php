@@ -37,10 +37,10 @@
                             {{ Form::button(trans('frontend.button.domain.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$domain->id.")")) }}
                             {{ Form::close() }}
                         </td> 
-                        @if(!$domain->active)
+                        @if(!$domain->active && $domain->plan->plan_name != "free")
                         <td>
                             {{ Form::open(array("route" => array('user.domains.update',$user->id,$domain->id),"method"=>'PUT')) }}
-                            {{ Form::submit(trans('frontend.domain.activate.submit'),array("class"=>'btn btn-success')) }}
+                            {{ Form::submit(trans('frontend.button.domain.activate.submit'),array("class"=>'btn btn-success')) }}
                             {{Form::close()}}
                         </td>
                         @else

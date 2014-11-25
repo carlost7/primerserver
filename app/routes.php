@@ -52,6 +52,23 @@ Route::post('registrar/cliente', array(
     'as'   => 'register.store_user'
 ));
 
+Route::any('payment/receive_payment_test',array(
+    'uses' => 'ReceivedPaymentController@update',
+    'as' => 'receive_payment.update'
+));
+
+Route::any('payment/receive_payment',array(
+    'uses' => 'ReceivedPaymentController@store',
+    'as' => 'receive_payment.store'
+));
+
+Route::any('payment/realized_payment/{user_id}',array(
+    'uses' => 'ReceivedPaymentController@index',
+    'as' => 'receive_payment.index'
+));
+
+
+
 //check auth user
 Route::group(array('before' => 'auth'), function() {
 

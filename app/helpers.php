@@ -15,4 +15,3 @@ function getLeastBussyServer($plan)
     //obtenemos el servidor con menos cuentas
     return $plan->servers->find($mins[0]);
 }
-
