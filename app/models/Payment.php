@@ -19,14 +19,14 @@ class Payment extends Ardent {
       );
       //Relationships
       public static $relationsData = array(
-          'user' => array(self::BELONGS_TO, 'User'),
+          'user'   => array(self::BELONGS_TO, 'User'),
+          'domain' => array(self::BELONGS_TO, 'Domain'),
       );
       protected $table             = 'payments';
-      
-      public function getAmmountAttribute($value){
-            return money_format('%i',$value);
+
+      public function getAmmountAttribute($value)
+      {
+            return money_format('%i', $value);
       }
-      
-      
-      
+
 }

@@ -7,7 +7,7 @@
         <ul class="nav nav-tabs" role="tablist">
             <li>{{HTML::LinkRoute('user.edit',trans('frontend.link.user.edit'),array(Auth::user()->id))}}</li>
             <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain.create'),$user->id)}}</li>                  
-            <li><a href="{{URL::route('user.payments.index',$user->id)}}">{{trans('frontend.link.payment.index')}}<span class='badge'>2</span></a></li>                  
+            <li><a href="{{URL::route('user.payments.index',$user->id)}}">{{trans('frontend.link.payment.index')}}</a></li>                  
         </ul>
     </div>
     <div class="row">

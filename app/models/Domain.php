@@ -37,10 +37,6 @@ class Domain extends Ardent {
 
       public function beforeCreate()
       {
-            if (!count(Event::fire('domain.creating', array($this))))
-            {
-                  return false;
-            }
             array_forget($this, 'password');            
       }
       

@@ -31,7 +31,7 @@ class CreateTableHostingCosts extends Migration {
        */
       public function down()
       {
-            Schema::drop('costs');
+            Schema::drop('hosting_costs');
       }
 
 }

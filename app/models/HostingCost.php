@@ -11,9 +11,9 @@ class HostingCost extends Ardent {
           "concept"  => "required",
           "active"   => "required",
       ];
-      /*public static $relationsData = array(
+      public static $relationsData = array(
           'plan' => array(self::BELONGS_TO, 'Plan'),
-      );*/
+      );
       protected $table                      = 'hosting_costs';
       public $autoHydrateEntityFromInput    = true;
       public $forceEntityHydrationFromInput = true;

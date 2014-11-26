@@ -7,8 +7,9 @@
  */
 
 //Event::listen('pago_aprobado', 'PagosListener@publicar_contenido');
-Event::listen('domain.creating', 'PaymentListener@store');
+Event::listen('domain.created', 'PaymentListener@store');
 Event::listen('domain.created', 'FreeDomainListener@store');
+
 Event::listen('domain.updating', 'DomainListener@update');
 Event::listen('domain.deleting', 'DomainListener@destroy');
 
@@ -23,6 +24,9 @@ Event::listen('email.deleting', 'EmailListener@destroy');
 Event::listen('database.creating', 'DatabaseListener@store');
 Event::listen('database.updating', 'DatabaseListener@update');
 Event::listen('database.deleting', 'DatabaseListener@destroy');
+
+Event::listen('payment.approved', 'PaymentListener@store');
+
 
 
 

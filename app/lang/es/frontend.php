@@ -219,6 +219,7 @@ return array(
         "no_ftps"          => "No existe ningun FTP para el dominio",
         "no_databases"     => "No existe ninguna base de datos para el dominio",
         "no_emails"        => "No existe ningun correo para el dominio",
+        "no_payments"      => "No existen cargos por dominios",
         "logout"           => "Vuelve pronto :)",
         "register"         => array(
             "error"      => "Error al crear el usuario",

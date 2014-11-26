@@ -11,7 +11,10 @@
   |
  */
 //Main redirection
-Route::get('/', array('uses' => 'SessionController@index', 'as' => 'index'));
+Route::get('/', array(
+    'uses' => 'SessionController@index',
+    'as'   => 'index'
+));
 
 /*
  * Login Users routes
@@ -52,19 +55,19 @@ Route::post('registrar/cliente', array(
     'as'   => 'register.store_user'
 ));
 
-Route::any('payment/receive_payment_test',array(
+Route::any('payment/receive_payment_test', array(
     'uses' => 'ReceivedPaymentController@update',
-    'as' => 'receive_payment.update'
+    'as'   => 'receive_payment.update'
 ));
 
-Route::any('payment/receive_payment',array(
+Route::any('payment/receive_payment', array(
     'uses' => 'ReceivedPaymentController@store',
-    'as' => 'receive_payment.store'
+    'as'   => 'receive_payment.store'
 ));
 
-Route::any('payment/realized_payment/{user_id}',array(
+Route::any('payment/realized_payment/{user_id}', array(
     'uses' => 'ReceivedPaymentController@index',
-    'as' => 'receive_payment.index'
+    'as'   => 'receive_payment.index'
 ));
 
 

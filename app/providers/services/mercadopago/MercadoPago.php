@@ -39,11 +39,12 @@ class MercadoPago {
                   array_push($items,$item);
                   
             }
-
+            
+            
             //Generate payment url
             if (\Config::get('payment.sandbox_mode'))
             {
-                  $referer = \URL::route('receive_payment.index',$user->id);
+                  $referer = \URL::route('receive_payment.update');
             }
             else
             {
