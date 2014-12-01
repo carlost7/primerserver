@@ -213,6 +213,12 @@ return array(
             "generate_new"   => "Generar nuevo password",
             "accept_pasword" => "Seleccionar Password",
         ),
+        "domain_options" => array(
+            "confirm" => "Confirmar"
+        ),
+        "checkdomain"    => array(
+            "select" => "seleccionar"
+        )
     ),
     "messages"    => array(
         "no_domains"       => "No existe ningun dominio por el momento",

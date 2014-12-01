@@ -17,5 +17,9 @@ class DomainCost extends Ardent {
       public $autoPurgeRedundantAttributes  = true;
       // Don't forget to fill this array
       protected $fillable                   = ["domain", "cost", "concept", "currency"];
+      
+      public function getCostAttribute($value){
+            return money_format('%i', $value);
+      }
 
 }

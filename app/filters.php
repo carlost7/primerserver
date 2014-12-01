@@ -163,11 +163,11 @@ Route::filter('object_belongs_to_domain', function($route, $request) {
  */
 
 Route::filter('is_admin', function() {
-    if (Auth::user()->type != 'Admin')
+    /*if (Auth::user()->type != 'Admin')
     {
         Session::flash('error', trans("filter.is_admin"));
         return Redirect::route('login');
-    }
+    }*/
 });
 
 

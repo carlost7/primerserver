@@ -22,3 +22,4 @@ function confirmDelete(id) {
         }
     });
 }
+

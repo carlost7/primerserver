@@ -25,7 +25,7 @@ Event::listen('database.creating', 'DatabaseListener@store');
 Event::listen('database.updating', 'DatabaseListener@update');
 Event::listen('database.deleting', 'DatabaseListener@destroy');
 
-Event::listen('payment.approved', 'PaymentListener@store');
+Event::listen('payment.approved', 'ReceivedPaymentListener@store');
 
 
 

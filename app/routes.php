@@ -70,6 +70,12 @@ Route::any('payment/realized_payment/{user_id}', array(
     'as'   => 'receive_payment.index'
 ));
 
+Route::any('checkdomain/{domain?}', array(
+    'uses' => 'CheckdomainsController@show',
+    'as'   => 'checkdomain.check'
+));
+
+
 
 
 //check auth user
@@ -173,7 +179,7 @@ Route::group(array('before' => 'auth'), function() {
       Route::any('get_password', array('as' => 'password.show', 'uses' => 'PasswordController@show'));
 
 
-      Route::group(array('prefix' => 'administrador', 'before' => 'is_admin'), function() {
-            
+      Route::group(array('prefix' => 'administrador'), function() {
+            Route::resource('domain_costs', 'DomainCostsController');
       });
 });
