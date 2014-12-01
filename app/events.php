@@ -25,8 +25,20 @@ Event::listen('database.creating', 'DatabaseListener@store');
 Event::listen('database.updating', 'DatabaseListener@update');
 Event::listen('database.deleting', 'DatabaseListener@destroy');
 
+/*Compra el dominio en enom*/
+Event::listen('payment.approved', 'EnomPaymentListener@store');
+/*Actualiza el dominio de acuerdo al pago realizado*/
 Event::listen('payment.approved', 'ReceivedPaymentListener@store');
 
 
 
+/*
+ * Here are event listener to send emails when actions occurred
+ */
+Event::listen('enom.domain.buy.error', 'SendmailListener@buy_domain_error');
+Event::listen('enom.domain.buy.success', 'SendmailListener@buy_domain_success');
+Event::listen('domain.updated', 'SendmailListener@domain_created_server');
+Event::listen('payment.created', 'SendmailListener@payment_created');
+Event::listen('received_payment.approved', 'SendmailListener@received_payment_accepted');
+Event::listen('system.user.created', 'SendmailListener@system_user_created');
 

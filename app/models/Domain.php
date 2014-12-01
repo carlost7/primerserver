@@ -27,6 +27,7 @@ class Domain extends Ardent {
           'ftps'       => array(self::HAS_MANY, 'Ftp'),
           'databases'  => array(self::HAS_MANY, 'Database'),
           'domainPass' => array(self::HAS_ONE, 'DomainPassword'),
+          'payment'    => array(self::HAS_MANY, 'Payment'),
       );
       protected $table                      = 'domains';
       public $autoHydrateEntityFromInput    = true;
@@ -37,10 +38,11 @@ class Domain extends Ardent {
 
       public function beforeCreate()
       {
-            array_forget($this, 'password');            
+            array_forget($this, 'password');
       }
-      
-      public function afterCreate(){
+
+      public function afterCreate()
+      {
             if (!count(Event::fire('domain.created', array($this))))
             {
                   return false;
@@ -61,7 +63,7 @@ class Domain extends Ardent {
             if (!count(Event::fire('domain.deleting', array($this))))
             {
                   return false;
-            }            
+            }
       }
 
 }

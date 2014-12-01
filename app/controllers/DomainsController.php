@@ -56,7 +56,9 @@ class DomainsController extends \BaseController {
                   {
                         Session::flash('message', trans('frontend.messages.domain.store.successful'));
                         return Redirect::route("user.show", $user->id);
-                  }else{
+                  }
+                  else
+                  {
                         return Redirect::back()->withErrors($domainPass->errors())->withInput();
                   }
             }
@@ -92,7 +94,15 @@ class DomainsController extends \BaseController {
        */
       public function edit($user_id, $id)
       {
-            //
+            $user   = User::findOrFail($user_id);
+            $domain = Domain::find($id);
+            
+            if ($domain->user->id != $user->id)
+            {
+                  Session::flash('error', trans('frontend.not_user_element'));
+                  return Redirect::back();
+            }
+            return View::make('domains.edit', compact('user', 'domain'));
       }
 
       /**
@@ -109,25 +119,15 @@ class DomainsController extends \BaseController {
             $domain::$rules = array();
             if ($domain->save())
             {
-                  //Agregamos un ftp al servidor
-                  $ftp                        = new Ftp;
-                  $ftp->username              = explode('.', $domain->domain)[0];
-                  $ftp->hostname              = $domain->server->domain;
-                  $ftp->password              = Crypt::decrypt($domain->domainPass->password);
-                  $ftp->password_confirmation = Crypt::decrypt($domain->domainPass->password);
-                  $ftp->domain()->associate($domain);
-                  if ($ftp->save())
-                  {
-                        $domain->domainPass->delete();
-                        Session::flash('message', trans('frontend.messages.domain.store.successful'));
-                        return Redirect::route("user.domains.index", $user_id);
-                  }
-                  else
-                  {
-                        Session::flash('error', trans('frontend.messages.domain.store.error'));
-                        return Redirect::back()->withErrors($ftp->errors());
-                  }
+                  Session::flash('message', trans('frontend.messages.domain.store.successful'));
+                  return Redirect::route("user.domains.index", $user_id);
             }
+            else
+            {
+                  Session::flash('error', trans('frontend.messages.domain.store.error'));
+                  return Redirect::back()->withErrors($ftp->errors());
+            }
+
             return Redirect::back()->withErrors($domain->errors());
       }
 

@@ -77,11 +77,11 @@ class Enom {
                 "MaxResults"       => 5,
             );
 
-            $url = $this->enom->create_url($args);
+            $url       = $this->enom->create_url($args);
             $resultado = $this->enom->getResponse($url);
             $count     = $resultado->namespin->spincount;
             $dominios  = array();
-            
+
             dd($resultado);
             if ($count > 0)
             {
@@ -108,23 +108,22 @@ class Enom {
             }
       }
 
-      public function comprar($sld, $tld)
+      public function buy_domain($sld, $tld)
       {
-
             $args      = array(
                 "command" => "Purchase",
                 "sld"     => $sld,
                 "tld"     => $tld,
                 "useDNS"  => "default"
             );
-            $this->enom->create_url($args);
-            $resultado = $this->enom->getResponse();
+            $url       = $this->enom->create_url($args);
+            $resultado = $this->enom->getResponse($url);
 
             $rrpCode = $resultado->RRPCode;
 
-            Log::info('ENomFunciones . comprar ' . print_r($resultado, true));
+            Log::info('Enom.buy_domain ' . print_r($resultado, true));
 
-            if ($rrpCode == "200")
+            if ($rrpCode == "200" || $rrpCode=="1300")
             {
                   return true;
             }
@@ -135,16 +134,8 @@ class Enom {
             return $resultado;
       }
 
-      protected function getExternalAttributes()
-      {
-            $args      = array(
-                "command" => "GetExtAttributes",
-                "tld"     => ca
-            );
-            $this->enom->create_url($args);
-            $resultado = $this->enom->getResponse();
-      }
-
+      
+      
       public function obtener_status_dominio($sld, $tld, $order_id)
       {
             $args      = array(

@@ -27,35 +27,41 @@ class ReceivedPaymentController extends \BaseController {
             $id = Input::get('id');
             if (isset($id))
             {
-                  $mercadoPago  = new PrimerServer\Services\MercadoPago\MercadoPago();
-                  $response = $mercadoPago->recibir_notificacion($id);
+                  $mercadoPago = new PrimerServer\Services\MercadoPago\MercadoPago();
+                  $response    = $mercadoPago->recibir_notificacion($id);
                   if (isset($response))
                   {
 
                         $external_reference = $response['collection']['external_reference'];
                         $status             = $response['collection']['status'];
 
-                        $ids = explode("-", $external_reference);
+                        $payments = Payment::where('no_order', $external_reference)->get();
 
-                        if ($this->pago->update_status($ids, $status))
-                        {
-                              switch ($status) {
-                                    case 'approved':
-                                          $this->events->fire('pago_aprobado', array($ids));
-                                          echo "cambios realizados";
-                                          break;
-                                    case 'cancelled':
-                                          $this->events->fire('pago_cancelado', array($ids));
-                                          echo "status diferente a aprobado";
-                                          break;
-                                    default:
-                                          echo "status diferente a aprobado";
-                                          break;
+                        foreach ($payments as $payment) {
+
+                              $payment->status   = $status;
+                              $payment->date_end = \Carbon\Carbon::now()->addYear();
+                              if ($status == "approved")
+                              {
+                                    $payment->active = false;
                               }
-                        }
-                        else
-                        {
-                              
+                              if ($payment->update())
+                              {
+                                    switch ($status) {
+                                          case 'approved':
+                                                $this->events->fire('payment.approved', array($payments));
+                                                echo "cambios realizados";
+                                                break;
+                                          default:
+                                                $this->events->fire('payment.canceled', array($payments));
+                                                echo "status diferente a aprobado";
+                                                break;
+                                    }
+                              }
+                              else
+                              {
+                                    break;
+                              }
                         }
                   }
                   else
@@ -118,7 +124,7 @@ class ReceivedPaymentController extends \BaseController {
                               echo "cambios realizados";
                               break;
                         default:
-                              $this->events->fire('pago_cancelado', array($payments));
+                              $this->events->fire('payment.canceled', array($payments));
                               echo "status diferente a aprobado";
                               break;
                   }
