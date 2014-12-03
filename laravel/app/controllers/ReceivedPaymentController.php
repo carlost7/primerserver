@@ -23,12 +23,13 @@ class ReceivedPaymentController extends \BaseController {
        */
       public function store()
       {
-
+            Log::error("referer> ".Request::referrer());
             $id = Input::get('id');
             if (isset($id))
             {
                   $mercadoPago = new PrimerServer\Services\MercadoPago\MercadoPago();
-                  $response    = $mercadoPago->recibir_notificacion($id);
+                  $response    = $mercadoPago->receive_notification($id);
+                  Log::error("Respuestaa de MercadoPago: ".print_r($response,true));
                   if (isset($response))
                   {
 

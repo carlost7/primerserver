@@ -70,7 +70,7 @@ class MercadoPago {
       }
 
       
-      public function recibir_notificacion($id)
+      public function receive_notification($id)
       {
             $payment_info = $this->mp->get_payment_info($id);
 
