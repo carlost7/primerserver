@@ -11,8 +11,14 @@ class ServersTableSeeder extends Seeder {
         Server::create([
             "domain"     => "psbasic.com",
             "nameserver" => "psbasic",
-            "ip"         => "rs3.websithostserver.net",
+            "ip"         => "rs4.websithostserver.net",
             "plan_id"    => "1",
+        ]);
+        Server::create([
+            "domain"     => "psbasic.com",
+            "nameserver" => "psbasic",
+            "ip"         => "rs4.websithostserver.net",
+            "plan_id"    => "2",
         ]);
     }
 

@@ -22,6 +22,13 @@ class DomainCostsTableSeeder extends Seeder {
                 "concept" => "Costo dominio .com.mx", 
                 "currency" => "MXN"
             ]);
+            
+            DomainCost::create([
+                "domain" => '.net', 
+                "cost" => 150, 
+                "concept" => "Costo dominio .net", 
+                "currency" => "MXN"
+            ]);
       }
 
 }

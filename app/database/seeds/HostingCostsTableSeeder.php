@@ -9,13 +9,19 @@ class HostingCostsTableSeeder extends Seeder {
       {
             $faker = Faker::create();
 
-
             HostingCost::create([
                 "cost" => "100", 
                 "currency" => "MXN", 
-                "concept" => "Hosting", 
+                "concept" => "Hosting Basico", 
                 "active" => true,
                 "plan_id" => 1                
+            ]);
+            HostingCost::create([
+                "cost" => "150", 
+                "currency" => "MXN", 
+                "concept" => "Hosting Startup", 
+                "active" => true,
+                "plan_id" => 2                
             ]);
       }
 
