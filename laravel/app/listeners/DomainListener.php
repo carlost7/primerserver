@@ -5,7 +5,7 @@ class DomainListener {
       //Class constructor, injects automatically the whmfunctions provider
       public function __construct(\PrimerServer\Services\WHM\WHMFunctions $whmFunctions)
       {
-            $this->whmfunctions = $whmFunctions;
+            $this->whmfunctions = $whmFunctions;            
       }
 
       //Calls addsubdomain and creates a domain in the server

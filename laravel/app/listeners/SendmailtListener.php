@@ -15,9 +15,12 @@ class SendmailListener {
             
       }
 
-      public function domain_created_server()
+      public function domain_created_server($domain)
       {
-            
+            Illuminate\Support\Facades\Mail::send('sendmails.es.domaincreatedserver', array('payment'=>$domain), function($message) use ($domain){
+                  $message->to($domain->user->email, $domain->user->first_name." ".$domain->user->last_name)->subject(trans('frontend.title.system.domain_created_server'));
+            });            
+            return true;
       }
 
       public function payment_created()
@@ -25,9 +28,13 @@ class SendmailListener {
             
       }
 
-      public function received_payment_accepted()
+      public function received_payment_accepted($payments)
       {
-            
+            $payment = $payments->first();
+            Illuminate\Support\Facades\Mail::send('sendmails.es.receivedpaymentaccepted', array('payment'=>$payment), function($message) use ($payment){
+                  $message->to($payment->user->email, $payment->user->first_name." ".$payment->user->last_name)->subject(trans('frontend.title.system.payment_received_approved'));
+            });            
+            return true;
       }
 
       public function system_user_created($user)

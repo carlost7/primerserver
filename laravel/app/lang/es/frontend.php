@@ -53,6 +53,8 @@ return array(
         "system" => array(
             "buy_domain_error" => "Error al comprar el dominio",
             "new_user_created" => "Bienvenido a Primer Server",
+            "payment_received_approved" => "Pago aprobado",
+            "domain_created_server" => 'Dominio creado con exito',
         )
     ),
     "instruction" => array(
