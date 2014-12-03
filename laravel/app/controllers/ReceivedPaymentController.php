@@ -23,13 +23,13 @@ class ReceivedPaymentController extends \BaseController {
        */
       public function store()
       {
-            Log::error("referer> ".Request::referrer());
+            Log::error("referer> " . Request::referrer());
             $id = Input::get('id');
             if (isset($id))
             {
                   $mercadoPago = new PrimerServer\Services\MercadoPago\MercadoPago();
                   $response    = $mercadoPago->receive_notification($id);
-                  Log::error("Respuestaa de MercadoPago: ".print_r($response,true));
+                  Log::error("Respuestaa de MercadoPago: " . print_r($response, true));
                   if (isset($response))
                   {
 
@@ -38,31 +38,38 @@ class ReceivedPaymentController extends \BaseController {
 
                         $payments = Payment::where('no_order', $external_reference)->get();
 
-                        foreach ($payments as $payment) {
+                        if (count($payments))
+                        {
+                              foreach ($payments as $payment) {
 
-                              $payment->status   = $status;
-                              $payment->date_end = \Carbon\Carbon::now()->addYear();
-                              if ($status == "approved")
-                              {
-                                    $payment->active = false;
-                              }
-                              if ($payment->update())
-                              {
-                                    switch ($status) {
-                                          case 'approved':
-                                                $this->events->fire('payment.approved', array($payments));
-                                                echo "cambios realizados";
-                                                break;
-                                          default:
-                                                $this->events->fire('payment.canceled', array($payments));
-                                                echo "status diferente a aprobado";
-                                                break;
+                                    $payment->status   = $status;
+                                    $payment->date_end = \Carbon\Carbon::now()->addYear();
+                                    if ($status == "approved")
+                                    {
+                                          $payment->active = false;
+                                    }
+                                    if ($payment->update())
+                                    {
+                                          switch ($status) {
+                                                case 'approved':
+                                                      $this->events->fire('payment.approved', array($payments));
+                                                      echo "cambios realizados";
+                                                      break;
+                                                default:
+                                                      $this->events->fire('payment.canceled', array($payments));
+                                                      echo "status diferente a aprobado";
+                                                      break;
+                                          }
+                                    }
+                                    else
+                                    {
+                                          break;
                                     }
                               }
-                              else
-                              {
-                                    break;
-                              }
+                        }
+                        else
+                        {
+                              echo "Datos de prueba";
                         }
                   }
                   else
