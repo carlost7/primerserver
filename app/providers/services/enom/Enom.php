@@ -82,7 +82,6 @@ class Enom {
             $count     = $resultado->namespin->spincount;
             $dominios  = array();
 
-            dd($resultado);
             if ($count > 0)
             {
                   for ($i = 0; $i < $count; $i++) {
@@ -121,7 +120,7 @@ class Enom {
 
             $rrpCode = $resultado->RRPCode;
 
-            Log::info('Enom.buy_domain ' . print_r($resultado, true));
+            \Log::info('Enom.buy_domain ' . print_r($resultado, true));
 
             if ($rrpCode == "200" || $rrpCode=="1300")
             {

@@ -4,9 +4,9 @@ class SendmailListener {
 
       public function buy_domain_error($domain)
       {
-            Illuminate\Support\Facades\Mail::send('sendmails.es.buydomainerror', array('domain',$domain), function($message) use ($domain){
+            Illuminate\Support\Facades\Mail::send('sendmails.es.buydomainerror', array('domain'=>$domain), function($message) use ($domain){
                   $message->to($domain->user->email, $domain->user->first_name.$domain->user->last_name)->subject(trans('frontend.messages.system.buy_domain_error'));
-            });
+            });            
             return true;
       }
 

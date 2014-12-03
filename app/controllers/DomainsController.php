@@ -115,9 +115,10 @@ class DomainsController extends \BaseController {
       public function update($user_id, $id)
       {
             $domain         = Domain::find($id);
+            $domain->domain = Input::get('domain');
             $domain->active = true;
             $domain::$rules = array();
-            if ($domain->save())
+            if ($domain->updateUniques())
             {
                   Session::flash('message', trans('frontend.messages.domain.store.successful'));
                   return Redirect::route("user.domains.index", $user_id);

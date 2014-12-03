@@ -14,6 +14,7 @@
                         <table class="table">
                               <tr>
                                     <th>{{trans('frontend.table_head.payment.no_order')}}</th>                        
+                                    <th>{{trans('frontend.table_head.payment.domain')}}</th>                        
                                     <th>{{trans('frontend.table_head.payment.ammount')}}</th>
                                     <th>{{trans('frontend.table_head.payment.currency')}}</th>                                    
                                     <th>{{trans('frontend.table_head.payment.status')}}</th>                        
@@ -22,14 +23,19 @@
                               @foreach($payments as $payment)
                               <tr>                              
                                     <td>{{ HTML::linkRoute('user.payments.show',$payment->no_order,array($user->id,$payment->no_order))}}</td>                                    
+                                    <td>{{ $payment->domain->domain }}</td>
                                     <td>{{ '$'.$payment->ammount }}</td>
                                     <td>{{ $payment->currency}}</td> 
                                     <td>{{ $payment->status}}</td>
+                                    @if($payment->status!="approved")
                                     <td>
                                           {{ Form::open(array("route" => array('user.payments.update',$user->id,$payment->no_order),"method"=>'PUT')) }}
                                           {{ Form::submit(trans('frontend.button.payment.update.submit'),array("class"=>'btn btn-success')) }}
                                           {{ Form::close()}}
                                     </td>
+                                    @else
+                                    <td></td>
+                                    @endif
 
                               </tr>                    
                               @endforeach

@@ -444,6 +444,7 @@ return array(
         "payment"  => array(
             "ammount"     => "Cantidad",
             "currency"    => "Moneda",
+            "domain"      => "Dominio",
             "description" => "Descripcion",
             "date_start"  => "Fecha Inicio",
             "date_end"    => "Fecha Fin",

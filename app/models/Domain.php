@@ -58,6 +58,14 @@ class Domain extends Ardent {
             array_forget($this, 'password');
       }
 
+      public function afterUpdate(){
+            
+            if (!count(Event::fire('domain.updated', array($this))))
+            {
+                  return false;
+            }
+      }
+      
       public function beforeDelete()
       {
             if (!count(Event::fire('domain.deleting', array($this))))

@@ -86,8 +86,6 @@ class ReceivedPaymentController extends \BaseController {
       public function update()
       {
             //Log::info('PagosController.recibir_notificacion_prueba entrada de datos');
-
-
             $exref  = Input::get('external_reference');
             $status = Input::get('collection_status');
 

@@ -17,9 +17,7 @@ class DomainListener {
       public function update($domain)
       {
             if ($this->whmfunctions->addSubDomain($domain->server->nameserver, $domain->domain, explode(".", $domain->domain)[0], Illuminate\Support\Facades\Crypt::decrypt($domain->domainPass->password)))
-            {
-                  
-                  
+            {     
                   return true;
             }
             else

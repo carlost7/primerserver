@@ -18,27 +18,11 @@ class ReceivedPaymentListener {
             //Actualizamos el dominio y con eso se agregará al servidor
             if ($domain->updateUniques())
             {
-
-                  //Agregamos un ftp por el dominio que creamos
-                  $ftp                        = new Ftp;
-                  $ftp->username              = explode('.', $domain->domain)[0];
-                  $ftp->hostname              = $domain->server->domain;
-                  $ftp->password              = Crypt::decrypt($domain->domainPass->password);
-                  $ftp->password_confirmation = Crypt::decrypt($domain->domainPass->password);
-                  $ftp->domain()->associate($domain);
-                  if ($ftp->save())
-                  {
-                        $domain->domainPass->delete();
-                        return true;
-                  }
-                  else
-                  {
-                        return false;
-                  }
+                  return true;                  
             }
             else
             {
-                  dd($domain->errors());
+                  return false;
             }
       }
 

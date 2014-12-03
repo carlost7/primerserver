@@ -10,8 +10,12 @@
 Event::listen('domain.created', 'PaymentListener@store');
 Event::listen('domain.created', 'FreeDomainListener@store');
 
+/*Create domain in server*/
 Event::listen('domain.updating', 'DomainListener@update');
-Event::listen('domain.deleting', 'DomainListener@destroy');
+/*Create ftp from new domain*/
+Event::listen('domain.updated', 'DomainListener@update');
+Event::listen('domain.deleting', 'DomainListener@destroy')
+        ;
 
 Event::listen('ftp.creating', 'FTPListener@store');
 Event::listen('ftp.updating', 'FTPListener@update');

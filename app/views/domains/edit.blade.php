@@ -3,16 +3,11 @@
 @section('contenido')
 <div class="container">
       <div class="row">
-            <ul class="nav nav-tabs" role="tablist">
-                  <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>                  
-            </ul>
-      </div>
-      <div class="row">
             <div class="col-sm-6 col-sm-push-3">
-                  <h2>{{ trans('frontend.title.domain.edit') }}</h2>
+                  <h2>{{ trans('frontend.title.domain.edit',array('domain'=>$domain->domain)) }}</h2>
 
                   <div class="instrucciones">
-                        <p>{{trans('frontend.instruction.domain.edit')}}</p>
+                        <p>{{trans('frontend.instruction.domain.edit',array('domain'=>$domain->id))}}</p>
                   </div>
 
                   {{ Form::model($domain,array("route" => array('user.domains.update',$user->id,$domain->id),"method"=>'PUT')) }}

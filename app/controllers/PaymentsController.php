@@ -10,7 +10,7 @@ class PaymentsController extends \BaseController {
       public function index($user_id)
       {
             $user     = User::findOrFail($user_id);
-            $payments = Payment::select(DB::raw('sum(ammount) ammount, currency , no_order, status'))->groupBy('no_order')->paginate(10);
+            $payments = Payment::select(DB::raw('sum(ammount) ammount, domain_id, currency , no_order, status'))->groupBy('no_order')->orderBy("created_at","descend")->paginate(10);
 
             return View::make('payments.index', compact('payments', 'user'));
       }

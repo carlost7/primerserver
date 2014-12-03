@@ -40,6 +40,7 @@
                   @endif
             </div>
       </div>
+      @if($payment->status!="approved")
       <div class="row">
             <div class="col-xs-1 col-xs-push-5">
                   {{ Form::open(array("route" => array('user.payments.update',$user->id,$payment->no_order),"method"=>'PUT')) }}
@@ -47,5 +48,6 @@
                   {{ Form::close()}}
             </div>
       </div>
+      @endif
 </div>
 @stop
