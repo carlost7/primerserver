@@ -17,7 +17,7 @@ class SendmailListener {
 
       public function domain_created_server($domain)
       {
-            Illuminate\Support\Facades\Mail::send('sendmails.es.domaincreatedserver', array('payment'=>$domain), function($message) use ($domain){
+            Illuminate\Support\Facades\Mail::send('sendmails.es.domaincreatedserver', array('domain'=>$domain), function($message) use ($domain){
                   $message->to($domain->user->email, $domain->user->first_name." ".$domain->user->last_name)->subject(trans('frontend.title.system.domain_created_server'));
             });            
             return true;

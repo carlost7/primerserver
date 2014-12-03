@@ -13,7 +13,7 @@ Event::listen('domain.created', 'FreeDomainListener@store');
 /*Create domain in server*/
 Event::listen('domain.updating', 'DomainListener@update');
 /*Create ftp from new domain*/
-Event::listen('domain.updated', 'DomainListener@update');
+Event::listen('domain.updated', 'FTPListener@create_ftp');
 /*Notificar que el dominio ha sido creado */
 Event::listen('domain.updated', 'SendmailListener@domain_created_server');
 
