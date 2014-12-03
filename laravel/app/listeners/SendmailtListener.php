@@ -5,7 +5,7 @@ class SendmailListener {
       public function buy_domain_error($domain)
       {
             Illuminate\Support\Facades\Mail::send('sendmails.es.buydomainerror', array('domain'=>$domain), function($message) use ($domain){
-                  $message->to($domain->user->email, $domain->user->first_name.$domain->user->last_name)->subject(trans('frontend.messages.system.buy_domain_error'));
+                  $message->to($domain->user->email, $domain->user->first_name.$domain->user->last_name)->subject(trans('frontend.title.system.buy_domain_error'));
             });            
             return true;
       }
@@ -30,9 +30,12 @@ class SendmailListener {
             
       }
 
-      public function system_user_created()
+      public function system_user_created($user)
       {
-            
+            Illuminate\Support\Facades\Mail::send('sendmails.es.systemusercreated', array('user'=>$user), function($message) use ($user){
+                  $message->to($user->email, $user->first_name." ".$user->last_name)->subject(trans('frontend.title.system.new_user_created'));
+            });            
+            return true;
       }
 
 }

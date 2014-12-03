@@ -50,6 +50,10 @@ return array(
             "index"  => "Lista de bases de datos",
             "show"   => "Mostrar base de datos",
         ),
+        "system" => array(
+            "buy_domain_error" => "Error al comprar el dominio",
+            "new_user_created" => "Bienvenido a Primer Server",
+        )
     ),
     "instruction" => array(
         "register"       => "Instrucciones",
