@@ -41,9 +41,9 @@
                         <span class="icon-bar"></span>
                     </button>
                     @if(Auth::check())
-                    {{ HTML::LinkRoute('user.show','Primer Server',array(Auth::user()->id),array('class'=>'navbar-brand')) }}
+                    {{ HTML::LinkRoute('user.show','Primeras Server',array(Auth::user()->id),array('class'=>'navbar-brand')) }}
                     @else
-                    {{ HTML::Link('/','Primer Server',array('class'=>'navbar-brand')) }}
+                    {{ HTML::Link('/','Primera Server',array('class'=>'navbar-brand')) }}
                     @endif
 
                 </div>
