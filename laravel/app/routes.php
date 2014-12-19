@@ -179,9 +179,21 @@ Route::group(array('before' => 'auth'), function() {
       Route::any('get_password', array('as' => 'password.show', 'uses' => 'PasswordController@show'));
 
 
-      Route::group(array('prefix' => 'administrador'), function() {
-            Route::resource('domain_costs', 'DomainCostsController');
+      Route::group(array('prefix' => 'admin'), function() {
             
-            Route::resource('hostingcosts', 'HostingcostsController');
+            /*
+             * Admin User controller
+             */
+            Route::resource('users', 'AdminUsersController');
+            
+            /*
+             * Admin configs controllers
+             */
+            Route::resource('domain_costs', 'DomainCostsController');            
+            Route::resource('hosting_costs', 'HostingCostsController');
+            Route::resource('free_domains', 'FreeDomainController');
+            Route::resource('plans', 'PlansController');
+            Route::resource('servers', 'ServersController');
+            
       });
 });

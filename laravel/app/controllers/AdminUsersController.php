@@ -9,9 +9,9 @@ class AdminUsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$adminusers = Adminuser::all();
+		$users = User::where('type','User')->paginate(50);
 
-		return View::make('adminusers.index', compact('adminusers'));
+		return View::make('admin.users.index', compact('users'));
 	}
 
 	/**

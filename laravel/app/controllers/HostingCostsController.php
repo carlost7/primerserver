@@ -11,7 +11,7 @@ class HostingCostsController extends \BaseController {
 	{
 		$hostingcosts = Hostingcost::all();
 
-		return View::make('hostingcosts.index', compact('hostingcosts'));
+		return View::make('admin.hostingcosts.index', compact('hostingcosts'));
 	}
 
 	/**

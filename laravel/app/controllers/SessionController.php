@@ -51,7 +51,7 @@ class SessionController extends \BaseController {
                     return Redirect::intended(route('user.show', Auth::user()->id));
                     break;
                 case 'Admin':
-                    return Redirect::intended(route('user.show', Auth::user()->id));
+                    return Redirect::intended(route('admin.users.index'));
                     break;
                 default:
                     return Redirect::to('/');

@@ -11,7 +11,7 @@ class DomainCostsController extends \BaseController {
       {
             $domainCosts = DomainCost::all();
 
-            return View::make('domaincosts.index', compact('domainCosts'));
+            return View::make('admin.domaincosts.index', compact('domainCosts'));
       }
 
       /**
@@ -21,7 +21,7 @@ class DomainCostsController extends \BaseController {
        */
       public function create()
       {
-            return View::make('domaincosts.create');
+            return View::make('admin.domaincosts.create');
       }
 
       /**
@@ -36,7 +36,7 @@ class DomainCostsController extends \BaseController {
             if ($domainCosts->save())
             {
                   Session::flash("message", "Costo creado con exito");
-                  return Redirect::route('administrador.domain_costs.index');
+                  return Redirect::route('admin.domain_costs.index');
             }
 
             return Redirect::back()->withInput()->withErrors($domainCosts->errors());
@@ -52,7 +52,7 @@ class DomainCostsController extends \BaseController {
       {
             $domainCost = DomainCost::findOrFail($id);
 
-            return View::make('domaincosts.show', compact('domainCost'));
+            return View::make('admin.domaincosts.show', compact('domainCost'));
       }
 
       /**
@@ -65,7 +65,7 @@ class DomainCostsController extends \BaseController {
       {
             $domainCost = DomainCost::find($id);
 
-            return View::make('domaincosts.edit', compact('domainCost'));
+            return View::make('admin.domaincosts.edit', compact('domainCost'));
       }
 
       /**
@@ -81,7 +81,7 @@ class DomainCostsController extends \BaseController {
             if ($domainCost->updateUniques())
             {
                   Session::flash("message","Costo actualizado con exito");
-                  return Redirect::route('administrador.domain_costs.index');
+                  return Redirect::route('admin.domain_costs.index');
             }
 
             return Redirect::back()->withErrors($domainCost->errors())->withInput();
@@ -97,7 +97,7 @@ class DomainCostsController extends \BaseController {
       {
             DomainCost::destroy($id);
 
-            return Redirect::route('administrador.domain_costs.index');
+            return Redirect::route('admin.domain_costs.index');
       }
 
 }
