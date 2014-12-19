@@ -181,5 +181,7 @@ Route::group(array('before' => 'auth'), function() {
 
       Route::group(array('prefix' => 'administrador'), function() {
             Route::resource('domain_costs', 'DomainCostsController');
+            
+            Route::resource('hostingcosts', 'HostingcostsController');
       });
 });

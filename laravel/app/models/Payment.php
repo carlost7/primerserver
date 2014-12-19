@@ -28,5 +28,6 @@ class Payment extends Ardent {
       {
             return money_format('%i', $value);
       }
+      
 
 }

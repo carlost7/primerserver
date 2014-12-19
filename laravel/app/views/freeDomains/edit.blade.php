@@ -1,0 +1,1 @@
+/var/www/html/primerserver/laravel/app/views/freeDomains/edit.blade.php
