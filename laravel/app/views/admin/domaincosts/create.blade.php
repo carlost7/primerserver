@@ -15,7 +15,7 @@
                         <p>Crear nuevo costo de dominio</p>
                   </div>
 
-                  {{ Form::open(array('route' => array('administrador.domain_costs.store'))) }}
+                  {{ Form::open(array('route' => array('admin.domain_costs.store'))) }}
 
                   @include('layouts.show_form_errors')
 

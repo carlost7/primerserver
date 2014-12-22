@@ -1,1 +1,0 @@
-/var/www/html/primerserver/laravel/app/views/admins/index.blade.php

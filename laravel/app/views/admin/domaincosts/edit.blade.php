@@ -10,7 +10,7 @@
             <div class="col-sm-6 col-sm-push-3">
                   <h2>Editar costo de dominio</h2>
 
-                  {{ Form::model($domainCost,array("route" => array('administrador.domain_costs.update',$domainCost->id),"method"=>'PUT')) }}
+                  {{ Form::model($domainCost,array("route" => array('admin.domain_costs.update',$domainCost->id),"method"=>'PUT')) }}
 
                   @include('layouts.show_form_errors')
                   <div class="form-group">

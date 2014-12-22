@@ -180,20 +180,22 @@ Route::group(array('before' => 'auth'), function() {
 
 
       Route::group(array('prefix' => 'admin'), function() {
-            
+
+            //Cuenta de usuario administrador
+            Route::resource('account', 'AdminController');
+
             /*
              * Admin User controller
              */
             Route::resource('users', 'AdminUsersController');
-            
+
             /*
              * Admin configs controllers
              */
-            Route::resource('domain_costs', 'DomainCostsController');            
+            Route::resource('domain_costs', 'DomainCostsController');
             Route::resource('hosting_costs', 'HostingCostsController');
             Route::resource('free_domains', 'FreeDomainController');
             Route::resource('plans', 'PlansController');
             Route::resource('servers', 'ServersController');
-            
       });
 });

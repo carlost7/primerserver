@@ -50,11 +50,11 @@ return array(
             "index"  => "Lista de bases de datos",
             "show"   => "Mostrar base de datos",
         ),
-        "system" => array(
-            "buy_domain_error" => "Error al comprar el dominio",
-            "new_user_created" => "Bienvenido a Primer Server",
+        "system"         => array(
+            "buy_domain_error"          => "Error al comprar el dominio",
+            "new_user_created"          => "Bienvenido a Primer Server",
             "payment_received_approved" => "Pago aprobado",
-            "domain_created_server" => 'Dominio creado con exito',
+            "domain_created_server"     => 'Dominio creado con exito',
         )
     ),
     "instruction" => array(
@@ -224,7 +224,14 @@ return array(
         ),
         "checkdomain"    => array(
             "select" => "seleccionar"
-        )
+        ),
+        "admin"          => array(
+            "user" => array(
+                "destroy" => array(
+                    "submit" => "eliminar"
+                ),
+            ),
+        ),
     ),
     "messages"    => array(
         "no_domains"       => "No existe ningun dominio por el momento",
@@ -372,14 +379,9 @@ return array(
     ),
     "link"        => array(
         "logout"            => "Salir",
+        "account"           => "Cuenta",
         "reminder_password" => "recuperar contraseña",
         "register"          => "Registrarse",
-        "domain"            => array(
-            "create" => "Crear Nuevo Dominio",
-            "edit"   => "Editar Dominio",
-            "show"   => "Mostrar Dominio",
-            "index"  => "Dominios"
-        ),
         "payment"           => array(
             "create" => "Crear pago",
             "edit"   => "Editar pagos",
@@ -415,6 +417,38 @@ return array(
             "edit"   => "Editar Base de datos",
             "index"  => "Bases de datos",
             "show"   => "Mostrar Base de datos",
+        ),
+        "admin"             => array(
+            "domain_costs"  => array(
+                "create" => "Crear nuevo costo de dominio",
+                "edit"   => "editar costos de dominio",
+                "index"  => "Costos de dominio",
+                "show"   => "Mostrar costo de dominio",
+            ),
+            "hosting_costs" => array(
+                "create" => "Crear costo de hosting",
+                "edit"   => "Editar costo de hosting",
+                "index"  => "Costos de hosting",
+                "show"   => "Mostrar costos de hosting",
+            ),
+            "free_domains"  => array(
+                "create" => "Crear dominios gratis",
+                "edit"   => "Editar dominios gratis",
+                "index"  => "Dominios gratuitos",
+                "show"   => "Mostrar dominios gratuitos",
+            ),
+            "plans"         => array(
+                "create" => "Crear planes",
+                "edit"   => "Editar planes",
+                "index"  => "Planes",
+                "show"   => "Mostrar planes",
+            ),
+            "servers"       => array(
+                "create" => "Crear servidores",
+                "edit"   => "Editar servidores",
+                "index"  => "Servidores",
+                "show"   => "Mostrar servidores",
+            )
         ),
     ),
     "table_head"  => array(
@@ -458,6 +492,14 @@ return array(
             "status"      => "Status",
             "concept"     => "Concepto",
             "pay"         => "Pagar"
+        ),
+        "admin"    => array(
+            "user" => array(
+                "id"      => "identificador",
+                "name"    => "nombre",
+                "created" => "creado",
+                "destroy" => "eliminar",
+            ),
         )
     ),
     "plan"        => array(

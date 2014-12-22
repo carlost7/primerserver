@@ -20,8 +20,8 @@
                               <tr>
                                     <th>{{trans('frontend.table_head.admin.user.id')}}</th>
                                     <th>{{trans('frontend.table_head.admin.user.name')}}</th>                    
-                                    <th>{{trans('frontend.table_head.admin.user.creado')}}</th>                        
-                                    <th>{{trans('frontend.table_head.admin.user.id')}}</th>
+                                    <th>{{trans('frontend.table_head.admin.user.created')}}</th>                        
+                                    <th>{{trans('frontend.table_head.admin.user.destroy')}}</th>
                               </tr>
                               @foreach($users as $user)
                               <tr>                              

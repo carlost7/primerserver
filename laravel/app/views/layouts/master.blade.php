@@ -56,8 +56,15 @@
                               <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->email}} <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                          <li><a href="#">Cuenta</a></li>
-                                          <li><a href="#">Dominios</a></li>
+                                          @if(Auth::user()->type == "Admin")
+                                          <li>
+                                                {{ HTML::LinkRoute('admin.account.show',trans('frontend.link.account'),array(Auth::user()->id)) }}
+                                          </li>
+                                          @else
+                                          <li>
+                                                {{ HTML::LinkRoute('user.show',trans('frontend.link.account'),array(Auth::user()->id)) }}
+                                          </li>
+                                          @endif
                                           <li>{{HTML::LinkRoute('session.destroy',trans('frontend.link.logout'))}}</li>
 
                                     </ul>
@@ -65,14 +72,14 @@
                         </ul>
                         @else
                         <div class="navbar-collapse collapse">
-                              {{ Form::open(array('route' => 'session.store','class'=>'navbar-form navbar-right','role'=>'form')) }}                    
+                              {{ Form::open(array('route' => 'session.store','class'=>'navbar-form navbar-right','role'=>'form')) }}
                               <div class="form-group">
                                     <input type="text" name="email" placeholder="{{trans('frontend.placeholder.logemail')}}" class="form-control">
                               </div>
                               <div class="form-group">
                                     <input type="password" name="password" placeholder="{{trans('frontend.placeholder.logpassword') }}" class="form-control">
                               </div>
-                              {{ Form::submit(trans('frontend.button.login.submit'),array("class"=>"btn btn-success"))}}                        
+                              {{ Form::submit(trans('frontend.button.login.submit'),array("class"=>"btn btn-success"))}}
                               {{ Form::close()}}
                         </div><!--/.navbar-collapse -->
                         @endif
@@ -84,15 +91,15 @@
             <div class="alert alert-success alert-dismissable">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   {{ Session::get('message') }}
-                  {{ Session::forget('message'); }}        
-            </div>                        
+                  {{ Session::forget('message'); }}
+            </div>
             @endif
             @if(Session::has('error'))
             <div class="alert alert-danger alert-dismissable">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   {{ Session::get('error') }}
                   {{ Session::forget('error'); }}
-            </div>                    
+            </div>
             @endif
 
             @yield('contenido')
@@ -104,6 +111,6 @@
             {{HTML::script('js/vendor/bootbox.min.js')}}
             {{HTML::script("js/main.js")}}
 
-            @section('scripts')@show        
+            @section('scripts')@show
       </body>
 </html>
