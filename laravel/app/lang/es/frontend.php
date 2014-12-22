@@ -50,6 +50,20 @@ return array(
             "index"  => "Lista de bases de datos",
             "show"   => "Mostrar base de datos",
         ),
+        "admin"          => array(
+            "hosting_costs" => array(
+                "create" => "Crear nuevo costo de hospedaje",
+                "edit"   => "Editar costo de hospedaje",
+                "index"  => "Costos de hospedaje",
+                "show"   => "Mostrar costos de hospedaje",
+            ),
+            "domain_costs"  => array(
+                "create" => "Crear nuevo costo de dominio",
+                "edit"   => "Editar costo de dominio",
+                "index"  => "Costos de dominio",
+                "show"   => "Mostrar costos de dominio",
+            ),
+        ),
         "system"         => array(
             "buy_domain_error"          => "Error al comprar el dominio",
             "new_user_created"          => "Bienvenido a Primer Server",
@@ -95,6 +109,20 @@ return array(
             "index"  => "Instrucciones",
             "show"   => "Instrucciones",
         ),
+        "admin"          => array(
+            "hosting_costs" => array(
+                "create" => "Instrucciones",
+                "edit"   => "Instrucciones",
+                "index"  => "Instrucciones",
+                "show"   => "Instrucciones",
+            ),
+            "domain_costs"  => array(
+                "create" => "Instrucciones",
+                "edit"   => "Instrucciones",
+                "index"  => "Instrucciones",
+                "show"   => "Instrucciones",
+            ),
+        ),
     ),
     "label"       => array(
         "first_name"            => "Nombre",
@@ -114,6 +142,12 @@ return array(
         "homedir"               => "Directorio Raiz",
         "name_db"               => "Nombre de Base de Datos",
         "user"                  => "Usuario de base de datos",
+        "tld"                   => "TLD",
+        "cost"                  => "Costo",
+        "concept"               => "Concepto",
+        "currency"              => "Moneda",
+        "plan"                  => "Plan",
+        "active"                => 'activo',
     ),
     "placeholder" => array(
         "logemail"              => "Correo",
@@ -133,6 +167,10 @@ return array(
         "homedir"               => "directorio",
         "name_db"               => "Nombre de Base de Datos < 63 caracteres",
         "user"                  => "Usuario de base de datos < 16 caracteres",
+        "tld"                   => "TLD",
+        "cost"                  => "Costo",
+        "concept"               => "Concepto",
+        "currency"              => "Moneda",
     ),
     "button"      => array(
         "login"          => array(
@@ -226,7 +264,23 @@ return array(
             "select" => "seleccionar"
         ),
         "admin"          => array(
-            "user" => array(
+            "user"          => array(
+                "destroy" => array(
+                    "submit" => "eliminar"
+                ),
+            ),
+            "domain_costs"  => array(
+                "create"  => array(
+                    "submit" => "crear",
+                ),
+                "destroy" => array(
+                    "submit" => "eliminar"
+                ),
+            ),
+            "hosting_costs" => array(
+                "create"  => array(
+                    "submit" => "crear",
+                ),
                 "destroy" => array(
                     "submit" => "eliminar"
                 ),
@@ -421,15 +475,15 @@ return array(
         "admin"             => array(
             "domain_costs"  => array(
                 "create" => "Crear nuevo costo de dominio",
-                "edit"   => "editar costos de dominio",
+                "edit"   => "editar costo de dominio",
                 "index"  => "Costos de dominio",
                 "show"   => "Mostrar costo de dominio",
             ),
             "hosting_costs" => array(
-                "create" => "Crear costo de hosting",
-                "edit"   => "Editar costo de hosting",
-                "index"  => "Costos de hosting",
-                "show"   => "Mostrar costos de hosting",
+                "create" => "Crear costo de hospedaje",
+                "edit"   => "Editar costo de hospedaje",
+                "index"  => "Costos de hospedaje",
+                "show"   => "Mostrar costos de hospedaje",
             ),
             "free_domains"  => array(
                 "create" => "Crear dominios gratis",
@@ -494,7 +548,32 @@ return array(
             "pay"         => "Pagar"
         ),
         "admin"    => array(
-            "user" => array(
+            "user"          => array(
+                "id"      => "identificador",
+                "name"    => "nombre",
+                "created" => "creado",
+                "destroy" => "eliminar",
+            ),
+            "domain_costs"  => array(
+                "plan"     => "plan",
+                "cost"     => "costo",
+                "currency" => "moneda",
+                "concept"  => "concepto",
+                "active"   => "activa",
+                "edit"     => "editar",
+                "delete"   => "eliminar",
+                "domain"   => "dominio",
+            ),
+            "hosting_costs" => array(
+                "plan"     => "plan",
+                "cost"     => "costo",
+                "currency" => "moneda",
+                "concept"  => "concepto",
+                "active"   => "activa",
+                "edit"     => "editar",
+                "delete"   => "eliminar",
+            ),
+            "user"          => array(
                 "id"      => "identificador",
                 "name"    => "nombre",
                 "created" => "creado",

@@ -5,13 +5,13 @@ use LaravelBook\Ardent\Ardent;
 class HostingCost extends Ardent {
 
       // Add your validation rules here
-      public static $rules         = [
+      public static $rules                  = array(
           "cost"     => "required",
           "currency" => "required",
           "concept"  => "required",
-          "active"   => "required",
-      ];
-      public static $relationsData = array(
+          "active"   => "boolean",
+      );
+      public static $relationsData          = array(
           'plan' => array(self::BELONGS_TO, 'Plan'),
       );
       protected $table                      = 'hosting_costs';

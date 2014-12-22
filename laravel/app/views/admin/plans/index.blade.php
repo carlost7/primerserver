@@ -9,30 +9,31 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
+              <h1>{{ trans('frontend.title.admin.domain_costs.index') }}</h1>
             @if(count($domainCosts))
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>{{"Dominio"}}</th>                    
-                        <th>{{"Costo"}}</th>                    
-                        <th>{{"Cocepto"}}</th>                        
-                        <th>{{"Moneda"}}</th>          
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>{{ trans('frontend.table_head.admin.domain_costs.domain') }}</th>
+                        <th>{{ trans('frontend.table_head.admin.domain_costs.cost') }}</th>
+                        <th>{{ trans('frontend.table_head.admin.domain_costs.concept') }}</th>
+                        <th>{{ trans('frontend.table_head.admin.domain_costs.currency') }}</th>
+                        <th>{{ trans('frontend.table_head.admin.domain_costs.edit') }}</th>
+                        <th>{{ trans('frontend.table_head.admin.domain_costs.delete') }}</th>
                     </tr>
                     @foreach($domainCosts as $domainCost)
-                    <tr>                              
-                        <td>{{ HTML::linkRoute('admin.domain_costs.show',$domainCost->domain,array($domainCost->id)) }}</td>
-                        <td>{{ $domainCost->cost}}</td>
-                        <td>{{ $domainCost->concept}}</td>
-                        <td>{{ $domainCost->currency}}</td>                        
-                        <td>{{ HTML::linkRoute('admin.domain_costs.edit',"editar",array($domainCost->id),array('class'=>'btn btn-primary')) }}</td>
+                    <tr>
+                        <td>{{ $domainCost->domain }}</td>
+                        <td>{{ $domainCost->cost }}</td>
+                        <td>{{ $domainCost->concept }}</td>
+                        <td>{{ $domainCost->currency }}</td>
+                        <td>{{ HTML::linkRoute('admin.domain_costs.edit',trans('frontend.link.admin.domain_costs.edit'),array($domainCost->id),array('class'=>'btn btn-primary')) }}</td>
                         <td>
                             {{ Form::open(array('route' => array('admin.domain_costs.destroy',$domainCost->id),'method'=>'DELETE','id'=>$domainCost->id,"class"=>'delete_database')) }}
                             {{ Form::button("Eliminar",array("class"=>'btn btn-danger')) }}
                             {{ Form::close() }}
-                        </td>                         
-                    </tr>                    
+                        </td>
+                    </tr>
                     @endforeach
                 </table>
             </div>

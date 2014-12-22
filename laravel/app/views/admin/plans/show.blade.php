@@ -1,1 +1,0 @@
-/var/www/primerserver/app/views/plans/show.blade.php
