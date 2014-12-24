@@ -2,7 +2,7 @@
 
 use LaravelBook\Ardent\Ardent;
 
-class Freedomain extends Ardent {
+class FreeDomain extends Ardent {
 
       // Add your validation rules here
       public static $rules         = [

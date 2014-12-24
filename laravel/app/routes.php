@@ -194,7 +194,7 @@ Route::group(array('before' => 'auth'), function() {
              */
             Route::resource('domain_costs', 'DomainCostsController');
             Route::resource('hosting_costs', 'HostingCostsController');
-            Route::resource('free_domains', 'FreeDomainController');
+            Route::resource('free_domains', 'FreeDomainsController');
             Route::resource('plans', 'PlansController');
             Route::resource('servers', 'ServersController');
       });

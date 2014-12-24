@@ -4,14 +4,14 @@
 <div class="container">
       <div class="row">
             <ul class="nav nav-tabs" role="tablist">  
-                  <li>{{HTML::LinkRoute('admin.domain_costs.index',trans('frontend.link.admin.domain_costs.index'))}}</li>
+                  <li>{{HTML::LinkRoute('admin.free_domains.index',trans('frontend.link.admin.free_domains.index'))}}</li>
             </ul>
       </div>
       <div class="row">
             <div class="col-sm-6 col-sm-push-3">
                   <h2>Editar costo de dominio</h2>
 
-                  {{ Form::model($domainCost,array("route" => array('admin.domain_costs.update',$domainCost->id),"method"=>'PUT')) }}
+                  {{ Form::model($freeDomain,array("route" => array('admin.free_domains.update',$freeDomain->id),"method"=>'PUT')) }}
 
                   @include('layouts.show_form_errors')
                   <div class="form-group">

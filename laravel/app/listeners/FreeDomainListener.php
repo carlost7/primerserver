@@ -13,7 +13,7 @@ class FreeDomainListener {
       {
             if ($domain->plan->plan_name = "free")
             {
-                  $free         = new Freedomain;
+                  $free         = new FreeDomain;
                   $free->active = false;
                   $free->user()->associate($domain->user);
                   $free->domain()->associate($domain);

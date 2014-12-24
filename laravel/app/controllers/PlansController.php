@@ -11,7 +11,7 @@ class PlansController extends \BaseController {
     {
         $plans = Plan::all();
 
-        return View::make('plans.index', compact('plans'));
+        return View::make('admin.plans.index', compact('plans'));
     }
 
     /**
@@ -21,7 +21,7 @@ class PlansController extends \BaseController {
      */
     public function create()
     {
-        return View::make('plans.create');
+        return View::make('admin.plans.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class PlansController extends \BaseController {
 
         Plan::create($data);
 
-        return Redirect::route('plans.index');
+        return Redirect::route('admin.plans.index');
     }
 
     /**
@@ -53,7 +53,7 @@ class PlansController extends \BaseController {
     {
         $plan = Plan::findOrFail($id);
 
-        return View::make('plans.show', compact('plan'));
+        return View::make('admin.plans.show', compact('plan'));
     }
 
     /**
@@ -66,7 +66,7 @@ class PlansController extends \BaseController {
     {
         $plan = Plan::find($id);
 
-        return View::make('plans.edit', compact('plan'));
+        return View::make('admin.plans.edit', compact('plan'));
     }
 
     /**
@@ -88,7 +88,7 @@ class PlansController extends \BaseController {
 
         $plan->update($data);
 
-        return Redirect::route('plans.index');
+        return Redirect::route('admin.plans.index');
     }
 
     /**
@@ -101,7 +101,7 @@ class PlansController extends \BaseController {
     {
         Plan::destroy($id);
 
-        return Redirect::route('plans.index');
+        return Redirect::route('admin.plans.index');
     }
 
 }

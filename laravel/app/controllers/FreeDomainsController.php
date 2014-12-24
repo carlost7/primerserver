@@ -3,83 +3,28 @@
 class FreeDomainsController extends \BaseController {
 
 	/**
-	 * Display a listing of freedomains
+	 * Display a listing of freeDomains
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$freedomains = Freedomain::all();
+		$freeDomains = FreeDomain::paginate(10);
 
-		return View::make('freedomains.index', compact('freedomains'));
+		return View::make('admin.freedomains.index', compact('freeDomains'));
 	}
 
 	/**
-	 * Show the form for creating a new freedomain
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('freedomains.create');
-	}
-
-	/**
-	 * Store a newly created freedomain in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), Freedomain::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		Freedomain::create($data);
-
-		return Redirect::route('freedomains.index');
-	}
-
-	/**
-	 * Display the specified freedomain.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$freedomain = Freedomain::findOrFail($id);
-
-		return View::make('freedomains.show', compact('freedomain'));
-	}
-
-	/**
-	 * Show the form for editing the specified freedomain.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$freedomain = Freedomain::find($id);
-
-		return View::make('freedomains.edit', compact('freedomain'));
-	}
-
-	/**
-	 * Update the specified freedomain in storage.
+	 * Activate domain
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		$freedomain = Freedomain::findOrFail($id);
+		$freedomain = FreeDomain::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Freedomain::$rules);
+		$validator = Validator::make($data = Input::all(), FreeDomain::$rules);
 
 		if ($validator->fails())
 		{
@@ -88,7 +33,7 @@ class FreeDomainsController extends \BaseController {
 
 		$freedomain->update($data);
 
-		return Redirect::route('freedomains.index');
+		return Redirect::route('admin.free_domains.index');
 	}
 
 	/**
@@ -99,9 +44,9 @@ class FreeDomainsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Freedomain::destroy($id);
+		FreeDomain::destroy($id);
 
-		return Redirect::route('freedomains.index');
+		return Redirect::route('admin.free_domains.index');
 	}
 
 }

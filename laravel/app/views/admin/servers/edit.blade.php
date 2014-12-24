@@ -4,33 +4,32 @@
 <div class="container">
       <div class="row">
             <ul class="nav nav-tabs" role="tablist">  
-                  <li>{{HTML::LinkRoute('admin.domain_costs.index',trans('frontend.link.admin.domain_costs.index'))}}</li>
+                  <li>{{HTML::LinkRoute('admin.servers.index',trans('frontend.link.admin.servers.index'))}}</li>
             </ul>
       </div>
       <div class="row">
             <div class="col-sm-6 col-sm-push-3">
                   <h2>Editar costo de dominio</h2>
 
-                  {{ Form::model($domainCost,array("route" => array('admin.domain_costs.update',$domainCost->id),"method"=>'PUT')) }}
+                  {{ Form::model($server,array("route" => array('admin.servers.update',$server->id),"method"=>'PUT')) }}
 
                   @include('layouts.show_form_errors')
+                 <div class="form-group">
+                        {{ Form::label('plan_id', trans("frontend.label.plan")) }}
+                        {{ Form::select('plan_id',$plans,array('class'=>'form-control')) }}                        
+                  </div>                  
                   <div class="form-group">
-                        {{ Form::label('domain', "TLD") }}
-                        {{ Form::text('domain',Input::old('domain'),array('placeholder' => "tld", 'class'=>'form-control'))}}
-
+                        {{ Form::label('domain', trans("frontend.label.domain")) }}
+                        {{ Form::text('domain',Input::old('domain'),array('placeholder' => trans("frontend.placeholder.domain"), 'class'=>'form-control'))}}
                   </div>
                   <div class="form-group">
-                        {{ Form::label('cost', "Costo") }}
-                        {{ Form::text('cost',Input::old('cost'),array('placeholder' => "costo", 'class'=>'form-control'))}}
+                        {{ Form::label('nameserver', trans("frontend.label.nameserver")) }}
+                        {{ Form::text('nameserver',Input::old('cost'),array('placeholder' => trans("frontend.placeholder.nameserver"), 'class'=>'form-control'))}}
                   </div>
                   <div class="form-group">
-                        {{ Form::label('concept', "Concept") }}
-                        {{ Form::text('concept',Input::old('concept'),array('placeholder' => "concepto", 'class'=>'form-control'))}}
-                  </div>
-                  <div class="form-group">
-                        {{ Form::label('currency', "Moneda") }}
-                        {{ Form::text('currency',Input::old('currency'),array('placeholder' => "moneda", 'class'=>'form-control'))}}
-                  </div>
+                        {{ Form::label('ip', trans("frontend.label.ip")) }}
+                        {{ Form::text('ip',Input::old('concept'),array('placeholder' => trans("frontend.placeholder.ip"), 'class'=>'form-control'))}}
+                  </div>  
                   <div class="form-group">
                         {{Form::submit("Actualizar",array('class'=>"btn btn-primary"))}}                        
                   </div>

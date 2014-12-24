@@ -63,6 +63,16 @@ return array(
                 "index"  => "Costos de dominio",
                 "show"   => "Mostrar costos de dominio",
             ),
+            "free_domains"  => array(
+                "index" => "Dominios Gratuitos",
+                "show"  => "Mostrar dominio",
+            ),
+            "plans"  => array(
+                "create" => "Crear nuevo plan",
+                "edit"   => "Editar planes",
+                "index"  => "Planes",
+                "show"   => "Mostrar planes",
+            ),
         ),
         "system"         => array(
             "buy_domain_error"          => "Error al comprar el dominio",
@@ -487,7 +497,7 @@ return array(
             ),
             "free_domains"  => array(
                 "create" => "Crear dominios gratis",
-                "edit"   => "Editar dominios gratis",
+                "edit"   => "Activar dominio",
                 "index"  => "Dominios gratuitos",
                 "show"   => "Mostrar dominios gratuitos",
             ),
@@ -578,6 +588,25 @@ return array(
                 "name"    => "nombre",
                 "created" => "creado",
                 "destroy" => "eliminar",
+            ),
+            "free_domains"  => array(
+                "email"    => "email",
+                "domain"   => "dominio",
+                "registry" => "fecha de registro",
+                "active"   => "activo",
+                "edit"     => "editar",
+                "delete"   => "eliminar",
+            ),
+            "plans"  => array(
+                "name"    => "nombre",
+                "num_emails"   => "# mails",
+                "num_databases" => "# BD",
+                "num_ftps"   => "# FTP",
+                "quota_emails"   => "Tamaño Correo",
+                "quota_databases" => "Tamaño BD",
+                "quota_ftps"   => "Tamaño FTP",
+                "edit"     => "Editar",
+                "delete"   => "Eliminar",
             ),
         )
     ),

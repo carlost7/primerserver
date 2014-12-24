@@ -4,16 +4,16 @@
 <div class="container">
       <div class="row">
             <ul class="nav nav-tabs" role="tablist">
-                  <li>{{HTML::LinkRoute('admin.domain_costs.index',trans('frontend.link.admin.domain_costs.index'))}}</li>
+                  <li>{{HTML::LinkRoute('admin.free_domains.index',trans('frontend.link.admin.free_domains.index'))}}</li>
             </ul>
       </div>
       <div class="row">
             <div class="col-sm-6 col-sm-push-3">
-                  <h2>{{ trans('frontend.title.admin.domain_costs.create') }}</h2>
-                  <p>{{ trans('frontend.instruction.admin.domain_costs.create') }}</p>
+                  <h2>{{ trans('frontend.title.admin.free_domains.create') }}</h2>
+                  <p>{{ trans('frontend.instruction.admin.free_domains.create') }}</p>
 
 
-                  {{ Form::open(array('route' => array('admin.domain_costs.store'))) }}
+                  {{ Form::open(array('route' => array('admin.free_domains.store'))) }}
 
                   @include('layouts.show_form_errors')
 
@@ -34,7 +34,7 @@
                         {{ Form::text('currency',Input::old('currency'),array('placeholder' => trans("frontend.placeholder.currency"), 'class'=>'form-control'))}}
                   </div>
                   <div class="form-group">
-                        {{Form::submit(trans("frontend.button.admin.domain_costs.create.submit"),array('class'=>"btn btn-primary"))}}
+                        {{Form::submit(trans("frontend.button.admin.free_domains.create.submit"),array('class'=>"btn btn-primary"))}}
                   </div>
                   {{ Form::close() }}
             </div>
