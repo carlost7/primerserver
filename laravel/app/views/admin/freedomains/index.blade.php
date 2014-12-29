@@ -25,7 +25,7 @@
                                     <td>{{ HTML::linkRoute('admin.free_domains.edit',trans('frontend.link.admin.free_domains.edit'),array($freeDomain->id),array('class'=>'btn btn-primary')) }}</td>
                                     <td>
                                           {{ Form::open(array('route' => array('admin.free_domains.destroy',$freeDomain->id),'method'=>'DELETE','id'=>$freeDomain->id,"class"=>'delete_database')) }}
-                                          {{ Form::button("Eliminar",array("class"=>'btn btn-danger')) }}
+                                          {{ Form::button("Eliminar",array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$freeDomain->id.")")) }}
                                           {{ Form::close() }}
                                     </td>
                               </tr>

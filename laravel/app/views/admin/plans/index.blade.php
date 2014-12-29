@@ -36,7 +36,7 @@
                         <td>{{ HTML::linkRoute('admin.plans.edit',trans('frontend.link.admin.plans.edit'),array($plan->id),array('class'=>'btn btn-primary')) }}</td>
                         <td>
                             {{ Form::open(array('route' => array('admin.plans.destroy',$plan->id),'method'=>'DELETE','id'=>$plan->id,"class"=>'delete_database')) }}
-                            {{ Form::button("Eliminar",array("class"=>'btn btn-danger')) }}
+                            {{ Form::button("Eliminar",array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$plan->id.")")) }}
                             {{ Form::close() }}
                         </td>
                     </tr>

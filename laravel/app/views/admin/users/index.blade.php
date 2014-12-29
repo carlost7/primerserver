@@ -41,7 +41,7 @@
 
                   </div>
                   @else
-                  <h1>{{trans('frontend.messages.no_domains')}}</h1>
+                  <h1>{{trans('frontend.messages.no_users')}}</h1>
                   @endif
             </div>
       </div>

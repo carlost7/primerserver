@@ -30,7 +30,7 @@
                         <td>{{ HTML::linkRoute('admin.domain_costs.edit',trans('frontend.link.admin.domain_costs.edit'),array($domainCost->id),array('class'=>'btn btn-primary')) }}</td>
                         <td>
                             {{ Form::open(array('route' => array('admin.domain_costs.destroy',$domainCost->id),'method'=>'DELETE','id'=>$domainCost->id,"class"=>'delete_database')) }}
-                            {{ Form::button("Eliminar",array("class"=>'btn btn-danger')) }}
+                            {{ Form::button("Eliminar",array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$domainCost->id.")")) }}
                             {{ Form::close() }}
                         </td>
                     </tr>
