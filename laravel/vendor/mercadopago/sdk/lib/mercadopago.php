@@ -11,7 +11,7 @@ $GLOBALS["LIB_LOCATION"] = dirname(__FILE__);
 
 class MP {
 
-    const version = "0.2.4";
+    const version = "0.3.0";
 
     private $client_id;
     private $client_secret;
@@ -224,6 +224,76 @@ class MP {
         return $preapproval_payment_result;
     }
 
+    /* Generic resource call methods */
+
+    /**
+    * Generic resource get
+    * @param uri
+    * @param params
+    * @param authenticate = true
+    */
+    public function get($uri, $params = null, $authenticate = true) {
+        $params = is_array ($params) ? $params : array();
+
+        if ($authenticate !== false) {
+            $access_token = $this->get_access_token();
+
+            $params["access_token"] = $access_token;
+        }
+
+        if (count($params) > 0) {
+            $uri .= (strpos($uri, "?") === false) ? "?" : "&";
+            $uri .= $this->build_query($params);            
+        }
+
+        print_r($uri);
+
+        $result = MPRestClient::get($uri);
+        return $result;
+    }
+
+    /**
+    * Generic resource post
+    * @param uri
+    * @param data
+    * @param params
+    */
+    public function post($uri, $data, $params = null) {
+        $params = is_array ($params) ? $params : array();
+
+        $access_token = $this->get_access_token();
+        $params["access_token"] = $access_token;
+
+        if (count($params) > 0) {
+            $uri .= (strpos($uri, "?") === false) ? "?" : "&";
+            $uri .= $this->build_query($params);            
+        }
+
+        $result = MPRestClient::post($uri, $data);
+        return $result;
+    }
+
+    /**
+    * Generic resource put
+    * @param uri
+    * @param data
+    * @param params
+    */
+    public function put($uri, $data, $params = null) {
+        $params = is_array ($params) ? $params : array();
+
+        $access_token = $this->get_access_token();
+        $params["access_token"] = $access_token;
+
+        if (count($params) > 0) {
+            $uri .= (strpos($uri, "?") === false) ? "?" : "&";
+            $uri .= $this->build_query($params);            
+        }
+
+        $result = MPRestClient::put($uri, $data);
+        return $result;
+    }
+
     /* **************************************************************************************** */
 
     private function build_query($params) {
@@ -291,6 +361,10 @@ class MPRestClient {
 
         $api_result = curl_exec($connect);
         $api_http_code = curl_getinfo($connect, CURLINFO_HTTP_CODE);
+
+        if ($api_result === FALSE) {
+            throw new Exception (curl_error ($connect));
+        }
 
         $response = array(
             "status" => $api_http_code,

@@ -74,9 +74,13 @@ Each of the generator properties (like `name`, `address`, and `lorem`) are calle
     randomLetter            // 'b'
     randomElements($array = array ('a','b','c'), $count = 1) // array('c')
     randomElement($array = array ('a','b','c')) // 'b'
-    numerify($string = '###') // '609'
-    lexify($string = '????') // 'wgts'
-    bothify($string = '## ??') // '42 jz'
+    shuffle('hello, world') // 'rlo,h eoldlw'
+    shuffle(array(1, 2, 3)) // array(2, 1, 3)
+    numerify('Hello ###') // 'Hello 609'
+    lexify('Hello ???') // 'Hello wgt'
+    bothify('Hello ##??') // 'Hello 42jz'
+    asciify('Hello ***') // 'Hello R6+'
+    regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'); // sm0@y8k96a.ej
 
 ### `Faker\Provider\Lorem`
 
@@ -191,6 +195,7 @@ Each of the generator properties (like `name`, `address`, and `lorem`) are calle
     creditCardExpirationDate // 04/13
     creditCardExpirationDateString // '04/13'
     creditCardDetails       // array('MasterCard', '4485480221084675', 'Aleksander Nowak', '04/13')
+    swiftBicNumber          // RZTIAT22263
 
 ### `Faker\Provider\Color`
 
@@ -235,6 +240,11 @@ Each of the generator properties (like `name`, `address`, and `lorem`) are calle
     locale                  // en_UK
     countryCode             // UK
     languageCode            // en
+    currencyCode            // EUR
+
+### `Faker\Provider\Biased`
+
+    biasedNumberBetween($min, $max, $function) // 42
 
 ## Unique and Optional modifiers
 
@@ -308,7 +318,7 @@ You can check available Faker locales in the source code, [under the `Provider` 
 
 ## Populating Entities Using an ORM or an ODM
 
-Faker provides adapters for Object-Relational and Object-Document Mappers (currently, [Propel](http://www.propelorm.org), [Doctrine2](http://www.doctrine-project.org/projects/orm/2.0/docs/en), and [Mandango](https://github.com/mandango/mandango) are supported). These adapters ease the population of databases through the Entity classes provided by an ORM library (or the population of document stores using Document classes provided by an ODM library).
+Faker provides adapters for Object-Relational and Object-Document Mappers (currently, [Propel](http://www.propelorm.org), [Doctrine2](http://www.doctrine-project.org/projects/orm/2.0/docs/en), [CakePHP](http://cakephp.org) and [Mandango](https://github.com/mandango/mandango) are supported). These adapters ease the population of databases through the Entity classes provided by an ORM library (or the population of document stores using Document classes provided by an ODM library).
 
 To populate entities, create a new populator class (using a generator instance as parameter), then list the class and number of all the entities that must be generated. To launch the actual data population, call the `execute()` method.
 
@@ -387,7 +397,7 @@ echo $faker->name; // 'Jess Mraz I';
 > // make sure you fix the $max parameter
 > $faker->dateTime('2014-02-25 08:37:17'); // will return always the same date when seeded
 > ```
-> 
+>
 > **Tip**: Formatters won't reproduce the same fake data if you use the `rand()` php function. Use `$faker` or `mt_rand()` instead:
 >
 > ```php
@@ -660,6 +670,33 @@ Fugiat non in itaque sunt nobis totam. Sed nesciunt est deleniti cumque alias. R
 
 ## Language specific formatters
 
+### `Faker\Provider\at_AT\Payment`
+```php
+<?php
+
+echo $faker->vat;           // "AT U12345678" - Austrian Value Added Tax number
+echo $faker->vat(false);    // "ATU12345678" - unspaced Austrian Value Added Tax number
+
+```
+
+### `Faker\Provider\be_BE\Payment`
+```php
+<?php
+
+echo $faker->vat;           // "BE 0123456789" - Belgian Value Added Tax number
+echo $faker->vat(false);    // "BE0123456789" - unspaced Belgian Value Added Tax number
+
+```
+
+### `Faker\Provider\bg_BG\Payment`
+```php
+<?php
+
+echo $faker->vat;           // "BG 0123456789" - Bulgarian Value Added Tax number
+echo $faker->vat(false);    // "BG0123456789" - unspaced Bulgarian Value Added Tax number
+
+```
+
 ### `Faker\Provider\cs_CZ\Address`
 ```php
 <?php
@@ -766,6 +803,17 @@ echo $faker->firstKanaName; // "ハルカ"
 
 // Generates a 'kana' last name
 echo $faker->lastKanaName; // "ナカジマ"
+```
+
+
+### `Faker\Provider\lv_LV\Person`
+
+```php
+<?php
+
+// Generates a random personal identity card number
+echo $faker->personalIdentityNumber; // "140190-12301"
+
 ```
 
 ### `Faker\Provider\pl_PL\Person`

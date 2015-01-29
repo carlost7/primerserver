@@ -76,7 +76,7 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     public function setUseBooleanTrueFalseStrings($flag)
     {
-        $this->useBooleanTrueFalseStrings = (bool)$flag;
+        $this->useBooleanTrueFalseStrings = (bool) $flag;
     }
 
     /**
@@ -235,7 +235,10 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     public function getListNamespacesSQL()
     {
-        return "SELECT nspname FROM pg_namespace WHERE nspname NOT LIKE 'pg_%' AND nspname != 'information_schema'";
+        return "SELECT schema_name AS nspname
+                FROM   information_schema.schemata
+                WHERE  schema_name NOT LIKE 'pg_%'
+                AND    schema_name != 'information_schema'";
     }
 
     /**
@@ -243,12 +246,11 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     public function getListSequencesSQL($database)
     {
-        return "SELECT
-                    c.relname, n.nspname AS schemaname
-                FROM
-                   pg_class c, pg_namespace n
-                WHERE relkind = 'S' AND n.oid = c.relnamespace AND
-                    (n.nspname NOT LIKE 'pg_%' AND n.nspname != 'information_schema')";
+        return "SELECT sequence_name AS relname,
+                       sequence_schema AS schemaname
+                FROM   information_schema.sequences
+                WHERE  sequence_schema NOT LIKE 'pg_%'
+                AND    sequence_schema != 'information_schema'";
     }
 
     /**
@@ -256,8 +258,14 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     public function getListTablesSQL()
     {
-        return "SELECT quote_ident(tablename) AS table_name, schemaname AS schema_name
-                FROM pg_tables WHERE schemaname NOT LIKE 'pg_%' AND schemaname != 'information_schema' AND tablename != 'geometry_columns' AND tablename != 'spatial_ref_sys'";
+        return "SELECT quote_ident(table_name) AS table_name,
+                       table_schema AS schema_name
+                FROM   information_schema.tables
+                WHERE  table_schema NOT LIKE 'pg_%'
+                AND    table_schema != 'information_schema'
+                AND    table_name != 'geometry_columns'
+                AND    table_name != 'spatial_ref_sys'
+                AND    table_type != 'VIEW'";
     }
 
     /**
@@ -265,7 +273,11 @@ class PostgreSqlPlatform extends AbstractPlatform
      */
     public function getListViewsSQL($database)
     {
-        return 'SELECT quote_ident(viewname) as viewname, schemaname, definition FROM pg_views';
+        return 'SELECT quote_ident(table_name) AS viewname,
+                       table_schema AS schemaname,
+                       view_definition AS definition
+                FROM   information_schema.views
+                WHERE  view_definition IS NOT NULL';
     }
 
     /**
@@ -331,7 +343,7 @@ class PostgreSqlPlatform extends AbstractPlatform
     {
         return "SELECT quote_ident(relname) as relname, pg_index.indisunique, pg_index.indisprimary,
                        pg_index.indkey, pg_index.indrelid,
-                       TRIM(BOTH '()' FROM pg_get_expr(indpred, indrelid)) AS where
+                       pg_get_expr(indpred, indrelid) AS where
                  FROM pg_class, pg_index
                  WHERE oid IN (
                     SELECT indexrelid
@@ -488,7 +500,7 @@ class PostgreSqlPlatform extends AbstractPlatform
             $oldColumnName = $columnDiff->getOldColumnName()->getQuotedName($this);
             $column = $columnDiff->column;
 
-            if ($columnDiff->hasChanged('type') || $columnDiff->hasChanged('precision') || $columnDiff->hasChanged('scale')) {
+            if ($columnDiff->hasChanged('type') || $columnDiff->hasChanged('precision') || $columnDiff->hasChanged('scale') || $columnDiff->hasChanged('fixed')) {
                 $type = $column->getType();
 
                 // here was a server version check before, but DBAL API does not support this anymore.
@@ -682,6 +694,7 @@ class PostgreSqlPlatform extends AbstractPlatform
         if ($sequence instanceof Sequence) {
             $sequence = $sequence->getQuotedName($this);
         }
+
         return 'DROP SEQUENCE ' . $sequence . ' CASCADE';
     }
 
@@ -780,7 +793,7 @@ class PostgreSqlPlatform extends AbstractPlatform
      * and passes them to the given callback function to be reconverted
      * into any custom representation.
      *
-     * @param mixed $item        The value(s) to convert.
+     * @param mixed    $item     The value(s) to convert.
      * @param callable $callback The callback function to use for converting the real boolean value(s).
      *
      * @return mixed
@@ -895,6 +908,7 @@ class PostgreSqlPlatform extends AbstractPlatform
         if ( ! empty($field['autoincrement'])) {
             return 'BIGSERIAL';
         }
+
         return 'BIGINT';
     }
 

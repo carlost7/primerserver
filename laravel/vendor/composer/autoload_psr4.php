@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'GuzzleHttp\\Stream\\' => array($vendorDir . '/guzzlehttp/streams/src'),
-    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
+    'Intervention\\Validation\\' => array($vendorDir . '/intervention/validation/src/Intervention/Validation'),
+    'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

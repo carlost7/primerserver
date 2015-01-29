@@ -81,7 +81,7 @@ class Container implements ArrayAccess {
 	/**
 	 * Determine if the given abstract type has been resolved.
 	 *
-	 * @param  string $abstract
+	 * @param  string  $abstract
 	 * @return bool
 	 */
 	public function resolved($abstract)
@@ -110,7 +110,7 @@ class Container implements ArrayAccess {
 	 */
 	public function bind($abstract, $concrete = null, $shared = false)
 	{
-            	// If the given types are actually an array, we will assume an alias is being
+		// If the given types are actually an array, we will assume an alias is being
 		// defined and will grab this "real" abstract class name and register this
 		// alias with the container so that it can be used as a shortcut for it.
 		if (is_array($abstract))
@@ -146,7 +146,7 @@ class Container implements ArrayAccess {
 		if ($this->resolved($abstract))
 		{
 			$this->rebound($abstract);
-		}                
+		}
 	}
 
 	/**
@@ -548,12 +548,10 @@ class Container implements ArrayAccess {
 	 */
 	protected function getDependencies($parameters, array $primitives = array())
 	{
-            
 		$dependencies = array();
 
 		foreach ($parameters as $parameter)
 		{
-                    
 			$dependency = $parameter->getClass();
 
 			// If the class is null, it means the dependency is a string or some other
