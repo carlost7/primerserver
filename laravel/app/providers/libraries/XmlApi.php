@@ -716,15 +716,15 @@ class XmlApi {
         // The only time a response should contain <html> is in the case of authentication error
         // cPanel 11.25 fixes this issue, but if <html> is in the response, we'll error out.
 
-        if (stristr($response, '<html>') == true)
+        if (stristr($response, '<html>') === true)
         {
-            if (stristr($response, 'Login Attempt Failed') == true)
+            if (stristr($response, 'Login Attempt Failed') === true)
             {
                 error_log("Login Attempt Failed");
 
                 return;
             }
-            if (stristr($response, 'action="/login/"') == true)
+            if (stristr($response, 'action="/login/"') === true)
             {
                 error_log("Authentication Error");
 
@@ -787,7 +787,7 @@ class XmlApi {
         curl_setopt($curl, CURLOPT_POST, 1);
 
         $result = curl_exec($curl);
-        if ($result == false)
+        if ($result === false)
         {
             throw new Exception("curl_exec threw error \"" . curl_error($curl) . "\" for " . $url . "?" . $postdata);
         }

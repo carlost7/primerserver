@@ -69,6 +69,23 @@ return array(
     ),
     "unique"               => "El campo :attribute ya existe en el sistema.",
     "url"                  => "El formato para el campo :attribute is invalido.",
+    'iban'                 => 'The :attribute must be a valid International Bank Account Number (IBAN).',
+    'bic'                  => 'The :attribute is not a valid Business Identifier Code (BIC).',
+    'hexcolor'             => 'The :attribute must be a valid hexadecimal color code.',
+    'creditcard'           => 'The :attribute must be a valid creditcard number.',
+    'isbn'                 => ':attribute must be a valid International Standard Book Number (ISBN).',
+    'isodate'              => 'The value :attribute must be a valid date in ISO 8601 format.',
+    'username'             => 'The value :attribute must be a valid username.',
+    'htmlclean'            => 'The value :attribute contains forbidden HTML code.',
+    'password'             => ':attribute debe contener de 6 a 64 carácteres, incluyendo al menos un numero, una letra mayúscula, una letra minúscula y un simbolo.',
+    'iban'                 => 'El :attribute debe ser un numero de Cuenta del Banco Internacional válido.',
+    'bic'                  => 'El :attribute no es un Código de Identificacion de Negocio válido..',
+    'hexcolor'             => 'El :attribute debe ser un código de color hexadecimal válido.',
+    'creditcard'           => 'El :attribute debe ser un número de tarjeta de credito valido.',
+    'isbn'                 => ':attribute debe ser un código ISBN válido.',
+    'isodate'              => 'El valor de :attribute debe ser una fecha ISO 8601 válida.',
+    'username'             => 'El :attribute debe ser un nombre de usuario válido.',
+    'htmlclean'            => 'El valor de :attribute contiene código HTML prohibido.',
     /*
       |--------------------------------------------------------------------------
       | Custom Validation Language Lines
@@ -79,7 +96,7 @@ return array(
       | specify a specific custom language line for a given attribute rule.
       |
      */
-    'custom'               => array(
+    'custom'     => array(
         'attribute-name' => array(
             'rule-name' => 'custom-message',
         ),
@@ -94,7 +111,7 @@ return array(
       | of "email". This simply helps us make messages a little cleaner.
       |
      */
-    'attributes'           => array(
+    'attributes' => array(
         "first_name"            => 'Nombre',
         "last_name"             => 'Apellido',
         "email"                 => 'Correo Electrónico',
@@ -109,6 +126,7 @@ return array(
         "homedir"               => "Directorio Raiz",
         "name_db"               => 'Nombre de Base de datos',
         "user"                  => 'Usuario',
-        "forward..email"        => 'Redireccion :'
+        "forward.email"         => 'Redireccion :',
+        "credit_card"           => 'Tarjeta de Crédito',
     ),
 );

@@ -22,8 +22,9 @@ class User extends Ardent implements UserInterface, RemindableInterface
       /*
        * Fillable files
        */
-      protected $fillable = array('first_name', 'last_name', 'email', 'telephone', 'cellphone', 'password', 'password_confirmation', 'type');
+      protected $fillable = array('first_name', 'last_name', 'email', 'telephone', 'cellphone', 'password', 'password_confirmation', 'type','credit_card');
 
+      
       /**
        * The attributes excluded from the model's JSON form.
        *
@@ -35,8 +36,10 @@ class User extends Ardent implements UserInterface, RemindableInterface
             "first_name" => 'required',
             "last_name" => 'required',
             "email" => 'required|email|unique:users,email',
-            'password' => 'required|alpha_dash|min:8|confirmed',
-            'password_confirmation' => 'required',
+            "credit_card" => 'required|unique:users,credit_card|creditcard',
+            'password' => 'required|password|confirmed',
+            'password_confirmation' => 'password',
+            
       );
       //Relationships
       public static $relationsData = array(
