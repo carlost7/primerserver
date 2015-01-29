@@ -36,7 +36,7 @@ class User extends Ardent implements UserInterface, RemindableInterface
             "first_name" => 'required',
             "last_name" => 'required',
             "email" => 'required|email|unique:users,email',
-            "credit_card" => 'required|unique:users,credit_card|creditcard',
+            "credit_card" => 'required|creditcard',
             'password' => 'required|password|confirmed',
             'password_confirmation' => 'password',
             

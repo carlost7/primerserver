@@ -33,7 +33,7 @@ class PasswordController extends \BaseController {
 
 
             $all      = '';
-            $password;
+            $password = "";
             foreach ($sets as $set) {
                   $password .= $set[array_rand(str_split($set))];
                   $all .= $set;
@@ -44,7 +44,7 @@ class PasswordController extends \BaseController {
                   $password .= $all[array_rand($all)];
             }
 
-
+            
             echo str_shuffle($password);
       }
 
