@@ -1,5 +1,4 @@
 /laravel//bootstrap/compiled.php
-/laravel/vendor
 /laravel/composer.phar
 /laravel/composer.lock
 /laravel/.env.*.php
