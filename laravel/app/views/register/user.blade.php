@@ -1,15 +1,17 @@
 @extends('layouts.master')
 
 @section('contenido')
-<div class="container">
+<div class="container  first ">
     <div class="row">
         <div class="col-sm-6 col-sm-push-3">
             <h2>{{ trans('frontend.title.register') }}</h2>
 
+            <!--
             <div class="instrucciones">
                 <p>{{trans('frontend.instruction.register')}}</p>
             </div>
-
+            -->
+            
             {{ Form::open(array('route' => 'register.store_user')) }}
 
             @include('layouts.show_form_errors')

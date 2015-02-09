@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('contenido')
-<div class="container">
+<div class="container ">
       <div class="row">
             <ul class="nav nav-tabs" role="tablist">
                   <li>{{HTML::LinkRoute('user.show',trans('frontend.link.user.show'),array(Auth::user()->id))}}</li>            
@@ -29,7 +29,7 @@
                               {{ Form::text('last_name', Input::old('apellido'), array('placeholder' => trans('frontend.placeholder.last_name'), 'class'=>'form-control')) }}
                         </div>
                   </div>                  
-                  <div class="form-group">                        
+                  <div class="form-group ">                        
                         {{ Form::label('telephone', trans('frontend.label.telephone')) }}
                         {{ Form::text('telephone', Input::old('telephone'), array('placeholder' => trans('frontend.placeholder.telephone'), 'class'=>'form-control')) }}                        
                   </div>

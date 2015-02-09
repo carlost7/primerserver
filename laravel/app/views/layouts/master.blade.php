@@ -48,7 +48,10 @@
                               {{ HTML::LinkRoute('user.show','Primer Server',array(Auth::user()->id),array('class'=>'navbar-brand')) }}
                               @endif
                               @else
-                              {{ HTML::Link('/','Primer Server',array('class'=>'navbar-brand')) }}
+                              
+                              <a href="index.php"> <span class="logo-header"> </span> </a>
+                              
+                              <!-- {{ HTML::Link('/','img/logo-primerserver.png',array('class'=>'navbar-brand')) }} -->
                               @endif
 
                         </div>

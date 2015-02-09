@@ -2,10 +2,10 @@
 
 @section('contenido')
 
-<div class="container">
+<div class="container topic site intro">
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4 col-sm-offset-4">
             <h1>{{trans('frontend.title.index1')}}</h1>
             {{ Form::open(array('route' => 'session.store')) }}        
             <div class="form-group">
@@ -18,7 +18,7 @@
             </div> 
             <div class="form-group">
                 <div class="checkbox">
-                    <label>
+                    <label class="show">
                         <input type="checkbox" name="rememberme" value="1"> {{trans('frontend.label.keep_alive')}}
                     </label>
                 </div>
@@ -26,19 +26,26 @@
             @if (Session::has('login_errors'))
             <div class="alert alert-danger">{{ trans('frontend.messages.login.error') }}</div>
             @endif                
-            <div class="form-group">
+            <div class="form-group clearfix text-center ">
+                <div class="col-md-6 mrg-bottom-20">
                 {{ Form::submit(trans('frontend.button.login.submit'),array("class"=>"btn btn-primary")) }}
-                {{ HTML::linkAction('RemindersController@getRemind',trans('frontend.link.reminder_password'))}}
-            </div>                        
+                </div>
+                
+                <div class="col-md-6 ">
+                {{ HTML::LinkRoute('register.index',trans('frontend.link.register'),null,array('class'=>'btn btn-primary ')) }}
+                </div>
+            </div>      
+            
+            <div class="text-center clearfix mrg-top-20">
+                 {{ HTML::linkAction('RemindersController@getRemind',trans('frontend.link.reminder_password'))}}
+            </div>
             {{ Form::close() }}
         </div>
 
-        <div class="col-sm-6">
+        <!--<div class="col-sm-6 ">
             <h1>{{trans('frontend.title.index2')}}</h1>
-            <div class="text-center">
-                {{ HTML::LinkRoute('register.index',trans('frontend.link.register'),null,array('class'=>'btn btn-primary btn-lg')) }}                                          
-            </div>
-        </div>            
+            
+        </div>            -->
 
     </div>
 
