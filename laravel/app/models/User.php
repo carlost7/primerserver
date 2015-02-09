@@ -22,7 +22,7 @@ class User extends Ardent implements UserInterface, RemindableInterface
       /*
        * Fillable files
        */
-      protected $fillable = array('first_name', 'last_name', 'email', 'telephone', 'cellphone', 'password', 'password_confirmation', 'type','credit_card');
+      protected $fillable = array('first_name', 'last_name', 'email', 'telephone', 'cellphone', 'password', 'password_confirmation', 'type');
 
       
       /**
@@ -35,10 +35,9 @@ class User extends Ardent implements UserInterface, RemindableInterface
       public static $rules = array(
             "first_name" => 'required',
             "last_name" => 'required',
-            "email" => 'required|email|unique:users,email',
-            "credit_card" => 'required|unique:users,credit_card|creditcard',
-            'password' => 'required|password|confirmed',
-            'password_confirmation' => 'password',
+            "email" => 'required|email|unique:users,email',            
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required',
             
       );
       //Relationships
@@ -52,13 +51,5 @@ class User extends Ardent implements UserInterface, RemindableInterface
       public $autoHydrateEntityFromInput = true;
       public $forceEntityHydrationFromInput = true;
       public $autoPurgeRedundantAttributes = true;
-
-      public function beforeUpdate()
-      {
-            if ($this->password == "")
-            {
-                  array_forget($this, $password);
-            }
-      }
 
 }
