@@ -35,11 +35,7 @@
             <div class="form-group">
                 {{ Form::label('email', trans('frontend.label.email')) }}
                 {{ Form::text('email', Input::old('email'), array('placeholder' => trans('frontend.placeholder.email'), 'class'=>'form-control')) }}
-            </div>
-            <div class="form-group">
-                {{ Form::label('credit_card', trans('frontend.label.credit_card')) }}
-                {{ Form::text('credit_card', Input::old('credit_card'), array('placeholder' => trans('frontend.placeholder.credit_card'), 'class'=>'form-control')) }}
-            </div>
+            </div>            
             <div class="form-group">
                 {{ Form::label('password', trans('frontend.label.password')) }}
                 {{ Form::password('password',array('placeholder' => trans('frontend.placeholder.password'), 'class'=>'form-control')) }}

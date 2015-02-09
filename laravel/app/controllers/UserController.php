@@ -2,77 +2,95 @@
 
 class UserController extends \BaseController {
 
-    /**
-     * Display the specified user.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        if ($id != Auth::user()->id)
-        {
-            Session::flash('error', trans('frontend.not_user_element'));
-            return Redirect::route('user.show', Auth::user()->id);
-        }
-        $user    = User::findOrFail($id);
-        $domains = $user->domains()->paginate(10);
-        return View::make('users.show', compact('user', 'domains'));
-    }
+      /**
+       * Display the specified user.
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function show($id)
+      {
+            if ($id != Auth::user()->id)
+            {
+                  Session::flash('error', trans('frontend.not_user_element'));
+                  return Redirect::route('user.show', Auth::user()->id);
+            }
+            $user    = User::findOrFail($id);
+            $domains = $user->domains()->paginate(10);
+            return View::make('users.show', compact('user', 'domains'));
+      }
 
-    /**
-     * Show the form for editing the specified user.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $user = User::find($id);
-        if ($user->id == Auth::user()->id)
-        {
-            return View::make('users.edit', compact('user'));
-        }
-        else
-        {
-            Session::flash("error", trans('frontend.not_user_element'));
-            return Redirect::back();
-        }
-    }
+      /**
+       * Show the form for editing the specified user.
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function edit($id)
+      {
+            $user = User::find($id);
+            if ($user->id == Auth::user()->id)
+            {
+                  return View::make('users.edit', compact('user'));
+            }
+            else
+            {
+                  Session::flash("error", trans('frontend.not_user_element'));
+                  return Redirect::back();
+            }
+      }
 
-    /**
-     * Update the specified user in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        $user                                  = User::findOrFail($id);
-        $user::$rules['password']              = (Input::get('password')) ? 'required|alpha_dash|min:8|confirmed' : '';
-        $user::$rules['password_confirmation'] = (Input::get('password')) ? 'required' : '';
-        if ($user->updateUniques())
-        {
-            Session::flash('message', trans('frontend.messages.user.update.successful'));
-            return Redirect::route('user.show', $user->id);
-        }
-        else
-        {
+      /**
+       * Update the specified user in storage.
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function update($id)
+      {
+
+            $user = User::find($id);
+
+            // Check if a password has been submitted
+            if (!Input::has('password'))
+            {
+                  // If so remove the validation rule
+                  $user::$rules['password']              = '';
+                  $user::$rules['password_confirmation'] = '';
+                  // Also set autoHash to false;
+                  $user->autoHashPasswordAttributes      = false;
+            }
+            // Run the update passing a Dynamic beforeSave() closure as the fourth argument
+            if ($user->updateUniques(
+                            array(), array(), array(), function($user) {
+                          // Check for the presence of a blank password field again
+                          if (empty($user->password))
+                          {
+                                // If present remove it from the update
+                                unset($user->password);
+                                return true;
+                          }
+                    }))
+            {
+
+                  Session::flash('message', trans("frontend.user.update.successful"));
+                  return Redirect::route('user.index', array($user->id));
+            }
+            Session::flash('error', trans("frontend.user.update.error"));
             return Redirect::back()->withInput()->withErrors($user->errors());
-        }
-    }
+      }
 
-    /**
-     * Remove the specified user from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        User::destroy($id);
+      /**
+       * Remove the specified user from storage.
+       *
+       * @param  int  $id
+       * @return Response
+       */
+      public function destroy($id)
+      {
+            User::destroy($id);
 
-        return Redirect::route('users.index');
-    }
+            return Redirect::route('users.index');
+      }
 
 }

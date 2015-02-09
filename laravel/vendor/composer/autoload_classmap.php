@@ -63,6 +63,7 @@ return array(
     'DatabaseListener' => $baseDir . '/app/listeners/DatabaseListener.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'DatabasesController' => $baseDir . '/app/controllers/DatabasesController.php',
+    'DeleteCreditCardFromClientes' => $baseDir . '/app/database/migrations/2015_02_09_200515_delete_credit_card_from_clientes.php',
     'Doctrine\\Common\\Annotations\\Annotation' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation.php',
     'Doctrine\\Common\\Annotations\\AnnotationException' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php',
     'Doctrine\\Common\\Annotations\\AnnotationReader' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationReader.php',
