@@ -57,8 +57,8 @@ class RemindersController extends Controller {
             );
 
             $response = Password::reset($credentials, function($user, $password) {
-                          $user->password = Hash::make($password);
-                          $user->save();
+                          $user->password = $password;
+                          $user->forceSave();
                     });
 
             switch ($response) {
