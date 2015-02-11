@@ -17,6 +17,9 @@
             {{ HTML::style('css/bootstrap.min.css') }}
             {{HTML::style("css/bootstrap-theme.min.css")}}
             {{HTML::style("css/main.css")}}
+            @if(Route::currentRouteName()=="index")
+            {{HTML::style("css/backgrounds.css")}}
+            @endif
             <script>
                   var base_url = '{{ URL::to("/") }}';
             </script>

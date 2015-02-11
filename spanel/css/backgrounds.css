@@ -1,0 +1,20 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+body, body.bg-strips{
+ background: url('../img/bg-strips.png') no-repeat center top ;
+ background-attachment: local; /* esto es para que haga scroll el elemento*/
+
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+
+
+
