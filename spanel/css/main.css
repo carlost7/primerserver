@@ -25,6 +25,14 @@ html, body{
 	/*text-shadow: 0px 1px 3px rgba(0,0,0, 0.4);*/
 }
 
+body{
+    padding-top:150px;
+    padding-bottom: 20px;
+}
+
+a {
+    color:inherit;
+}
 /* NAV MENU
 ------------------------------------------------*/
 .navbar-inverse{
@@ -46,7 +54,7 @@ html, body{
 /* CONTENT GENERAL
 ------------------------------------------------*/
 
-  body{ 
+  body, body.bg-strips{ 
   background: url('../img/bg-strips.png') no-repeat center top ;
   background-attachment: local; /* esto es para que haga scroll el elemento*/
 
@@ -172,3 +180,52 @@ form label{
     }
 }
 
+/* SIDEBAR DOMAINS others
+---------------------*/
+.sidebar.dominios ul{
+    width:80%;
+    margin:20px auto;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+}
+.sidebar.dominios ul li{
+    float: none;
+    text-align:center;
+    padding:20px 10px;
+    background:#269abc;
+    color:#FFFFFF;
+    border-bottom: solid 2px #1B667C;
+}
+
+.sidebar.dominios ul li a {
+    background:transparent;
+    padding:auto;
+    border:none;
+}
+.sidebar.dominios ul li a:hover{
+    background: transparent;
+    border:none;
+    padding:auto;
+}
+.sidebar.dominios ul li:first-of-type{
+    border-top-right-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    
+    border-top-left-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+}
+
+.sidebar.dominios ul li:last-of-type{
+    border-bottom-right-radius: 6px;
+    -webkit-boder-bottom-right-radius: 6px;
+    
+    border-bottom-left-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+}
+
+/* CONTENIDO SIDE
+---------------------*/
+
+.sidebar.contenido{
+    padding: 20px ;
+}

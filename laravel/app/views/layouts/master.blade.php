@@ -15,12 +15,6 @@
             <link rel="icon" type="image/png" href="{{asset("/img/logo-primerserver.png")}}" />
 
             {{ HTML::style('css/bootstrap.min.css') }}
-            <style>
-                  body {
-                        padding-top: 50px;
-                        padding-bottom: 20px;
-                  }
-            </style>
             {{HTML::style("css/bootstrap-theme.min.css")}}
             {{HTML::style("css/main.css")}}
             <script>
@@ -43,15 +37,16 @@
                               </button>
                               @if(Auth::check())
                               @if(Auth::user()->type == 'Admin')
-                              {{ HTML::LinkRoute('admin.users.index','Primer Server',null,array('class'=>'navbar-brand')) }}
+                              <a href="{{ route('admin.users.index') }} " class="navbar-brand"> {{ HTML::image('img/logotipo.png', $alt="primer server", $attributes = array()) }} </a>
+                              
                               @else
-                              {{ HTML::LinkRoute('user.show','Primer Server',array(Auth::user()->id),array('class'=>'navbar-brand')) }}
+                              <a href="{{ route('user.show',array(Auth::user()->id)) }} " class="navbar-brand"> {{ HTML::image('img/logotipo.png', $alt="primer server", $attributes = array()) }} </a>
+                              
                               @endif
                               @else
                               
-                              <a href="index.php"> <span class="logo-header"> </span> </a>
+                              <a href="{{ route('index') }} " class="navbar-brand"> {{ HTML::image('img/logotipo.png', $alt="primer server", $attributes = array()) }} </a>
                               
-                              <!-- {{ HTML::Link('/','img/logo-primerserver.png',array('class'=>'navbar-brand')) }} -->
                               @endif
 
                         </div>

@@ -4,15 +4,17 @@
 @include('layouts.show_form_errors')
 <div class="container">
     <div class="row">
-        <ul class="nav nav-tabs" role="tablist">
-            <li>{{HTML::LinkRoute('user.edit',trans('frontend.link.user.edit'),array(Auth::user()->id))}}</li>
-            <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>                  
-            <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain.create'),$user->id)}}</li>                  
-            <li><a href="{{URL::route('user.payments.index',$user->id)}}">{{trans('frontend.link.payment.index')}}</a></li>                  
-        </ul>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
+        
+        <div class="col-md-4 sidebar dominios ">
+            <ul class="nav nav-tabs" role="tablist">
+                <li>{{HTML::LinkRoute('user.edit',trans('frontend.link.user.edit'),array(Auth::user()->id))}}</li>
+                <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>                  
+                <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain.create'),$user->id)}}</li>                  
+                <li><a href="{{URL::route('user.payments.index',$user->id)}}">{{trans('frontend.link.payment.index')}}</a></li>                  
+            </ul>
+        </div>
+
+        <div class="col-md-8 sidebar contenido">
             @if(count($domains))
             <div class="table-responsive">
                 <table class="table">
@@ -45,9 +47,9 @@
 
             </div>
             @else
-            <h1>{{trans('frontend.messages.no_domains')}}</h1>
+            <h1 class="clase-1">{{trans('frontend.messages.no_domains')}}</h1>
             @endif
         </div>
-    </div>
+    </div> <!-- ./row -->
 </div>
 @stop
