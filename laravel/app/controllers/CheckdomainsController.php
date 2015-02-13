@@ -19,7 +19,7 @@ class CheckdomainsController extends \BaseController {
                   $checkDomain->sld    = substr($domain, 0, strpos($domain, '.'));
                   $checkDomain->tld    = substr($domain, strpos($domain, '.') + 1);
                   $checkDomain->cost   = DomainCost::where('domain', $checkDomain->tld)->first()->cost;
-
+                  
                   $enom = New PrimerServer\Services\Enom\Enom();
                   if ($enom->check_domain($checkDomain->sld, $checkDomain->tld))
                   {

@@ -36,7 +36,7 @@ class Enom {
             );
 
             $url       = $this->enom->create_url($args);
-            $resultado = $this->enom->getResponse($url);
+            $resultado = $this->enom->getResponse($url);            
             if (isset($resultado))
             {
                   $rrpCode = $resultado->RRPCode;
