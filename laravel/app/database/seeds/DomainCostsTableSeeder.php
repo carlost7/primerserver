@@ -10,21 +10,21 @@ class DomainCostsTableSeeder extends Seeder {
             $faker = Faker::create();
 
             DomainCost::create([
-                "domain" => '.com', 
+                "domain" => 'com', 
                 "cost" => 122, 
                 "concept" => "Costo dominio .com", 
                 "currency" => "MXN"
             ]);
             
             DomainCost::create([
-                "domain" => '.com.mx', 
+                "domain" => 'com.mx', 
                 "cost" => 150, 
                 "concept" => "Costo dominio .com.mx", 
                 "currency" => "MXN"
             ]);
             
             DomainCost::create([
-                "domain" => '.net', 
+                "domain" => 'net', 
                 "cost" => 150, 
                 "concept" => "Costo dominio .net", 
                 "currency" => "MXN"

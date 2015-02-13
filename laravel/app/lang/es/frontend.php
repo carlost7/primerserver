@@ -306,7 +306,7 @@ return array(
         ),
     ),
     "messages"    => array(
-        "no_domains"       => "No existe ningun dominio por el momento",
+        "no_domains"       => "Empieza tu primer dominio, da click en 'Crear Dominio'",
         "no_ftps"          => "No existe ningun FTP para el dominio",
         "no_databases"     => "No existe ninguna base de datos para el dominio",
         "no_emails"        => "No existe ningun correo para el dominio",
