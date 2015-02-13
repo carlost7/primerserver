@@ -14,9 +14,9 @@ class CreateServersTable extends Migration {
     {
         Schema::create('servers', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('domain');
-            $table->string('nameserver');
-            $table->string('ip');
+            $table->string('domain')->nullable();
+            $table->string('nameserver')->nullable();
+            $table->string('ip')->nullable();
             $table->integer('plan_id')->unsigned();
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

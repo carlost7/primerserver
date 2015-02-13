@@ -16,8 +16,8 @@ class CreateDominiosTable extends Migration {
             $table->increments('id');
             $table->string('domain');
             $table->boolean('active');
-            $table->date('date_start');
-            $table->date('date_end');
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
             $table->integer('plan_id')->unsigned();
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();

@@ -14,9 +14,9 @@ class CreateTableHostingCosts extends Migration {
       {
             Schema::create('hosting_costs', function(Blueprint $table) {
                   $table->increments('id');
-                  $table->double("cost");               
-                  $table->string('currency');
-                  $table->string('concept');
+                  $table->double("cost")->nullable();               
+                  $table->string('currency')->nullable();
+                  $table->string('concept')->nullable();
                   $table->integer('plan_id')->unsigned();
                   $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
                   $table->boolean('active');

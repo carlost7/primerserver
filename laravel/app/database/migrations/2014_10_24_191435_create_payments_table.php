@@ -14,15 +14,15 @@ class CreatePaymentsTable extends Migration {
       {
             Schema::create('payments', function(Blueprint $table) {
                   $table->increments('id');
-                  $table->string('concept');
-                  $table->string('ammount');
-                  $table->string('currency');
-                  $table->string('description');
-                  $table->date('date_start');
-                  $table->date('date_end');
+                  $table->string('concept')->nullable();
+                  $table->string('ammount')->nullable();
+                  $table->string('currency')->nullable();
+                  $table->string('description')->nullable();
+                  $table->date('date_start')->nullable();
+                  $table->date('date_end')->nullable();
                   $table->boolean('active');
-                  $table->string('no_order');
-                  $table->string('status');
+                  $table->string('no_order')->nullable();
+                  $table->string('status')->nullable();
                   $table->integer('domain_id')->unsigned();
                   $table->foreign('domain_id')->references('id')->on('domains')->onDelete('cascade')->onUpdate('cascade');
                   $table->integer('user_id')->unsigned();

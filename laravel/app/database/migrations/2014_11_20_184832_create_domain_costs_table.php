@@ -17,8 +17,8 @@ class CreateDomainCostsTable extends Migration {
 			$table->increments('id');
                         $table->string('domain');
                         $table->double('cost');
-                        $table->string('concept');
-                        $table->string('currency');
+                        $table->string('concept')->nullable();
+                        $table->string('currency')->nullable();
                         $table->timestamps();
 		});
 	}
