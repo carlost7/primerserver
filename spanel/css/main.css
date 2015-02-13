@@ -30,6 +30,14 @@ body{
     padding-bottom: 20px;
 }
 
+.fullContainer {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    content:"";
+}
 a {
     color:inherit;
 }
@@ -106,6 +114,26 @@ form label{
     font-weight:normal;
     padding-left:15px;
 }
+
+
+/* MENSAJES
+-----------------------*/
+/* no existen domains */
+.msj-nodomain{
+    margin-top: 15%;
+    line-height:1.3em;
+    color: #a2a2a2 ;
+    text-align:center;
+    vertical-align:middle;
+}
+
+/* Imagenes de mensaje
+------------------------*/
+.flecha-abajo{
+    width:55%;
+}
+
+
 /*  index topic form
 -----------------------*/
 
@@ -182,9 +210,13 @@ form label{
     float: none;
     text-align:center;
     padding:20px 10px;
-    background:#269abc;
+    background:#64B1C7; /*269abc**/
     color:#FFFFFF;
     border-bottom: solid 2px #1B667C;
+    
+    transition:background 0.7s;
+    -webkit-transition:background 0.7s;
+    -moz-transition:background 0.7s;
 }
 
 .sidebar.dominios ul li a {
@@ -196,7 +228,14 @@ form label{
     background: transparent;
     border:none;
     padding:auto;
+    color:#ffffff;
 }
+
+.sidebar.dominios ul li:hover, .sidebar.dominios ul li:focus{
+    background:#1B667C;
+    border-bottom:solid 2px #2185A2;
+}
+
 .sidebar.dominios ul li:first-of-type{
     border-top-right-radius: 6px;
     -webkit-border-top-right-radius: 6px;
@@ -218,4 +257,31 @@ form label{
 
 .sidebar.contenido{
     padding: 20px ;
+}
+
+
+/* BACKGROUND GRADIENTS
+---------------------*/
+.bgColorAnimation{
+    background: linear-gradient(116deg, #2ead8c, #7d79d8, #e79449, #d22573);
+    background-size: 800% 800%;
+
+-webkit-animation: bgGradient 26s ease infinite;
+-moz-animation: bgGradient 26s ease infinite;
+animation: bgGradient 26s ease infinite;
+}
+@-webkit-keyframes bgGradient {
+    0%{background-position:0% 53%}
+    50%{background-position:100% 48%}
+    100%{background-position:0% 53%}
+}
+@-moz-keyframes bgGradient {
+    0%{background-position:0% 53%}
+    50%{background-position:100% 48%}
+    100%{background-position:0% 53%}
+}
+@keyframes bgGradient { 
+    0%{background-position:0% 53%}
+    50%{background-position:100% 48%}
+    100%{background-position:0% 53%}
 }
