@@ -526,13 +526,12 @@ return array(
     ),
     "table_head"  => array(
         "domain"   => array(
-            "domain"     => "Dominio",
-            "active"     => "Esta Activo",
-            "date_start" => "Fecha de inicio",
-            "date_end"   => "Fecha de termino",
-            "plan"       => "Plan",
-            "delete"     => "Eliminar",
-            "activate"   => 'activar',
+            "domain"   => "Dominio",
+            "active"   => "Esta Activo",
+            "date"     => "Fecha de termino",
+            "plan"     => "Plan",
+            "delete"   => "Eliminar",
+            "activate" => 'activar',
         ),
         "email"    => array(
             "user_email" => "Nombre",

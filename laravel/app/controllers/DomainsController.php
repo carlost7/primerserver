@@ -96,7 +96,7 @@ class DomainsController extends \BaseController {
       {
             $user   = User::findOrFail($user_id);
             $domain = Domain::find($id);
-            
+
             if ($domain->user->id != $user->id)
             {
                   Session::flash('error', trans('frontend.not_user_element'));
@@ -121,7 +121,7 @@ class DomainsController extends \BaseController {
             if ($domain->updateUniques())
             {
                   Session::flash('message', trans('frontend.messages.domain.store.successful'));
-                  return Redirect::route("user.domains.index", $user_id);
+                  return Redirect::route("user.show", $user_id);
             }
             else
             {
@@ -169,7 +169,7 @@ class DomainsController extends \BaseController {
                   Session::flash('message', trans('frontend.messages.domain.destroy.error'));
             }
 
-            return Redirect::route("user.domains.index", $user->id);
+            return Redirect::route("user.show", $user_id);
       }
 
 }

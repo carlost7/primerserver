@@ -4,7 +4,7 @@
 <div class="container">
       <div class="row">
             <ul class="nav nav-tabs" role="tablist">
-                  <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>
+                  <li>{{HTML::LinkRoute('user.show',trans('frontend.link.domain.index'),$user->id)}}</li>
             </ul>
       </div>
       <div class="row">

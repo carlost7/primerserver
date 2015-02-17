@@ -22,9 +22,9 @@
                                     <th>{{trans('frontend.table_head.domain.domain')}}</th>
                                     <th>{{trans('frontend.table_head.domain.active')}}</th>                                            
                                     <th>{{trans('frontend.table_head.domain.plan')}}</th>                                                
+                                    <th>{{trans('frontend.table_head.domain.date')}}</th>                                    
                                     <th>{{trans('frontend.table_head.domain.activate')}}</th>
-                                    <th>&nbsp;</th>
-
+                                    <th>{{trans('frontend.table_head.domain.delete')}}</th>
                               </tr>
                               @foreach($domains as $domain)
                               <tr>                              
@@ -32,6 +32,7 @@
                                     <!-- podriamos utilizar iconos -->
                                     <td>{{ ($domain->active)?"si":"no"}}</td>                                                            
                                     <td>{{ $domain->plan->plan_name}}</td>
+                                    <td>{{ $domain->date_start . " - " . $domain->date_end}}</td>                                    
                                     @if(!$domain->active && $domain->plan->plan_name != "free")
                                     <td>
                                           {{ HTML::LinkRoute('user.payments.index',trans('frontend.button.domain.activate.submit'),$user->id,array("class"=>'btn btn-success'))}}                            
@@ -40,9 +41,10 @@
                                     <td></td>
                                     @endif
                                     <td>
-                                          <span class="glyphicon glyphicon-option-horizontal"></span>
+                                          {{ Form::open(array('route' => array('user.domains.destroy',$user->id,$domain->id),'method'=>'DELETE','id'=>$domain->id,"class"=>'delete_domain')) }}
+                                          {{ Form::button(trans('frontend.button.domain.destroy.submit'),array("class"=>'btn btn-danger',"onclick"=>"confirmDelete(".$domain->id.")")) }}
+                                          {{ Form::close() }}
                                     </td>
-
                               </tr>                    
                               @endforeach
                         </table>
@@ -58,4 +60,5 @@
             </div>
       </div> <!-- ./row -->
 </div>
+
 @stop
