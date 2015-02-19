@@ -106,9 +106,9 @@
 
             @yield('contenido')
 
-            <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+            <!-- /container -->        
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
             <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.js"><\/script>')</script>
-
             {{HTML::script("js/vendor/bootstrap.min.js")}}
             {{HTML::script('js/vendor/bootbox.min.js')}}
             {{HTML::script("js/main.js")}}

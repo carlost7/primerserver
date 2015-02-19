@@ -36,8 +36,7 @@ class MercadoPago {
                       "unit_price"  => doubleval($payment->ammount)
                   );
                   $id = $payment->no_order;
-                  array_push($items,$item);
-                  
+                  array_push($items,$item);                  
             }
             
             

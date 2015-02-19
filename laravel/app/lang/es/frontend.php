@@ -165,6 +165,7 @@ return array(
         "plan"                  => "Plan",
         "active"                => 'activo',
         "credit_card"           => 'Tarjeta de Crédito',
+        "number_payments"       => 'seleccionados:'
     ),
     "placeholder" => array(
         "logemail"              => "Correo",
@@ -264,9 +265,11 @@ return array(
             ),
         ),
         "payment"        => array(
-            "update" => array(
+            "update"     => array(
                 "submit" => "Pagar",
-            )
+            ),
+            "select_all" => "seleccionar todos",
+            "pay_many"   => "pagar",
         ),
         "reset_password" => array(
             "submit" => "Actualizar Password",

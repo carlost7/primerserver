@@ -10,7 +10,7 @@ class PaymentsController extends \BaseController {
       public function index($user_id)
       {
             $user     = User::findOrFail($user_id);
-            $payments = Payment::select(DB::raw('sum(ammount) ammount, domain_id, currency , no_order, status'))->where('user_id',$user_id)->groupBy('no_order')->orderBy("created_at","descend")->paginate(10);
+            $payments = Payment::select(DB::raw('sum(ammount) ammount, domain_id, currency , no_order, status'))->where('user_id', $user_id)->groupBy('no_order')->orderBy("created_at", "descend")->get();
 
             return View::make('payments.index', compact('payments', 'user'));
       }
@@ -23,10 +23,11 @@ class PaymentsController extends \BaseController {
        */
       public function show($user_id, $no_order)
       {
-            $user     = User::findOrFail($user_id);
-            $payments = Payment::where('no_order', $no_order)->get();
-
-            return View::make('payments.show', compact('user', 'payments'));
+            $user      = User::findOrFail($user_id);
+            $payments  = Payment::where('no_order', $no_order)->get();
+            $vista     = View::make('payments.show')->with(array('payments' => $payments, 'no_order' => $no_order))->render();
+            $resultado = array('resultado' => $vista);
+            return $resultado;
       }
 
       /**
@@ -35,14 +36,16 @@ class PaymentsController extends \BaseController {
        * @param  int  $id
        * @return Response
        */
-      public function update($user_id, $no_order)
+      public function update($user_id)
       {
-            $user     = User::findOrFail($user_id);
-            $payments = Payment::where('no_order', $no_order)->get();
-            
+            $user        = User::findOrFail($user_id);
             $mercadoPago = new PrimerServer\Services\MercadoPago\MercadoPago();
+
             
-            $preference = $mercadoPago->generate_preference($user,$payments);
+            $payments = Payment::whereIn('no_order', Input::get('no_order'))->get();
+
+            $preference = $mercadoPago->generate_preference($user, $payments);
+
             
             if (isset($preference))
             {
