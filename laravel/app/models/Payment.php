@@ -4,7 +4,7 @@ use LaravelBook\Ardent\Ardent;
 
 class Payment extends Ardent {
 
-      protected $fillable          = ["concept", "ammount", "currency", "description", "date_start", "date_end", "active", "no_order", "status"];
+      protected $fillable          = ["concept", "ammount", "currency", "description", "date_start", "date_end", "active", "no_order", "status","type"];
       //Rules of validations
       public static $rules         = array(
           "concept"     => 'required',
@@ -15,7 +15,7 @@ class Payment extends Ardent {
           "date_end"    => 'required',
           "active"      => 'required',
           "no_order"    => 'required',
-          "status"      => 'required',
+          "status"      => 'required',          
       );
       //Relationships
       public static $relationsData = array(

@@ -13,11 +13,11 @@ class PaymentListener {
             }
             else
             {
-                  
-                  $no_order             = str_random(5);
-                  
+
+                  $no_order = str_random(5);
+
                   ///Crearemos dos pagos, uno por el dominio y otro por el hosting
-                  
+
                   /*
                    * Hosting
                    */
@@ -28,7 +28,8 @@ class PaymentListener {
                   $payment->description = $domain->plan->plan_name;
                   $payment->active      = true;
                   $payment->no_order    = $no_order;
-                  $payment->status      = "started";
+                  $payment->status      = "started";                  
+                  $payment->type        = "dominio";
                   $payment->date_start  = \Carbon\Carbon::now();
                   $payment->date_end    = \Carbon\Carbon::now();
                   $payment->user()->associate($domain->user);
@@ -36,7 +37,7 @@ class PaymentListener {
 
                   if ($payment->save())
                   {
-                        $costDomain           = DomainCost::where('domain', substr($domain->domain, strpos($domain->domain, ".")+1))->first();
+                        $costDomain           = DomainCost::where('domain', substr($domain->domain, strpos($domain->domain, ".") + 1))->first();
                         /*
                          * Dominio
                          */
@@ -50,6 +51,7 @@ class PaymentListener {
                         $payment->status      = "started";
                         $payment->date_start  = \Carbon\Carbon::now();
                         $payment->date_end    = \Carbon\Carbon::now();
+                        $payment->type        = "host";
                         $payment->user()->associate($domain->user);
                         $payment->domain()->associate($domain);
                         if ($payment->save())

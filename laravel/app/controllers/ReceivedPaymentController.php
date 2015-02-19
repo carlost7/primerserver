@@ -104,7 +104,8 @@ class ReceivedPaymentController extends \BaseController {
                   $external_reference = $response['external_reference'];
                   $status             = $response['status'];
 
-                  $payments = Payment::where('no_order', $external_reference)->get();
+                  $no_orders = explode("-", $external_reference);
+                  $payments = Payment::whereIn('no_order', $no_orders)->get();
 
                   foreach ($payments as $payment) {
 
@@ -114,14 +115,7 @@ class ReceivedPaymentController extends \BaseController {
                         {
                               $payment->active = false;
                         }
-                        if ($payment->update())
-                        {
-                              continue;
-                        }
-                        else
-                        {
-                              break;
-                        }
+                        $payment->update();                        
                   }
 
                   switch ($status) {

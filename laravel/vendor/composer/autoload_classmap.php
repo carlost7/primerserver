@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddCreditCardToUsers' => $baseDir . '/app/database/migrations/2015_01_29_171533_add_credit_card_to_users.php',
+    'AddTypeToPayments' => $baseDir . '/app/database/migrations/2015_02_19_004447_add_type_to_payments.php',
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
     'AdminUser' => $baseDir . '/app/models/AdminUser.php',
     'AdminUsersController' => $baseDir . '/app/controllers/AdminUsersController.php',

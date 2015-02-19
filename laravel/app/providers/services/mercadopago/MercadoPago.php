@@ -24,7 +24,7 @@ class MercadoPago {
       {
             //Empty array
             $items = array();
-            $id = "";
+            $id = array();
             
             
             foreach ($payments as $payment) {
@@ -35,7 +35,7 @@ class MercadoPago {
                       "currency_id" => $payment->currency,
                       "unit_price"  => doubleval($payment->ammount)
                   );
-                  $id = $payment->no_order;
+                  array_push($id,$payment->no_order);                  
                   array_push($items,$item);                  
             }
             
@@ -50,6 +50,9 @@ class MercadoPago {
                   $referer = \URL::route('receive_payment.index',$user->id);
             }
 
+            $id = implode("-",array_unique($id));
+            
+            
             $preference_data = array(
                 "items"              => $items,
                 "payer"              => array(
