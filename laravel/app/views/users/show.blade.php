@@ -5,7 +5,7 @@
 <div class="fullContainer bgColorAnimation"></div>
 <div class="container ">
       <div class="row">
-
+          
             <div class="col-md-4 sidebar dominios ">
                   <ul class="nav nav-tabs" role="tablist">
                         <li>{{HTML::LinkRoute('user.edit',trans('frontend.link.user.edit'),array(Auth::user()->id))}}</li>                    
