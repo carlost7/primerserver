@@ -2,7 +2,7 @@
     <ul class="nav nav-tabs" role="tablist">
 
         @if($page=='principal')
-        <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>
+        <li>{{HTML::LinkRoute('user.show',trans('frontend.link.domain.index'),$user->id)}}</li>
         @else
         <li>{{HTML::LinkRoute('user.domains.show',$domain->domain,array($user->id,$domain->id))}}</li>
         @endif
