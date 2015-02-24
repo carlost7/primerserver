@@ -3,6 +3,11 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+/* FONTS
+------------------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Poiret+One|Inconsolata:400,700);
+
 /* HELP CLASSES
 ------------------------------------------------*/
 .mrg-top-20{
@@ -15,10 +20,16 @@
 
 /* GENERAL
 ------------------------------------------------*/
+*:focus{
+    outline-style:none !important;
+    box-shadow:0px 0px 5px rgba(0,0,0,0.1) !important;
+    border-color:rgba(0,0,0,0.2) !important;
+}
 
 html, body{
 	font-size:100%;
 	font-family: 'open sans', sans-serif;
+        font-weight: 300;
 	height:100%;
 	width:100%;
 	color: #4c4c4c;
@@ -63,7 +74,7 @@ a {
 ------------------------------------------------*/
 
 .container.first{
-    padding-top:80px;
+    /* padding-top:80px; */
 }
 
 .container.topic{
@@ -115,12 +126,24 @@ form label{
     padding-left:15px;
 }
 
+.domain-name-title h2{
+   color:#fefefe;
+   margin-top:0px;
+   padding:0px 16px 10px;
+   border-bottom:solid 2px #fefefe;
+   margin-left:6%;
+   text-shadow: 1px 3px rgba(0,0,0,0.2);
+}
 
 /* MENSAJES
 -----------------------*/
-/* no existen domains */
-.msj-nodomain{
-    margin-top: 15%;
+/* MAIN IDE FOR MSJ */
+
+.msj{
+    font-family: 'Poiret One';
+    font-weight: normal;
+    
+    margin-top:6%;
     line-height:1.3em;
     color: #a2a2a2 ;
     text-align:center;
@@ -197,14 +220,55 @@ form label{
         width:200px;   
     }
 }
+/* OPTION TOOLS
+---------------------*/
+.option-tools{
+    display:inline-block;
+    padding:10px 0px;
+    border-bottom:solid 1px #efefef;
+}
+.option-tools div{
+    float:right;
+    text-align: center;
+}
 
-/* SIDEBAR DOMAINS others
+.option-tools .btn, .option-tools .nbr-payments{
+        font-size:1em;
+        font-weight: normal;
+        line-height: 1.2em;
+        border:solid 1px #35AAE1 ;
+	background:transparent ;
+	color:#9D9D9D;
+	text-shadow:none;
+	box-shadow:none;
+
+	transition:all 0.2s ease-in;
+	-webkit-transition:all 0.2s ease-in;
+	-moz-transition:all 0.2s ease-in;
+	-o-transition:all 0.2s ease-in;
+	-ms-transition:all 0.2s ease-in;
+}
+.option-tools .nbr-payments{
+    padding:6px 12px;
+    border:transparent !important;
+}
+	.option-tools .btn:hover{
+		border-color:#35AAE1;
+		color:white;
+                background:#35AAE1;
+	}
+
+
+/* SIDEBAR DOMAINS others NAV
 ---------------------*/
 .sidebar.dominios ul{
     width:80%;
     margin:20px auto;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
+    box-shadow:0px 10px rgba(0,0,0,0.1);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* border-radius: 20px; */
+    /* -webkit-border-radius: 20px; */
 }
 .sidebar.dominios ul li{
     float: none;
@@ -219,6 +283,7 @@ form label{
     -moz-transition:background 0.7s;
 }
 
+
 .sidebar.dominios ul li a {
     background:transparent;
     padding:auto;
@@ -229,6 +294,7 @@ form label{
     border:none;
     padding:auto;
     color:#ffffff;
+    border-bottom:none;
 }
 
 .sidebar.dominios ul li:hover, .sidebar.dominios ul li:focus{
@@ -250,6 +316,8 @@ form label{
     
     border-bottom-left-radius: 6px;
     -webkit-border-bottom-left-radius: 6px;
+    
+    border-bottom: none !important;
 }
 
 /* CONTENIDO SIDE
@@ -257,13 +325,29 @@ form label{
 
 .sidebar.contenido{
     padding: 20px ;
+    min-height:250px;
+}
+
+/* CONTENIDO LIST ITEMS
+---------------------*/
+
+.contenido.list-table{
+background-color:#fefefe;
+margin-top:20px;
+border-radius:6px;
+box-shadow:0px 8px rgba(0,0,0,0.1);
+text-align: center;
+}
+
+.table>tbody>tr>th{
+	border-top:none;
 }
 
 
 /* BACKGROUND GRADIENTS
 ---------------------*/
 .bgColorAnimation{
-    background: linear-gradient(116deg, #2ead8c, #7d79d8, #e79449, #d22573);
+    background: linear-gradient(116deg, #f0c070, #b17eb4, #a7e689,#5f7ab1 );
     background-size: 800% 800%;
 
 -webkit-animation: bgGradient 26s ease infinite;

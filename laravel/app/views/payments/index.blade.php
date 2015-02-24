@@ -1,54 +1,58 @@
 @extends('layouts.master')
 
 @section('contenido')
+
 <div class="container">
-      <div class="row">
-            <ul class="nav nav-tabs" role="tablist">
-                  <li>{{HTML::LinkRoute('user.show',trans('frontend.link.domain.index'),$user->id)}}</li>
-            </ul>
-      </div>
+      
       {{ Form::open(array("route" => array('user.payments.update',$user->id),"method"=>'PUT')) }}                                          
       <div class="row">
-            <div class="col-xs-7 pull-right">                  
-                  <div class="col-sm-4">
-                        {{ Form::button(trans('frontend.button.payment.select_all'),array("class"=>'btn btn-warning','onclick'=>'select_all()')) }}
-                  </div>
-                  <div class="col-sm-4">
+            
+            @include('layouts.mainMenu', array('activo' => 'pagos'))
+                                 
+            <div class="sidebar contenido list-table col-md-8">
+                
+                <div class="col-md-12 option-tools pull-right">                  
+                    <div class="col-xs-3 nbr-payments">
                         {{ trans('frontend.label.number_payments') }}<span id="number_payments">0</span>
-                  </div>
-                  <div class="col-sm-4">
+                    </div>
+                    <div class="col-xs-3">
+                        {{ Form::button(trans('frontend.button.payment.select_all'),array("class"=>'btn btn-warning','onclick'=>'select_all()')) }}
+                    </div>
+                    
+                    <div class="col-xs-2">
                         {{ Form::submit(trans('frontend.button.payment.pay_many'),array("class"=>'btn btn-success')) }}
-                  </div>
-            </div>
-            <div class="col-xs-12">
-                  @if(count($payments))                  
-                  <div class="table-aresponsive">
+                    </div>
+                </div>
+                
+              @if(count($payments))                  
+              <div class="table-aresponsive">
 
-                        <table class="table">
-                              <tr>
-                                    <th>{{trans('frontend.table_head.payment.no_order')}}</th>
-                                    <th>{{trans('frontend.table_head.payment.domain')}}</th>
-                                    <th>{{trans('frontend.table_head.payment.ammount')}}</th>
-                                    <th>{{trans('frontend.table_head.payment.currency')}}</th>
-                                    <th>{{trans('frontend.table_head.payment.status')}}</th>                                    
-                              </tr>
-                              @foreach($payments as $payment)
-                              <tr id="{{$payment->no_order}}">
-                                    <td  onclick="toggle_table({{"'".$payment->no_order."','".$user->id."'"}})">{{$payment->no_order}} <span class="caret"></span></td>
-                                    <td>{{ $payment->domain->domain }}</td>
-                                    <td>{{ '$'.$payment->ammount }}</td>
-                                    <td>{{ $payment->currency}}</td>
-                                    <td>{{ $payment->status}}</td>
-                                    <td>
-                                          {{ Form::checkbox('no_order[]',$payment->no_order,false,array(($payment->status=="approved")?'disabled':'','class'=>'checkbox_payment','onclick'=>"select_payment(this)")) }}
-                                    </td>
-                              </tr>
-                              @endforeach
-                        </table>                        
-                  </div>
-                  @else
-                  <h1>{{trans('frontend.messages.no_payments')}}</h1>
-                  @endif
+                    <table class="table">
+                          <tr>
+                                <th>{{trans('frontend.table_head.payment.no_order')}}</th>
+                                <th>{{trans('frontend.table_head.payment.domain')}}</th>
+                                <th>{{trans('frontend.table_head.payment.ammount')}}</th>
+                                <th>{{trans('frontend.table_head.payment.currency')}}</th>
+                                <th>{{trans('frontend.table_head.payment.status')}}</th>                                    
+                          </tr>
+                          @foreach($payments as $payment)
+                          <tr id="{{$payment->no_order}}">
+                                <td  onclick="toggle_table({{"'".$payment->no_order."','".$user->id."'"}})">{{$payment->no_order}} <span class="caret"></span></td>
+                                <td>{{ $payment->domain->domain }}</td>
+                                <td>{{ '$'.$payment->ammount }}</td>
+                                <td>{{ $payment->currency}}</td>
+                                <td>{{ $payment->status}}</td>
+                                <td>
+                                      {{ Form::checkbox('no_order[]',$payment->no_order,false,array(($payment->status=="approved")?'disabled':'','class'=>'checkbox_payment','onclick'=>"select_payment(this)")) }}
+                                </td>
+                          </tr>
+                          @endforeach
+                    </table>                        
+              </div>
+              @else
+              <h1 class=" msj col-md-6 col-md-offset-3">{{trans('frontend.messages.no_payments')}}</h1>
+              @endif
+                
             </div>
       </div>
                                           {{ Form::close()}}
