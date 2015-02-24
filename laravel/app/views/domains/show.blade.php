@@ -15,7 +15,7 @@
         <div class="col-md-8 sidebar contenido list-table">
         
             <div class="col-sm-4">
-                <a href="{{route('user.emails.create')}}">{{ HTML::image('img/mail-icon.png')}} </a>
+                <a href="{{route('user.emails.create',array('user_id'=>$user->id,'domain_id'=>$domain->id))}}">{{ HTML::image('img/mail-icon.png')}} </a>
                 <h3>{{ HTML::linkRoute('user.emails.index',trans('frontend.link.email.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h3>
                 <h4>{{ count($domain->emails)."/".$domain->plan->num_emails }}</h4>
             <!--    <h2>{{ HTML::linkRoute('user.emails.create',trans('frontend.link.email.create'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2> -->
