@@ -31,6 +31,7 @@ html, body{
 	font-family: 'open sans', sans-serif;
         font-weight: 300;
 	height:100%;
+	position: relative;
 	width:100%;
 	color: #4c4c4c;
 	/*text-shadow: 0px 1px 3px rgba(0,0,0, 0.4);*/
@@ -140,14 +141,36 @@ form label{
 /* MAIN IDE FOR MSJ */
 
 div.alert{
-    top:50%;
-    left:50%;
+    width:50%;
+    max-width:90%;
     
-    background:rgba(0,0,0,0.6);
+    top:35%;
+    left:0;
+    right:0;
+    margin-right:auto;
+    margin-left:auto;
+    
+    font-size:2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    text-shadow: 1px 2px rgba(0,0,0, 0.8);
+    
+    background:rgba(0,0,0,0.8);
     border:none;
+    padding:80px 50px;
     color:#ffffff;
     position:absolute;
     z-index:9999999;
+}
+div.alert:first-letter{
+    text-transform: capitalize;
+}
+div.alert > .close{
+    position: absolute;
+    top:20px;
+    right:40px;
+    color:white;
 }
 
 .msj{
