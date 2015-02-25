@@ -77,10 +77,7 @@
 
                   </div>
             </div>
-            <div class="alert alert-success alert-dismissable">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  este texto es un dummy
-            </div>
+            
             @if(Session::has('message'))
             <div class="alert alert-success alert-dismissable">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
