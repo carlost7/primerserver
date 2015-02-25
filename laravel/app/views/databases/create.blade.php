@@ -1,14 +1,10 @@
 @extends('layouts.master')
 
 @section('contenido')
-<div class="container">
+<div class="container">      
       <div class="row">
-            <ul class="nav nav-tabs" role="tablist">
-                  <li>{{HTML::LinkRoute('user.databases.index',trans('frontend.link.database.index'),array($user->id,$domain->id))}}</li>
-            </ul>
-      </div>
-      <div class="row">
-            <div class="col-sm-6 col-sm-push-3">
+            @include('layouts.menu', ['page' => 'databases'])
+            <div class="col-md-8 sidebar contenido list-table">
                   <h2>{{ trans('frontend.title.database.create') }}</h2>
 
                   <div class="instrucciones">
