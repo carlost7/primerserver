@@ -139,6 +139,17 @@ form label{
 -----------------------*/
 /* MAIN IDE FOR MSJ */
 
+div.alert{
+    top:50%;
+    left:50%;
+    
+    background:rgba(0,0,0,0.6);
+    border:none;
+    color:#ffffff;
+    position:absolute;
+    z-index:9999999;
+}
+
 .msj{
     font-family: 'Poiret One';
     font-weight: normal;
