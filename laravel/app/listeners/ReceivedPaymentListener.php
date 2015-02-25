@@ -8,8 +8,8 @@ class ReceivedPaymentListener {
       {
             //Aqui seleccionaremos en el futuro, las actualizaciones de objetos que se realizarán según el tipo de pago
             foreach ($payments as $payment) {
-                  switch ($payment->tipo) {
-                        case "domain":
+                  switch ($payment->type) {
+                        case "dominio":
                               $domain                        = $payment->domain;
                               $domain->active                = true;
                               $domain->date_start            = \Carbon\Carbon::now();

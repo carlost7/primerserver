@@ -2,17 +2,17 @@
 
 @section('contenido')
 <div class="container">
+      
       <div class="row">
-            <ul class="nav nav-tabs" role="tablist">
-                  <li>{{HTML::LinkRoute('user.domains.index',trans('frontend.link.domain.index'),$user->id)}}</li>                  
-            </ul>
-      </div>
-      <div class="row">
-            <div class="col-sm-6 col-sm-push-3">
-                  <h2>{{ trans('frontend.title.domain.create') }}</h2>
+          
+          @include('layouts.mainMenu', array('activo' => 'dominio'))
+          
+            <div class="col-md-8 sidebar contenido list-table">
+                <div class="col-md-10 col-md-offset-1">
+                  <h2><!-- {{ trans('frontend.title.domain.create') }} --></h2>
 
                   <div class="instrucciones">
-                        <p>{{trans('frontend.instruction.domain.create')}}</p>
+                       <!-- <p>{{trans('frontend.instruction.domain.create')}}</p> -->
                   </div>
 
                   {{ Form::open(array('route' => array('user.domains.store',$user->id))) }}
@@ -56,6 +56,7 @@
                   </div>        
                   {{ Form::close() }}
             </div>
+            </div><!-- ./col-md-8 -->
       </div>
 </div>
 @include('layouts.modal_password')

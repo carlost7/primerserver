@@ -92,7 +92,11 @@
                   {{ Session::forget('error'); }}
             </div>
             @endif
-
+               
+            @if(Route::currentRouteName()!="index")
+                <div class="fullContainer bgColorAnimation"></div>
+            @endif
+            
             @yield('contenido')
 
             <!-- /container -->        

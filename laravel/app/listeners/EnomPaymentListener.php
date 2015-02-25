@@ -17,8 +17,9 @@ class EnomPaymentListener {
       {
             //Aqui seleccionaremos en el futuro, las actualizaciones de objetos que se realizarán según el tipo de pago
             foreach ($payments as $payment) {
-                  switch ($payment->tipo) {
-                        case "domain":
+                  switch ($payment->type) {
+                        case "dominio":
+                            
                               $domain = $payment->domain;
                               $sld    = substr($domain->domain, 0, strpos($domain->domain, '.'));
                               $tld    = substr($domain->domain, strpos($domain->domain, '.') + 1);
@@ -34,6 +35,7 @@ class EnomPaymentListener {
                               $this->events->fire("enom.domain.buy.error", array($domain));
                               continue;
                         default:
+                            
                               continue;
                               break;
                   }

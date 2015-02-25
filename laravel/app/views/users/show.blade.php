@@ -2,19 +2,13 @@
 
 @section('contenido')
 @include('layouts.show_form_errors')
-<div class="fullContainer bgColorAnimation"></div>
 <div class="container ">
       <div class="row">
-          
-            <div class="col-md-4 sidebar dominios ">
-                  <ul class="nav nav-tabs" role="tablist">
-                        <li>{{HTML::LinkRoute('user.edit',trans('frontend.link.user.edit'),array(Auth::user()->id))}}</li>                    
-                        <li><a href="{{URL::route('user.payments.index',$user->id)}}">{{trans('frontend.link.payment.index')}}</a></li>                  
-                        <li>{{HTML::LinkRoute('user.domains.create',trans('frontend.link.domain.create'),$user->id)}}</li>                  
-                  </ul>
-            </div>
+        
+            @include('layouts.mainMenu', array('activo' => ''))
+            
 
-            <div class="col-md-8 sidebar contenido">
+            <div class="col-md-8 sidebar contenido list-table">
                   @if(count($domains))
                   <div class="table-responsive">
                         <table class="table">
@@ -53,9 +47,9 @@
 
                   </div>
                   @else
-                  <div class="msj-container">
-                        <h2 class="msj-nodomain col-md-6 col-md-offset-3">{{trans('frontend.messages.no_domains')}}</h2>
-                  </div>
+                  
+                        <h1 class=" msj col-md-6 col-md-offset-3">{{trans('frontend.messages.no_domains')}}</h1>
+                 
                   @endif
             </div>
       </div> <!-- ./row -->
