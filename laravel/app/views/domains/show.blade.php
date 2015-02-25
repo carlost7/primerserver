@@ -22,16 +22,14 @@
 
             </div>
             <div class="col-sm-4">
-                <a href="{{route('user.databases.index')}}">{{ HTML::image('img/db-icon.png')}}</a>
+                <a href="{{route('user.databases.create',array('user_id'=>$user->id,'domain_id'=>$domain->id))}}">{{ HTML::image('img/db-icon.png')}}</a>
                 <h3>{{ HTML::linkRoute('user.databases.index',trans('frontend.link.database.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h3>
-                <h4>{{ count($domain->databases)."/".$domain->plan->num_databases }}</h4>
-            <!--    <h2>{{ HTML::linkRoute('user.databases.create',trans('frontend.link.database.create'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2> -->
+                <h4>{{ count($domain->databases)."/".$domain->plan->num_databases }}</h4>            
             </div>
             <div class="col-sm-4">
-                <a href="{{route('user.ftps.index')}}">{{ HTML::image('img/ftp-icon.png')}}</a>
+                <a href="{{route('user.ftps.create',array('user_id'=>$user->id,'domain_id'=>$domain->id))}}">{{ HTML::image('img/ftp-icon.png')}}</a>
                 <h3>{{ HTML::linkRoute('user.ftps.index',trans('frontend.link.ftp.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h3>
-                <h4>{{ count($domain->ftps)."/".$domain->plan->num_ftps }}</h4>
-            <!--    <h2>{{ HTML::linkRoute('user.ftps.create',trans('frontend.link.ftp.create'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</h2> -->
+                <h4>{{ count($domain->ftps)."/".$domain->plan->num_ftps }}</h4>            
             </div>
         </div>
     </div>
