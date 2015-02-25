@@ -74,7 +74,7 @@ class UserController extends \BaseController {
             {
 
                   Session::flash('message', trans("frontend.user.update.successful"));
-                  return Redirect::route('user.index', array($user->id));
+                  return Redirect::route('user.show', array($user->id));
             }
             Session::flash('error', trans("frontend.user.update.error"));
             return Redirect::back()->withInput()->withErrors($user->errors());
