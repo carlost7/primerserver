@@ -66,6 +66,8 @@ class ReceivedPaymentController extends \BaseController {
                                           break;
                                     }
                               }
+                              
+                              return Redirect::route('user.show',array($payment->user->id));
                         }
                         else
                         {
