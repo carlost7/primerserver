@@ -6,8 +6,8 @@
         @else
         <li>{{HTML::LinkRoute('user.domains.show',$domain->domain,array($user->id,$domain->id))}}</li>
         @endif
-        <li>{{ HTML::linkRoute('user.emails.index',trans('frontend.link.email.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</li>                    
-        <li>{{ HTML::linkRoute('user.databases.index',trans('frontend.link.database.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</li>                  
-        <li>{{ HTML::linkRoute('user.ftps.index',trans('frontend.link.ftp.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</li>                  
+        <li class="{{ ($page=="emails")?"activa-menu":""}}">{{ HTML::linkRoute('user.emails.index',trans('frontend.link.email.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</li>                    
+        <li class="{{ ($page=="databases")?"activa-menu":""}}">{{ HTML::linkRoute('user.databases.index',trans('frontend.link.database.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</li>                  
+        <li class="{{ ($page=="ftps")?"activa-menu":""}}">{{ HTML::linkRoute('user.ftps.index',trans('frontend.link.ftp.index'),array('user_id'=>$user->id,'domain_id'=>$domain->id)) }}</li>                  
     </ul>
 </div>

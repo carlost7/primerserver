@@ -2,18 +2,11 @@
 
 @section('contenido')
 <div class="container">
-    
-    <div class="row">
-        <ul class="nav nav-tabs" role="tablist">                       
-            <li>{{ HTML::linkRoute('user.ftps.edit',trans('frontend.link.ftp.edit'),array($user->id,$domain->id,$ftp->id)) }}</li>
-        </ul>
-    </div>
-    
     <div class="row">
             
-        @include('layouts.menu', ['page' => 'secundario'])   
+        @include('layouts.menu', ['page' => 'ftps'])   
             
-        <div class="col-md-8 ">
+        <div class="col-md-8 sidebar contenido list-table">
             <div class="text-center">
                 <h2>{{ trans('frontend.title.ftp.show') }}</h2> 
                 <ul class="list-group">
