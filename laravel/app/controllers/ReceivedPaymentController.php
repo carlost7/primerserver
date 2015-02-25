@@ -93,6 +93,7 @@ class ReceivedPaymentController extends \BaseController {
        */
       public function update()
       {
+          
             //Log::info('PagosController.recibir_notificacion_prueba entrada de datos');
             $exref  = Input::get('external_reference');
             $status = Input::get('collection_status');
@@ -106,7 +107,7 @@ class ReceivedPaymentController extends \BaseController {
 
                   $no_orders = explode("-", $external_reference);
                   $payments = Payment::whereIn('no_order', $no_orders)->get();
-
+                  
                   foreach ($payments as $payment) {
 
                         $payment->status   = $status;
@@ -117,7 +118,7 @@ class ReceivedPaymentController extends \BaseController {
                         }
                         $payment->update();                        
                   }
-
+                  
                   switch ($status) {
                         case 'approved':
                               $this->events->fire('payment.approved', array($payments));
