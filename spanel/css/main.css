@@ -184,6 +184,24 @@ div.alert > .close{
     vertical-align:middle;
 }
 
+.alert.alert-danger{
+	font-size:1em;
+    width:100%;
+	top: 100%; 
+	box-shadow: none;
+	padding: 20px 10px;
+    color:#FFDC00;
+    background:transparent;
+    text-shadow:1px 2px rgba(0,0,0,0.2);
+}
+	.alert.alert-danger:before{
+		content:" * ";
+		position: absolute;
+		top:10px;
+		left:16px;
+		font-size:2em;
+	}
+        
 /* Imagenes de mensaje
 ------------------------*/
 .flecha-abajo{

@@ -3,11 +3,11 @@
 return array(
     /*
       |--------------------------------------------------------------------------
-      | File to save all labels and instructions
+      | File to save all labels and instruccions
       |--------------------------------------------------------------------------
       |
       | Here we will put all labels for the different forms and
-      | the instructions for every form
+      | the instruccions for every form
       |
      */
 
@@ -64,7 +64,7 @@ return array(
                 "show"   => "Mostrar costos de dominio",
             ),
             "free_domains"  => array(
-                "index" => "Dominios gratuitos",
+                "index" => "Dominios Gratuitos",
                 "show"  => "Mostrar dominio",
             ),
             "plans"         => array(
@@ -81,10 +81,10 @@ return array(
             ),
         ),
         "system"         => array(
-            "buy_domain_error"          => "Error al comprar el dominio. Inténtalo más tarde.",
-            "new_user_created"          => "¡Bienvenid@ a Primer Server!",
+            "buy_domain_error"          => "Error al comprar el dominio",
+            "new_user_created"          => "Bienvenido a Primer Server",
             "payment_received_approved" => "Pago aprobado",
-            "domain_created_server"     => 'Dominio creado con éxito',
+            "domain_created_server"     => 'Dominio creado con exito',
         )
     ),
     "instruction" => array(
@@ -144,7 +144,7 @@ return array(
         "first_name"            => "Nombre",
         "last_name"             => "Apellido",
         "email"                 => "Correo Electrónico",
-        "telephone"             => "Teléfono",
+        "telephone"             => "Telefono",
         "cellphone"             => "Celular",
         "password"              => "Contraseña",
         "password_confirmation" => "Confirmar Contraseña",
@@ -155,7 +155,7 @@ return array(
         "user_email"            => "Nombre",
         "username"              => "Nombre de Usuario",
         "hostname"              => "Nombre de Host",
-        "homedir"               => "Directorio Raíz",
+        "homedir"               => "Directorio Raiz",
         "name_db"               => "Nombre de Base de Datos",
         "user"                  => "Usuario de base de datos",
         "tld"                   => "TLD",
@@ -163,40 +163,40 @@ return array(
         "concept"               => "Concepto",
         "currency"              => "Moneda",
         "plan"                  => "Plan",
-        "active"                => 'Activo',
+        "active"                => 'activo',
         "credit_card"           => 'Tarjeta de Crédito',
-        "number_payments"       => 'Seleccionados:'
+        "number_payments"       => 'seleccionados:'
     ),
     "placeholder" => array(
         "logemail"              => "Correo",
         "logpassword"           => "Contraseña",
-        "first_name"            => "Juan José",
-        "last_name"             => "Pérez López",
+        "first_name"            => "Juan Jose",
+        "last_name"             => "Perez Lopez",
         "email"                 => "usuario@ejemplo.com",
         "telephone"             => "46 20 14 22",
         "cellphone"             => "55 57 89 78 12",
         "password"              => "10 caracteres",
-        "password_confirmation" => "Repetir contraseña",
+        "password_confirmation" => "Repetir Contraseña",
         "domain"                => "ejemplo.com",
         "forward"               => "ejemplo1@correo.com",
         "user_email"            => "Juan Pérez",
         "username"              => "user@ps.com",
         "hostname"              => "ps.com",
-        "homedir"               => "Directorio",
-        "name_db"               => "Nombre de Base de Datos. Utiliza menos de 63 caracteres",
-        "user"                  => "Usuario de Base de Datos. Utiliza menos de 16 caracteres",
+        "homedir"               => "directorio",
+        "name_db"               => "Nombre de Base de Datos < 63 caracteres",
+        "user"                  => "Usuario de base de datos < 16 caracteres",
         "tld"                   => "TLD",
         "cost"                  => "Costo",
         "concept"               => "Concepto",
         "currency"              => "Moneda",
-        "credit_card"           => 'Tarjeta de crédito',
+        "credit_card"           => 'Tarjeta de Crédito',
     ),
     "button"      => array(
         "login"          => array(
             "submit" => "Entrar",
         ),
         "reminder"       => array(
-            "submit" => "Enviar correo",
+            "submit" => "enviar correo",
         ),
         "register"       => array(
             "submit" => "Registrarse",
@@ -268,174 +268,174 @@ return array(
             "update"     => array(
                 "submit" => "Pagar",
             ),
-            "select_all" => "Seleccionar todos",
-            "pay_many"   => "Pagar",
+            "select_all" => "seleccionar todos",
+            "pay_many"   => "pagar",
         ),
         "reset_password" => array(
-            "submit" => "Actualizar contraseña",
+            "submit" => "Actualizar Password",
         ),
         "modal_password" => array(
-            "generate_new"   => "Generar nueva contraseña",
-            "accept_pasword" => "Seleccionar contraseña",
+            "generate_new"   => "Generar nuevo password",
+            "accept_pasword" => "Seleccionar Password",
         ),
         "domain_options" => array(
             "confirm" => "Confirmar"
         ),
         "checkdomain"    => array(
-            "select" => "Seleccionar"
+            "select" => "seleccionar"
         ),
         "admin"          => array(
             "user"          => array(
                 "destroy" => array(
-                    "submit" => "Eliminar"
+                    "submit" => "eliminar"
                 ),
             ),
             "domain_costs"  => array(
                 "create"  => array(
-                    "submit" => "Crear",
+                    "submit" => "crear",
                 ),
                 "destroy" => array(
-                    "submit" => "Eliminar"
+                    "submit" => "eliminar"
                 ),
             ),
             "hosting_costs" => array(
                 "create"  => array(
-                    "submit" => "Crear",
+                    "submit" => "crear",
                 ),
                 "destroy" => array(
-                    "submit" => "Eliminar"
+                    "submit" => "eliminar"
                 ),
             ),
         ),
     ),
     "messages"    => array(
-        "no_domains"       => "Empieza tu primer dominio. Da click en 'Crear Dominio'.",
-        "no_ftps"          => "",
-        "no_databases"     => "Sube una base de datos para tu dominio.",
-        "no_emails"        => "Crea un correo para tu dominio.",
-        "no_payments"      => "Aún no has realizado pagos por tus dominios.",
-        "no_users"         => "No existen usuarios.",
-        "logout"           => "¡Vuelve pronto! :)",
+        "no_domains"       => "Empieza tu primer dominio, da click en 'Crear Dominio'",
+        "no_ftps"          => "No existe ningun FTP para el dominio",
+        "no_databases"     => "No existe ninguna base de datos para el dominio",
+        "no_emails"        => "No existe ningun correo para el dominio",
+        "no_payments"      => "No existen cargos por dominios",
+        "no_users"         => "No existen usuarios",
+        "logout"           => "Vuelve pronto :)",
         "register"         => array(
-            "error"      => "¡Ooops! Ocurrió un error al crear el usuario. Revisa tu información.",
-            "successful" => "Usuario creado con éxito.",
+            "error"      => "Error al crear el usuario",
+            "successful" => "Usuario creado con exito",
         ),
         "login"            => array(
-            "successful" => "¡Bienvenid@!",
-            "error"      => "Correo o contraseña incorrectos. Revisa tu información e introdúcela nuevamente.",
+            "successful" => "Correo o contraseña incorrectos",
+            "error"      => "Correo o contraseña incorrectos",
         ),
         "user"             => array(
             "store"   => array(
-                "successful" => "Usuario creado con éxito.",
-                "error"      => "Error al crear el usuario. Por favor, revisa tu información.",
+                "successful" => "Usuario creado con éxito",
+                "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
-                "successful" => "Usuario actualizado con éxito.",
-                "error"      => "Error al actualizar el usuario. Revisa tu información.",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
-                "successful" => "Usuario eliminado con éxito.",
-                "error"      => "Error al eliminar el usuario.",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el usuario",
             ),
         ),
         "domain"           => array(
             "store"   => array(
-                "no_data"      => "Faltan datos en el servidor. Por favor, llámanos para ayudarte.",
-                "server_error" => "El servidor respondió: :error. Llámanos para ayudarte.",
-                "successful"   => "Dominio creado con éxito.",
-                "error"        => "Error al crear el dominio. Inténtalo más tarde o contáctanos para ayudarte.",
+                "no_data"      => "Faltan datos en el servidor",
+                "server_error" => "El servidor respondio: :error",
+                "successful"   => "Dominio creado con éxito",
+                "error"        => "Error al crear el dominio",
             ),
             "update"  => array(
-                "no_data"    => "Faltan datos en el servidor. Contáctanos para ayudarte.",
-                "successful" => "Dominio actualizado con éxito.",
-                "error"      => "Error al actualizar el dominio. Inténtalo más tarde o llámanos para ayudarte.",
+                "no_data"    => "Faltan datos en el servidor",
+                "successful" => "Dominio actualizado con éxito",
+                "error"      => "Error al actualizar el dominio",
             ),
             "destroy" => array(
-                "no_data"    => "Faltan datos en el servidor. Estamos trabajando para resolverlo.",
-                "successful" => "Dominio eliminado con éxito.",
-                "error"      => "Error al eliminar el dominio. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos en el servidor",
+                "successful" => "Dominio eliminado con éxito",
+                "error"      => "Error al eliminar el dominio",
             ),
         ),
         "email"            => array(
             "store"   => array(
-                "no_data"    => "Faltan datos para el correo. Revisa tu información.",
-                "successful" => "Correo creado con éxito.",
-                "error"      => "Error al crear el correo. Inténtalo más tarde.",
-                "bad_email"  => "El campo redirección requiere un correo. Revisa tus datos."
+                "no_data"    => "Faltan datos para el correo",
+                "successful" => "Correo creado con éxito",
+                "error"      => "Error al crear el correo",
+                "bad_email"  => "El campo redirección requiere un correo"
             ),
             "update"  => array(
-                "no_data"    => "Faltan datos para el correo. Revisa tu información.",
-                "successful" => "Correo actualizado con éxito.",
-                "error"      => "Error al actualizar el correo. Por favor, inténtalo más tarde.",
+                "no_data"    => "Faltan datos para el correo",
+                "successful" => "Correo actualizado con éxito",
+                "error"      => "Error al actualizar el correo",
             ),
             "destroy" => array(
-                "no_data"    => "Faltan datos para el correo. Por favor, inténtalo más tarde.",
-                "successful" => "Usuario eliminado con éxito.",
-                "error"      => "Error al eliminar el correo. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para el correo",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el correo",
             ),
         ),
         "ftp"              => array(
             "store"   => array(
-                "no_data"    => "Faltan datos para el FTP. Inténtalo más tarde.",
-                "successful" => "FTP creado con éxito.",
-                "error"      => "Error al crear FTP. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para el ftp",
+                "successful" => "Usuario creado con éxito",
+                "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
-                "no_data"    => "Faltan datos para el FTP. Inténtalo más tarde.",
-                "successful" => "FTP actualizado con éxito.",
-                "error"      => "Error al actualizar el FTP. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para el ftp",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
-                "no_data"    => "Faltan datos para el FTP. Inténtalo más tarde.",
-                "successful" => "FTP eliminado con éxito.",
-                "error"      => "Error al eliminar el FTP. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para el ftp",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el usuario",
             ),
             "empty"   => array(
-                "error" => "Únicamente existe un FTP y no se puede eliminar.",
+                "error" => "Unicamente existe 1 FTP no se puede eliminar",
             ),
         ),
         "database"         => array(
             "store"   => array(
-                "no_data"    => "Faltan datos para la base de datos. Inténtalo más tarde.",
-                "successful" => "Base de datos creada con éxito.",
-                "error"      => "Error al crear la base de datos. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para la base de datos",
+                "successful" => "Usuario creado con éxito",
+                "error"      => "Error al crear el usuario",
             ),
             "update"  => array(
-                "no_data"    => "Faltan datos para la base de datos. Inténtalo más tarde.",
-                "successful" => "Base de datos actualizada con éxito.",
-                "error"      => "Error al actualizar la base de datos. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para la base de datos",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el usuario",
             ),
             "destroy" => array(
-                "no_data"    => "Faltan datos para la base de datos. Inténtalo más tarde.",
-                "successful" => "Base de datos actualizada con éxito.",
-                "error"      => "Error al actualizar la base de datos. Inténtalo más tarde.",
+                "no_data"    => "Faltan datos para la base de datos",
+                "successful" => "Usuario actualizado con éxito",
+                "error"      => "Error al actualizar el usuario",
             ),
         ),
         "reset_password"   => array(
-            "successful" => "Contraseña modificada con éxito.",
-            "error"      => "Error al modificar la contraseña. Inténtalo más tarde.",
+            "successful" => "Contraseña modificada con exito",
+            "error"      => "error al modificar la contraseña",
         ),
         'payment'          => array(
             "store"  => array(
-                "successful" => "Pago realizado con éxito.",
-                "error"      => "Error al realizar el pago. Inténtalo más tarde."
+                "successful" => "pago generado con exito",
+                "error"      => "Error al generar el pago"
             ),
             "update" => array(
-                "successful" => "Pago realizado con éxito.",
-                "error"      => "Error al realizar el pago. Inténtalo más tarde."
+                "successful" => "pago generado con exito",
+                "error"      => "Error al generar el pago"
             ),
             "delete" => array(
-                "successful" => "Pago realizado con éxito",
-                "error"      => "Error al realizar el pago. Inténtalo más tarde."
+                "successful" => "pago generado con exito",
+                "error"      => "Error al generar el pago"
             ),
         ),
         "received_payment" => array(
-            "realized" => "Se está revisando el status de tu pago. En cuanto esté listo, te enviaremos un correo.",
+            "realized" => "Se esta revisando el status del pago, en cuanto este listo, te enviaremos un correo",
         ),
         "freedomain"       => array(
             "store"   => array(
-                "successful" => "Dominio gratuito creado con éxito.",
-                "error"      => "Error al crear el dominio gratuito. Inténtalo más tarde."
+                "successful" => "dominio gratis creado con exito",
+                "error"      => "error al crear el dominio gratuito"
             ),
             "update"  => array(
             ),
@@ -444,19 +444,19 @@ return array(
         ),
     ),
     "filter"      => array(
-        "is_user"           => "El tipo de usuario no es correcto o no está activo..",
-        "is_admin"          => "El tipo de usuario no corresponde a este registro.",
-        "not_same_user"     => "El usuario al que intenta acceder no pertenece a la cuenta.",
-        "not_active"        => "El dominio no está activo.",
-        "not_user_domain"   => "El dominio no pertenece al usuario.",
-        "not_user_element"  => "El objeto que quiere ver no pertence al dominio.",
-        "not_active_domain" => "El dominio no está activo.",
-        "not_user_payment"  => "El pago no pertenece al usuario.",
+        "is_user"           => "El tipo de usuario no es correcto o no esta activo",
+        "is_admin"          => "El tipo de usuario no corresponde a este registro",
+        "not_same_user"     => "El usuario al que intenta acceder no pertenece a la cuenta",
+        "not_active"        => "El dominio no esta activo",
+        "not_user_domain"   => "El dominio no pertenece al usuario",
+        "not_user_element"  => "El objeto que quiere ver no pertence al dominio",
+        "not_active_domain" => "El dominio no esta activo",
+        "not_user_payment"  => "el pago no pertenece al usuario",
     ),
     "link"        => array(
         "logout"            => "Salir",
         "account"           => "Cuenta",
-        "reminder_password" => "Recuperar contraseña",
+        "reminder_password" => "recuperar contraseña",
         "register"          => "Registrarse",
         "payment"           => array(
             "create" => "Crear pago",
@@ -489,15 +489,15 @@ return array(
             "show"   => "Mostrar FTP",
         ),
         "database"          => array(
-            "create" => "Crear Base de Datos",
-            "edit"   => "Editar Base de Datos",
-            "index"  => "Bases de Datos",
-            "show"   => "Mostrar Base de Datos",
+            "create" => "Crear Base de datos",
+            "edit"   => "Editar Base de datos",
+            "index"  => "Bases de datos",
+            "show"   => "Mostrar Base de datos",
         ),
         "admin"             => array(
             "domain_costs"  => array(
                 "create" => "Crear nuevo costo de dominio",
-                "edit"   => "Editar costo de dominio",
+                "edit"   => "editar costo de dominio",
                 "index"  => "Costos de dominio",
                 "show"   => "Mostrar costo de dominio",
             ),
@@ -530,90 +530,90 @@ return array(
     "table_head"  => array(
         "domain"   => array(
             "domain"   => "Dominio",
-            "active"   => "Status",
-            "date"     => "Fecha de término",
+            "active"   => "Esta Activo",
+            "date"     => "Fecha de termino",
             "plan"     => "Plan",
             "delete"   => "Eliminar",
-            "activate" => 'Activar',
+            "activate" => 'activar',
         ),
         "email"    => array(
             "user_email" => "Nombre",
-            "email"      => "Correo electrónico",
-            "forward"    => "Redirección",
-            "edit"       => "Editar correo",
+            "email"      => "Correo Electronico",
+            "forward"    => "Redireccion",
+            "edit"       => "Editar Correo",
             "delete"     => "Eliminar Correo",
         ),
         "ftp"      => array(
             "username" => "Nombre de usuario",
             "hostname" => "Nombre de Host",
-            "homedir"  => "Directorio raíz",
+            "homedir"  => "Directorio Raiz",
             "edit"     => "Editar FTP",
             "delete"   => "Eliminar FTP",
         ),
         "database" => array(
             "name_db" => "Nombre de Base de Datos",
             "user"    => "Usuario",
-            "edit"    => "Editar Base de Datos",
-            "delete"  => "Eliminar Base de Datos",
+            "edit"    => "Editar Base de datos",
+            "delete"  => "Eliminar Base de datos",
         ),
         "payment"  => array(
             "ammount"     => "Cantidad",
             "currency"    => "Moneda",
             "domain"      => "Dominio",
-            "description" => "Descripción",
-            "date_start"  => "Fecha inicio",
-            "date_end"    => "Fecha fin",
-            "no_order"    => "Número de orden",
+            "description" => "Descripcion",
+            "date_start"  => "Fecha Inicio",
+            "date_end"    => "Fecha Fin",
+            "no_order"    => "Numero de Orden",
             "status"      => "Status",
             "concept"     => "Concepto",
             "pay"         => "Pagar"
         ),
         "admin"    => array(
             "user"          => array(
-                "id"      => "Identificador",
-                "name"    => "Nombre",
-                "created" => "Creado",
-                "destroy" => "Eliminar",
+                "id"      => "identificador",
+                "name"    => "nombre",
+                "created" => "creado",
+                "destroy" => "eliminar",
             ),
             "domain_costs"  => array(
-                "plan"     => "Plan",
-                "cost"     => "Costo",
-                "currency" => "Moneda",
-                "concept"  => "Concepto",
-                "active"   => "Activa",
-                "edit"     => "Editar",
-                "delete"   => "Eliminar",
-                "domain"   => "Dominio",
+                "plan"     => "plan",
+                "cost"     => "costo",
+                "currency" => "moneda",
+                "concept"  => "concepto",
+                "active"   => "activa",
+                "edit"     => "editar",
+                "delete"   => "eliminar",
+                "domain"   => "dominio",
             ),
             "hosting_costs" => array(
-                "plan"     => "Plan",
-                "cost"     => "Costo",
-                "currency" => "Moneda",
-                "concept"  => "Concepto",
-                "active"   => "Activa",
-                "edit"     => "Editar",
-                "delete"   => "Eliminar",
+                "plan"     => "plan",
+                "cost"     => "costo",
+                "currency" => "moneda",
+                "concept"  => "concepto",
+                "active"   => "activa",
+                "edit"     => "editar",
+                "delete"   => "eliminar",
             ),
             "user"          => array(
-                "id"      => "Identificador",
-                "name"    => "Nombre",
-                "created" => "Creado",
-                "destroy" => "Eliminar",
+                "id"      => "identificador",
+                "name"    => "nombre",
+                "created" => "creado",
+                "destroy" => "eliminar",
             ),
             "free_domains"  => array(
-                "email"    => "Email",
-                "domain"   => "Dominio",
-                "registry" => "Fecha de registro",
-                "active"   => "Activo",
-                "edit"     => "Editar",
-                "delete"   => "Eliminar",
+                "email"    => "email",
+                "domain"   => "dominio",
+                "registry" => "fecha de registro",
+                "active"   => "activo",
+                "edit"     => "editar",
+                "delete"   => "eliminar",
             ),
             "plans"         => array(
-                "name"            => "Nombre",
+                "name"            => "nombre",
                 "num_emails"      => "# mails",
                 "num_databases"   => "# BD",
                 "num_ftps"        => "# FTP",
-                "quota_emails"    => "Tamaño correo",
+                "quota_emails"    => "Tamaño Correo",
                 "quota_databases" => "Tamaño BD",
                 "quota_ftps"      => "Tamaño FTP",
                 "edit"            => "Editar",
@@ -631,7 +631,7 @@ return array(
     ),
     "plan"        => array(
         "free"    => "Gratuito",
-        "basic"   => "Básico",
+        "basic"   => "Basico",
         "startup" => "Startup",
     )
 );
