@@ -5,6 +5,10 @@
       <div class="row">
             @include('layouts.menu', ['page' => 'emails'])
             <div class="col-md-8 sidebar contenido list-table">
+                  <div>
+                  {{HTML::LinkRoute('user.emails.create',trans('frontend.link.email.create'),array($user->id,$domain->id))}}
+                  </div>
+                  
                   @if(count($emails))
                   <div class="table-responsive">
                         <table class="table">

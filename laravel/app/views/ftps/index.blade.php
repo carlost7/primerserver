@@ -5,6 +5,9 @@
       <div class="row">
             @include('layouts.menu', ['page' => 'ftps'])
             <div class="col-md-8 sidebar contenido list-table">
+                  <div>
+                        {{HTML::LinkRoute('user.ftps.create',trans('frontend.link.ftp.create'),array($user->id,$domain->id))}}
+                  </div>
                   @if(count($ftps))
                   <div class="table-responsive">
                         <table class="table">

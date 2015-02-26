@@ -5,6 +5,11 @@
       <div class="row">
             @include('layouts.menu', ['page' => 'databases'])
             <div class="col-md-8 sidebar contenido list-table">
+                  <div>
+                  {{HTML::LinkRoute('user.databases.create',trans('frontend.link.database.create'),array($user->id,$domain->id))}}
+                  </div>
+                  
+                  
                   @if(count($databases))
                   <div class="table-responsive">
                         <table class="table">
