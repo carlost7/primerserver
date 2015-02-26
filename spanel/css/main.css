@@ -309,6 +309,10 @@ div.alert > .close{
 		color:white;
                 background:#35AAE1;
 	}
+        
+        .activa-menu{
+	background:#1B667C !important;
+}
 
 
 /* SIDEBAR DOMAINS others NAV
